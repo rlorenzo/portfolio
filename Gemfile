@@ -1,12 +1,18 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.2.0"
-gem "jekyll-feed", "~> 0.12"
-gem "jekyll-seo-tag", "~> 2.6"
+# Specify compatible Ruby version
+ruby ">= 3.3.0", :optional => true
+
+gem "jekyll", "~> 4.4.1"
+
+# Add explicit dependencies for Ruby 3.4.0+ compatibility
+gem "logger"
+gem "csv"
+gem "bigdecimal"
 
 group :jekyll_plugins do
-  gem "jekyll-feed"
-  gem "jekyll-seo-tag"
+  gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-seo-tag", "~> 2.6"
 end
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do

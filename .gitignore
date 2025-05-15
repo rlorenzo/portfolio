@@ -1,7 +1,30 @@
-_site
-.sass-cache
-.jekyll-cache
+# Jekyll output
+_site/
+.sass-cache/
+.jekyll-cache/
 .jekyll-metadata
-vendor
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+*.swo
 .DS_Store
-node_modules
+Thumbs.db
+
+# Dependencies
+vendor/
+.bundle/
+Gemfile.lock
+
+# VSCode settings
+.vscode/
+
+# Environment config
+.env
+
+# Node.js (if using JS tooling)
+node_modules/
+
+# Mac system files
+*.DS_Store
