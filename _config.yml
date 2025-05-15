@@ -1,0 +1,26 @@
+# Site settings
+title: Rex Lorenzo
+email: rexlorenzo@example.com
+description: >-
+  Software Engineer and Engineering Manager with expertise in system design and leadership
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  sections:
+    output: false
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git

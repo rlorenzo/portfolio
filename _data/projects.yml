@@ -1,0 +1,23 @@
+- name: Distributed System Design Framework
+  description: A comprehensive framework for designing scalable distributed systems with built-in monitoring and fault tolerance.
+  tech_stack:
+    - Go
+    - gRPC
+    - Kubernetes
+  github_link: https://github.com/rexlorenzo/distributed-system-framework
+
+- name: Performance Monitoring Tool
+  description: Real-time performance monitoring solution for microservices architecture.
+  tech_stack:
+    - Python
+    - Prometheus
+    - Grafana
+  github_link: https://github.com/rexlorenzo/perf-monitor
+
+- name: Team Collaboration Platform
+  description: A platform designed to improve engineering team collaboration and knowledge sharing.
+  tech_stack:
+    - React
+    - Node.js
+    - MongoDB
+  github_link: https://github.com/rexlorenzo/collab-platform

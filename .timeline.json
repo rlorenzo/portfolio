@@ -1,0 +1,74 @@
+{
+  "timeline_index": 35,
+  "planner": {
+    "Team Leader": {
+      "1": {
+        "task_id": "1",
+        "dependent_task_ids": [],
+        "instruction": "Create a personal homepage using Jekyll with provided files profile.jpg and resume PDF. Parse the resume and create required data files in YAML format. Create a responsive single-page Jekyll site with all required sections: Hero, About Me, Projects, Experience, Presentations, Quotes, FAQ, and Contact.",
+        "task_type": "general",
+        "code": "",
+        "result": "",
+        "is_success": false,
+        "is_finished": true,
+        "assignee": "Alex",
+        "start_at": 1747270933.1880875,
+        "end_at": 1747271140.2844374
+      },
+      "current_task_id": "2",
+      "2": {
+        "task_id": "2",
+        "dependent_task_ids": [
+          "1"
+        ],
+        "instruction": "Create a comprehensive README.md file that describes how to set up, modify content, and deploy the Jekyll personal website to GitHub Pages.",
+        "task_type": "general",
+        "code": "",
+        "result": "",
+        "is_success": false,
+        "is_finished": true,
+        "assignee": "Alex",
+        "start_at": 1747271140.2844412,
+        "end_at": 1747271230.336434
+      }
+    }
+  },
+  "gallery_last_file": {},
+  "timeline_status": {
+    "1": 1,
+    "2": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "10": 1,
+    "11": 1,
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 1,
+    "16": 1,
+    "17": 1,
+    "18": 1,
+    "19": 1,
+    "20": 1,
+    "21": 1,
+    "22": 1,
+    "23": 1,
+    "24": 1,
+    "25": 1,
+    "26": 1,
+    "27": 1,
+    "28": 1,
+    "29": 1,
+    "30": 1,
+    "31": 1,
+    "33": 1,
+    "34": 1,
+    "35": 1
+  },
+  "preview_servers": {},
+  "deploy": {}
+}

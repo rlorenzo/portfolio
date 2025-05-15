@@ -1,0 +1,12 @@
+<header class="bg-white shadow-sm">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <a href="{{ '/' | relative_url }}" class="text-xl font-bold">{{ site.title }}</a>
+      <div class="space-x-4">
+        {% for item in site.data.navigation %}
+        <a href="{{ item.url }}" class="text-gray-600 hover:text-gray-900">{{ item.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </nav>
+</header>

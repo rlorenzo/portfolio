@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body class="bg-gray-50">
+    {% include header.html %}
+    <main class="container mx-auto px-4">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // FAQ toggle functionality
+      document.querySelectorAll('.faq-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          content.classList.toggle('hidden');
+          button.querySelector('.icon').classList.toggle('rotate-180');
+        });
+      });
+
+      // Random quote display
+      document.addEventListener('DOMContentLoaded', () => {
+        const quotes = document.querySelectorAll('.quote');
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        quotes.forEach(quote => quote.classList.add('hidden'));
+        quotes[randomIndex].classList.remove('hidden');
+      });
+    </script>
+  </body>
+</html>

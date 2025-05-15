@@ -1,0 +1,11 @@
+- question: What is your preferred work environment?
+  answer: I thrive in collaborative environments that value innovation and continuous learning. I'm comfortable with both remote and office-based work, with a preference for hybrid arrangements that combine the benefits of both.
+
+- question: What technologies do you specialize in?
+  answer: My core expertise lies in distributed systems, Go, Python, and React. I also have extensive experience with cloud platforms (AWS, GCP) and container orchestration with Kubernetes.
+
+- question: How do you approach team leadership?
+  answer: I believe in leading by example, fostering open communication, and empowering team members to take ownership of their work. My leadership style focuses on mentorship, clear goal-setting, and creating opportunities for growth.
+
+- question: What's your biggest professional achievement?
+  answer: Leading the successful transformation of a monolithic system to a microservices architecture while maintaining 99.99% uptime and improving system performance by 300%.
