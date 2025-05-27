@@ -17,6 +17,10 @@ vendor/
 .bundle/
 Gemfile.lock
 
+# Generated JavaScript bundles
+assets/js/bundle.js
+assets/js/bundle.js.map
+
 # VSCode settings
 .vscode/
 
