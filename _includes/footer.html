@@ -1,11 +1,43 @@
-<footer class="bg-gray-800 text-white mt-16 py-8">
+<footer class="bg-gray-800 dark:bg-gray-900 text-white mt-16 py-12">
   <div class="container mx-auto px-4">
-    <div class="text-center">
-      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
-      <div class="mt-4 space-x-4">
-        <a href="https://github.com/rexlorenzo" class="hover:text-gray-300">GitHub</a>
-        <a href="https://linkedin.com/in/rexlorenzo" class="hover:text-gray-300">LinkedIn</a>
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div class="text-center md:text-left">
+        <h3 class="text-xl font-bold mb-4 text-white">{{ site.title }}</h3>
+        <p class="text-gray-300 dark:text-gray-400">Professional web developer passionate about creating exceptional digital experiences.</p>
       </div>
+      
+      <div class="text-center">
+        <h3 class="text-xl font-bold mb-4 text-white">Quick Links</h3>
+        <ul class="space-y-2">
+          {% for item in site.data.navigation %}
+          <li>
+            <a href="{{ item.url }}" class="text-gray-300 dark:text-gray-400 hover:text-primary transition-colors duration-300">
+              {% if item.icon %}<i class="{{ item.icon }} mr-2"></i>{% endif %}
+              {{ item.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <div class="text-center md:text-right">
+        <h3 class="text-xl font-bold mb-4 text-white">Connect</h3>
+        <div class="flex justify-center md:justify-end space-x-4">
+          <a href="https://github.com/rexlorenzo" class="text-gray-300 dark:text-gray-400 hover:text-primary transition-colors duration-300 text-2xl">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/rexlorenzo" class="text-gray-300 dark:text-gray-400 hover:text-primary transition-colors duration-300 text-2xl">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:contact@example.com" class="text-gray-300 dark:text-gray-400 hover:text-primary transition-colors duration-300 text-2xl">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-700 dark:border-gray-800 pt-6 text-center">
+      <p class="text-gray-400 dark:text-gray-500">&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
     </div>
   </div>
 </footer>

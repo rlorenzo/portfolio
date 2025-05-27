@@ -1,12 +1,18 @@
 - title: About
   url: "#about"
+  icon: "fas fa-user"
 - title: Projects
   url: "#projects"
+  icon: "fas fa-laptop-code"
 - title: Experience
   url: "#experience"
+  icon: "fas fa-briefcase"
 - title: Presentations
   url: "#presentations"
+  icon: "fas fa-video"
 - title: FAQ
   url: "#faq"
+  icon: "fas fa-question-circle"
 - title: Contact
   url: "#contact"
+  icon: "fas fa-envelope"

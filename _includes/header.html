@@ -1,12 +1,65 @@
-<header class="bg-white shadow-sm">
-  <nav class="container mx-auto px-4 py-4">
-    <div class="flex justify-between items-center">
-      <a href="{{ '/' | relative_url }}" class="text-xl font-bold">{{ site.title }}</a>
-      <div class="space-x-4">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-lg bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-4 py-4">
+    <nav class="flex justify-between items-center">
+      <!-- Logo/Brand -->
+      <a href="{{ '/' | relative_url }}" class="text-xl font-bold flex items-center">
+        <div class="text-primary mr-2 text-2xl">
+          <i class="fas fa-code"></i>
+        </div>
+        <span class="text-gray-900 dark:text-white">{{ site.title }}</span>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <div class="space-x-4 hidden md:flex items-center">
         {% for item in site.data.navigation %}
-        <a href="{{ item.url }}" class="text-gray-600 hover:text-gray-900">{{ item.title }}</a>
+        <a href="{{ item.url }}" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center">
+          {% if item.icon %}<i class="{{ item.icon }} mr-1"></i>{% endif %}
+          {{ item.title }}
+        </a>
         {% endfor %}
+        
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-switch" aria-label="Toggle theme">
+          <i id="theme-icon-light" class="fas fa-sun hidden dark:block"></i>
+          <i id="theme-icon-dark" class="fas fa-moon block dark:hidden"></i>
+        </button>
+        
+        <!-- Contact Button -->
+        <a href="#contact" class="btn btn-primary ml-2">
+          <i class="fas fa-envelope mr-1"></i> Contact Me
+        </a>
       </div>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center space-x-4">
+        <!-- Theme Toggle Button (Mobile) -->
+        <button id="theme-toggle-mobile" class="theme-switch" aria-label="Toggle theme">
+          <i id="theme-icon-light-mobile" class="fas fa-sun hidden dark:block"></i>
+          <i id="theme-icon-dark-mobile" class="fas fa-moon block dark:hidden"></i>
+        </button>
+        
+        <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-none hover:text-primary dark:hover:text-primary">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden mt-4 hidden rounded-lg shadow-lg bg-white dark:bg-gray-800 p-4">
+      {% for item in site.data.navigation %}
+      <a href="{{ item.url }}" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300">
+        {% if item.icon %}<i class="{{ item.icon }} mr-2"></i>{% endif %}
+        {{ item.title }}
+      </a>
+      {% endfor %}
+      <a href="#contact" class="btn btn-primary mt-4 w-full">
+        <i class="fas fa-envelope mr-1"></i> Contact Me
+      </a>
     </div>
-  </nav>
+  </div>
 </header>
+
+<!-- Back to top button -->
+<button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full opacity-0 invisible transition-all duration-300 focus:outline-none z-50 animate-bounce bg-primary hover:bg-accent">
+  <i class="fas fa-arrow-up text-white"></i>
+</button>

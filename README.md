@@ -34,8 +34,12 @@ A modern, responsive personal portfolio website built with Jekyll and Tailwind C
 │   ├── default.html   # Base layout
 │   └── home.html      # Home page layout
 ├── assets/            # Site assets
-│   └── css/          # CSS files
-│       └── main.scss  # Main stylesheet
+│   ├── css/          # CSS files
+│   │   └── tailwind.css  # Generated Tailwind CSS
+│   ├── favicon/      # Favicon files
+│   ├── js/           # JavaScript files
+├── src/              # Source files
+│   └── tailwind.css  # Tailwind CSS source
 └── public/           # Public assets
     └── assets/       # Static files
         └── images/   # Image files
@@ -46,24 +50,25 @@ A modern, responsive personal portfolio website built with Jekyll and Tailwind C
 ### Prerequisites
 
 - [Homebrew](https://brew.sh/) (for macOS users)
+- [Node.js](https://nodejs.org/) (14.x or newer)
+- [Ruby](https://www.ruby-lang.org/en/) (3.3.0 or newer)
 
 ### Installation
 
-1. Install Ruby using Homebrew:
+1. Install Ruby using Homebrew (for macOS users):
    ```bash
    brew install ruby
    ```
 
 2. Add Homebrew Ruby to your path (for zsh):
    ```bash
-   echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
+   echo 'export PATH="/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
    source ~/.zshrc
    ```
 
-3. Verify Homebrew Ruby installation:
+3. Verify your Ruby installation:
    ```bash
-   which ruby  # Should show /usr/local/opt/ruby/bin/ruby
-   ruby -v    # Should show the latest Ruby version
+   ruby -v    # Should show the Ruby version
    ```
 
 4. Install Jekyll and Bundler:
@@ -73,22 +78,43 @@ A modern, responsive personal portfolio website built with Jekyll and Tailwind C
 
 5. Clone this repository:
    ```bash
-   git clone https://github.com/rlorenzo/portfolio.git
-   cd portfolio
+   git clone https://github.com/yourusername/your-portfolio.git
+   cd your-portfolio
    ```
 
-6. Install project dependencies:
+6. Install all dependencies (both npm and bundle) with a single command:
    ```bash
-   bundle config set --local path 'vendor/bundle'
-   bundle install
+   npm run setup
    ```
+   This command runs both `npm install` and `bundle install`.
 
-7. Start the development server:
+7. Start the development server with both CSS building and Jekyll:
    ```bash
-   bundle exec jekyll serve
+   npm run dev
    ```
+   This command concurrently runs the Tailwind CSS watcher and Jekyll server.
 
-8. Visit `http://127.0.0.1:4000/portfolio/` in your browser
+8. Visit `http://localhost:4000/portfolio` in your browser
+
+## Analytics
+
+### GoatCounter Setup
+
+This site uses GoatCounter for privacy-friendly analytics without cookies. To set up GoatCounter:
+
+1. Create a free account at [GoatCounter.com](https://www.goatcounter.com/)
+2. After signing up, you'll get a site code (e.g., "yourname")
+3. Update `_config.yml` with your site code:
+   ```yaml
+   goatcounter_code: "yourname" # Replace with your actual GoatCounter site code
+   ```
+4. Deploy your site - the tracking script will be automatically included
+
+Benefits of GoatCounter:
+- Privacy-focused analytics (no cookies, GDPR compliant)
+- No need for cookie consent banners
+- Simple dashboard with key metrics
+- Free for personal use and small sites
 
 ## Content Management
 
@@ -147,15 +173,24 @@ All content is stored in YAML files in the `_data` directory:
 
 ### Tailwind CSS
 
-Modify styles in `assets/css/main.scss`. The project uses Tailwind CSS utility classes for styling.
+Modify Tailwind CSS settings in `tailwind.config.js` or source styles in `src/tailwind.css`. The project uses Tailwind CSS utility classes for styling.
 
 Common customizations:
 
-```scss
-// assets/css/main.scss
-// Override Tailwind default colors
-$primary-color: #3b82f6;  // Change primary color
-$secondary-color: #1e40af;  // Change secondary color
+```js
+// tailwind.config.js
+module.exports = {
+  // ...
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3b82f6',  // Change primary color
+        secondary: '#1e40af'  // Change secondary color
+      }
+    }
+  }
+  // ...
+}
 ```
 
 ## Deployment to GitHub Pages
@@ -188,9 +223,20 @@ $secondary-color: #1e40af;  // Change secondary color
 
 ## Local Development
 
-- Run `bundle exec jekyll serve` for local development
+### Build Commands
+
+- **Development Mode**: `npm run dev` - Starts both the Tailwind CSS watcher and Jekyll server concurrently
+- **Build CSS Only**: `npm run build:css` - Builds the Tailwind CSS file once
+- **Watch CSS Only**: `npm run watch:css` - Watches and rebuilds CSS when source files change
+- **Jekyll Server Only**: `npm run serve` - Runs only the Jekyll server without CSS processing
+- **Production Build**: `npm run build` - Builds both CSS and Jekyll site for production
+
+### Notes
+
 - Changes to `_config.yml` require server restart
 - Content changes in `_data/*.yml` files are reloaded automatically
+- CSS changes are automatically processed when using `npm run dev`
+- When adding new Tailwind classes, the CSS will be rebuilt automatically
 
 ## Linting and Code Quality
 
@@ -236,6 +282,7 @@ If you're using Ruby 3.4.0 or newer, you might encounter warnings or errors abou
 # Add explicit dependencies for Ruby 3.4.0+ compatibility
 gem "logger"
 gem "csv"
+gem "bigdecimal"
 
 # Specify compatible Ruby version
 ruby ">= 3.3.0", :optional => true

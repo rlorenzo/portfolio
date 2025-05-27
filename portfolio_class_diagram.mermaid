@@ -1,0 +1,112 @@
+classDiagram
+    class Site {
+        +String title
+        +String description
+        +String author
+        +String email
+        +String baseurl
+        +String url
+        +initialize()
+        +render()
+    }
+    
+    class Theme {
+        +String name
+        +Boolean isDarkMode
+        +toggle()
+        +setPreference(theme)
+        +getPreference()
+        +applyTheme()
+    }
+    
+    class Navigation {
+        +Array~NavItem~ items
+        +Boolean isSticky
+        +Element mobileMenu
+        +render()
+        +toggleMobileMenu()
+        +highlightActiveSection()
+        +handleScroll()
+    }
+    
+    class NavItem {
+        +String title
+        +String url
+        +Boolean isActive
+        +setActive(boolean)
+    }
+    
+    class Section {
+        +String id
+        +String title
+        +render()
+    }
+    
+    class ProjectsSection {
+        +Array~Project~ projects
+        +render()
+        +filterProjects(category)
+    }
+    
+    class Project {
+        +String title
+        +String description
+        +String image
+        +String url
+        +Array~String~ technologies
+        +render()
+    }
+    
+    class ExperienceSection {
+        +Array~Experience~ experiences
+        +render()
+    }
+    
+    class Experience {
+        +String company
+        +String title
+        +String period
+        +Array~String~ responsibilities
+        +render()
+    }
+    
+    class ContactSection {
+        +String email
+        +Object socialLinks
+        +render()
+        +validateForm()
+        +submitForm()
+    }
+    
+    class BackToTop {
+        +Boolean isVisible
+        +show()
+        +hide()
+        +scrollToTop()
+    }
+    
+    class AnalyticsManager {
+        +String trackingId
+        +initialize()
+        +trackPageView()
+        +trackEvent(category, action, label)
+    }
+    
+    class AssetManager {
+        +loadCSS(path)
+        +loadJS(path)
+        +preloadAssets(assets)
+    }
+    
+    Site "1" *-- "1" Navigation
+    Site "1" *-- "1" Theme
+    Site "1" *-- "1..n" Section
+    Navigation "1" *-- "1..n" NavItem
+    Section <|-- ProjectsSection
+    Section <|-- ExperienceSection
+    Section <|-- ContactSection
+    ProjectsSection "1" *-- "0..n" Project
+    ExperienceSection "1" *-- "0..n" Experience
+    Site "1" *-- "1" BackToTop
+    Site "1" *-- "1" AnalyticsManager
+    Site "1" *-- "1" AssetManager

@@ -1,27 +1,37 @@
 {
-  "name": "jekyll-portfolio",
+  "name": "portfolio-website",
   "version": "1.0.0",
-  "description": "Personal portfolio website built with Jekyll and Tailwind CSS",
-  "private": true,
+  "description": "A professional Jekyll portfolio website",
   "scripts": {
-    "lint:js": "eslint --ext .js .",
-    "lint:css": "stylelint \"**/*.{css,scss}\"",
-    "lint:html": "htmlhint \"**/*.{html,htm}\"",
-    "lint:md": "markdownlint \"**/*.md\" --ignore node_modules",
-    "lint": "npm run lint:js && npm run lint:css && npm run lint:html && npm run lint:md",
-    "fix:js": "eslint --ext .js . --fix",
-    "fix:css": "stylelint \"**/*.{css,scss}\" --fix",
-    "fix:md": "markdownlint \"**/*.md\" --ignore node_modules --fix",
-    "fix": "npm run fix:js && npm run fix:css && npm run fix:md"
+    "dev": "concurrently \"npm run watch:css\" \"npm run serve\"",
+    "watch:css": "npm run build:css -- --watch",
+    "build": "npm run build:css && JEKYLL_ENV=production bundle exec jekyll build",
+    "serve": "bundle exec jekyll serve",
+    "build:css": "postcss ./src/tailwind.css -o ./assets/css/tailwind.css",
+    "setup": "npm install && bundle install",
+    "lint:css": "stylelint '**/*.{css,scss}'",
+    "lint:js": "eslint './assets/js/**/*.js'",
+    "lint:html": "htmlhint '_site/**/*.html'",
+    "lint": "npm run lint:css && npm run lint:js && npm run lint:html",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "portfolio",
+    "jekyll",
+    "tailwindcss"
+  ],
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.42.0",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^9.1.2",
+    "cssnano": "^6.0.2",
+    "eslint": "^8.56.0",
     "htmlhint": "^1.1.4",
-    "markdownlint-cli": "^0.34.0",
-    "stylelint": "^15.7.0",
-    "stylelint-config-standard-scss": "^9.0.0"
-  },
-  "engines": {
-    "node": ">=16"
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard": "^36.0.0",
+    "tailwindcss": "^3.4.0"
   }
 }

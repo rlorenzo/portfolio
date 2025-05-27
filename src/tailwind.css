@@ -1,0 +1,96 @@
+/* Main Tailwind CSS source file */
+
+/* Tailwind base styles */
+@tailwind base;
+
+/* Tailwind component classes */
+@tailwind components;
+
+/* Tailwind utility classes */
+@tailwind utilities;
+
+/* Custom CSS variables */
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #10b981;
+  --accent-color: #8b5cf6;
+  --success-color: #22c55e;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --info-color: #06b6d4;
+  
+  /* Light theme variables */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border-color: #e5e7eb;
+}
+
+/* Dark theme variables */
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --border-color: #374151;
+}
+
+/* Custom styles that extend Tailwind */
+@layer components {
+  /* Button styles */
+  .btn {
+    @apply px-4 py-2 rounded-md transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-opacity-90;
+  }
+  
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:bg-opacity-10;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-bg-primary border border-border-color rounded-lg shadow-sm overflow-hidden transition-all duration-300;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-md hover:transform hover:scale-[1.02];
+  }
+  
+  /* Section styles */
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-heading font-bold mb-8 text-text-primary;
+  }
+  
+  /* Container with responsive padding */
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Utility classes that need to be explicitly included */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease-out;
+}

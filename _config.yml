@@ -6,6 +6,9 @@ description: >-
 baseurl: "/portfolio"
 url: "https://rlorenzo.github.io"
 
+# GoatCounter Analytics
+goatcounter_code: "example" # Replace with your GoatCounter site code
+
 # Build settings
 markdown: kramdown
 plugins:

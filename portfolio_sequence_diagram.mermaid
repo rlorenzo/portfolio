@@ -1,0 +1,70 @@
+sequenceDiagram
+    participant U as User
+    participant B as Browser
+    participant S as Site
+    participant N as Navigation
+    participant T as Theme
+    participant P as ProjectsSection
+    participant BT as BackToTop
+    participant A as AnalyticsManager
+    
+    Note over U,A: Initial Page Load Flow
+    U->>B: Visit website URL
+    B->>S: Request site content
+    S->>B: Return HTML, CSS, JS
+    B->>T: Check for stored theme preference
+    T->>B: Apply preferred theme
+    B->>A: Initialize analytics
+    B->>B: Render initial view
+    A->>A: Track page view
+    
+    Note over U,A: Theme Toggle Flow
+    U->>B: Toggle theme button click
+    B->>T: toggle()
+    T->>T: Switch theme mode
+    T->>B: Update DOM classes
+    T->>B: Store preference in localStorage
+    
+    Note over U,A: Navigation Flow
+    U->>B: Click navigation link
+    B->>N: Handle link click
+    N->>B: Prevent default behavior
+    N->>B: Calculate target position
+    B->>B: Smooth scroll to target
+    N->>N: Update active navigation item
+    
+    Note over U,A: Scroll-based Actions
+    U->>B: Scroll page
+    B->>N: handleScroll()
+    N->>N: Update header appearance
+    N->>N: Update active menu item
+    B->>BT: Check scroll position
+    alt Scroll position > threshold
+        BT->>B: Show back-to-top button
+    else Scroll position <= threshold
+        BT->>B: Hide back-to-top button
+    end
+    
+    Note over U,A: Project Filtering (If implemented)
+    U->>B: Click project filter
+    B->>P: filterProjects(category)
+    P->>P: Filter project elements
+    P->>B: Update project display
+    
+    Note over U,A: Back to Top Action
+    U->>B: Click Back to Top button
+    B->>BT: scrollToTop()
+    BT->>B: Smooth scroll to top
+    
+    Note over U,A: Form Submission (If implemented)
+    U->>B: Fill contact form
+    U->>B: Submit form
+    B->>B: validateForm()
+    alt Form valid
+        B->>B: Show loading indicator
+        B->>B: Submit form data
+        B->>B: Show success message
+        B->>A: Track form submission event
+    else Form invalid
+        B->>B: Show validation errors
+    end

@@ -1,0 +1,114 @@
+classDiagram
+    class Site {
+        -String title
+        -String description
+        -String author
+        -String baseurl
+        -String url
+        -String github_username
+        -String linkedin_username
+        -String email
+        -Dictionary social_links
+        +render() String
+    }
+
+    class Page {
+        -String layout
+        -String title
+        -String permalink
+        -String description
+        -Boolean index
+        +render() String
+    }
+
+    class SiteBuilder {
+        +buildPages() void
+        +processAssets() void
+        +generateSitemap() void
+        +build() void
+    }
+
+    class ThemeManager {
+        -String currentTheme
+        +init() void
+        +getThemePreference() String
+        +applyTheme(theme) void
+        +toggleTheme() void
+        +setupEventListeners() void
+    }
+
+    class NavigationManager {
+        +init() void
+        +handleScroll() void
+        +setupMobileMenu() void
+        +highlightActiveSection() void
+        +smoothScrollToSection(sectionId) void
+    }
+
+    class AnimationController {
+        +init() void
+        +setupScrollAnimations() void
+        +animateOnVisible(element) void
+    }
+
+    class ContactForm {
+        -String name
+        -String email
+        -String message
+        +init() void
+        +validate() Boolean
+        +submit() void
+        +handleSubmit(event) void
+        +showNotification(type, message) void
+    }
+
+    class Project {
+        -String title
+        -String description
+        -String image
+        -String url
+        -String github
+        -Array technologies
+        -String category
+        +render() String
+    }
+
+    class Experience {
+        -String title
+        -String company
+        -String location
+        -String startDate
+        -String endDate
+        -Array responsibilities
+        -Array achievements
+        +render() String
+        +getDuration() String
+    }
+
+    class Skill {
+        -String name
+        -Integer proficiency
+        -String category
+        +render() String
+    }
+
+    class DataLoader {
+        +loadNavigationData() Array
+        +loadProjectData() Array
+        +loadExperienceData() Array
+        +loadSkillData() Array
+        +loadTestimonialData() Array
+    }
+
+    Site --> Page : contains
+    Site --> SiteBuilder : builds
+    Page --> Project : displays
+    Page --> Experience : displays
+    Page --> Skill : displays
+    DataLoader --> Project : creates
+    DataLoader --> Experience : creates
+    DataLoader --> Skill : creates
+    NavigationManager --> Page : navigates
+    ThemeManager --> Site : styles
+    AnimationController --> Page : animates
+    ContactForm --> Site : submits to
