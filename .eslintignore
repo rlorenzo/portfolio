@@ -1,0 +1,14 @@
+# Generated bundles
+assets/js/bundle.js
+assets/js/bundle.js.map
+
+# Dependencies
+node_modules/
+vendor/
+
+# Jekyll output
+_site/
+
+# Temporary files
+*.tmp
+*.log

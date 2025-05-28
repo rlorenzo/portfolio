@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     themeToggleBtn.addEventListener('click', () => {
       const currentTheme = getThemePreference();
       const nextTheme = currentTheme === 'light' ? 'dark' : 
-                        currentTheme === 'dark' ? 'auto' : 'light';
+        currentTheme === 'dark' ? 'auto' : 'light';
       applyTheme(nextTheme);
     });
   }
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     themeToggleMobileBtn.addEventListener('click', () => {
       const currentTheme = getThemePreference();
       const nextTheme = currentTheme === 'light' ? 'dark' : 
-                        currentTheme === 'dark' ? 'auto' : 'light';
+        currentTheme === 'dark' ? 'auto' : 'light';
       applyTheme(nextTheme);
     });
   }

@@ -9,10 +9,16 @@
     "serve": "bundle exec jekyll serve",
     "build:css": "postcss ./src/tailwind.css -o ./assets/css/tailwind.css",
     "setup": "npm install && bundle install",
-    "lint:css": "stylelint '**/*.{css,scss}'",
+    "lint:css": "stylelint 'src/**/*.{css,scss}' 'assets/**/*.{css,scss}' --allow-empty-input",
     "lint:js": "eslint './assets/js/**/*.js'",
     "lint:html": "htmlhint '_site/**/*.html'",
-    "lint": "npm run lint:css && npm run lint:js && npm run lint:html",
+    "lint:md": "markdownlint '**/*.md' --ignore node_modules",
+    "lint": "npm run lint:css && npm run lint:js && npm run lint:md",
+    "lint:all": "npm run build && npm run lint && npm run lint:html",
+    "fix:css": "stylelint 'src/**/*.{css,scss}' 'assets/**/*.{css,scss}' --fix --allow-empty-input",
+    "fix:js": "eslint './assets/js/**/*.js' --fix",
+    "fix:md": "markdownlint '**/*.md' --ignore node_modules --fix",
+    "fix": "npm run fix:css && npm run fix:js && npm run fix:md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -28,10 +34,13 @@
     "cssnano": "^6.0.2",
     "eslint": "^8.56.0",
     "htmlhint": "^1.1.4",
+    "markdownlint-cli": "^0.37.0",
     "postcss": "^8.4.32",
     "postcss-cli": "^11.0.0",
+    "postcss-scss": "^4.0.9",
     "stylelint": "^16.1.0",
-    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-tailwindcss": "^1.0.0",
+    "stylelint-scss": "^6.12.0",
     "tailwindcss": "^3.4.0"
   }
 }

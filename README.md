@@ -1,8 +1,9 @@
 # Personal Portfolio Website with Jekyll
 
-A modern, responsive personal portfolio website built with Jekyll and Tailwind CSS, designed for easy deployment on GitHub Pages.
+A modern, responsive personal portfolio website built with Jekyll and
+Tailwind CSS, designed for easy deployment on GitHub Pages.
 
-**Live site:** https://rlorenzo.github.io/portfolio
+**Live site:** <https://rlorenzo.github.io/portfolio>
 
 ## Features
 
@@ -15,7 +16,7 @@ A modern, responsive personal portfolio website built with Jekyll and Tailwind C
 
 ## Directory Structure
 
-```
+```text
 .
 ├── _config.yml        # Site configuration
 ├── _data/             # Content in YAML format
@@ -56,42 +57,51 @@ A modern, responsive personal portfolio website built with Jekyll and Tailwind C
 ### Installation
 
 1. Install Ruby using Homebrew (for macOS users):
+
    ```bash
    brew install ruby
    ```
 
 2. Add Homebrew Ruby to your path (for zsh):
+
    ```bash
    echo 'export PATH="/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
    source ~/.zshrc
    ```
 
 3. Verify your Ruby installation:
+
    ```bash
    ruby -v    # Should show the Ruby version
    ```
 
 4. Install Jekyll and Bundler:
+
    ```bash
    gem install jekyll bundler
    ```
 
 5. Clone this repository:
+
    ```bash
    git clone https://github.com/rlorenzo/rlorenzo.github.io.git
    cd rlorenzo.github.io
    ```
 
 6. Install all dependencies (both npm and bundle) with a single command:
+
    ```bash
    npm run setup
    ```
+
    This command runs both `npm install` and `bundle install`.
 
 7. Start the development server with both CSS building and Jekyll:
+
    ```bash
    npm run dev
    ```
+
    This command concurrently runs the Tailwind CSS watcher and Jekyll server.
 
 8. Visit `http://localhost:4000/portfolio` in your browser
@@ -100,17 +110,21 @@ A modern, responsive personal portfolio website built with Jekyll and Tailwind C
 
 ### GoatCounter Setup
 
-This site uses GoatCounter for privacy-friendly analytics without cookies. To set up GoatCounter:
+This site uses GoatCounter for privacy-friendly analytics without cookies.
+To set up GoatCounter:
 
 1. Create a free account at [GoatCounter.com](https://www.goatcounter.com/)
 2. After signing up, you'll get a site code (e.g., "yourname")
 3. Update `_config.yml` with your site code:
+
    ```yaml
    goatcounter_code: "yourname" # Replace with your actual GoatCounter site code
    ```
+
 4. Deploy your site - the tracking script will be automatically included
 
 Benefits of GoatCounter:
+
 - Privacy-focused analytics (no cookies, GDPR compliant)
 - No need for cookie consent banners
 - Simple dashboard with key metrics
@@ -123,6 +137,7 @@ Benefits of GoatCounter:
 All content is stored in YAML files in the `_data` directory:
 
 1. **Experience** (`_data/experience.yml`):
+
    ```yaml
    - title: Job Title
      company: Company Name
@@ -133,6 +148,7 @@ All content is stored in YAML files in the `_data` directory:
    ```
 
 2. **Projects** (`_data/projects.yml`):
+
    ```yaml
    - name: Project Name
      description: Project Description
@@ -143,6 +159,7 @@ All content is stored in YAML files in the `_data` directory:
    ```
 
 3. **Presentations** (`_data/presentations.yml`):
+
    ```yaml
    - title: Presentation Title
      date: YYYY-MM-DD
@@ -151,12 +168,14 @@ All content is stored in YAML files in the `_data` directory:
    ```
 
 4. **FAQ** (`_data/faq.yml`):
+
    ```yaml
    - question: Your Question?
      answer: Your Answer
    ```
 
 5. **Quotes** (`_data/quotes.yml`):
+
    ```yaml
    - text: Quote Text
      author: Author Name
@@ -173,7 +192,8 @@ All content is stored in YAML files in the `_data` directory:
 
 ### Tailwind CSS
 
-Modify Tailwind CSS settings in `tailwind.config.js` or source styles in `src/tailwind.css`. The project uses Tailwind CSS utility classes for styling.
+Modify Tailwind CSS settings in `tailwind.config.js` or source styles in
+`src/tailwind.css`. The project uses Tailwind CSS utility classes for styling.
 
 Common customizations:
 
@@ -198,12 +218,14 @@ module.exports = {
 1. Create a new repository on GitHub
 
 2. Update `_config.yml`:
+
    ```yaml
    baseurl: "/portfolio"  # Repository name
    url: "https://rlorenzo.github.io"  # GitHub Pages URL
    ```
 
 3. Push your code to GitHub:
+
    ```bash
    git init
    git add .
@@ -225,11 +247,15 @@ module.exports = {
 
 ### Build Commands
 
-- **Development Mode**: `npm run dev` - Starts both the Tailwind CSS watcher and Jekyll server concurrently
+- **Development Mode**: `npm run dev` - Starts both the Tailwind CSS watcher
+  and Jekyll server concurrently
 - **Build CSS Only**: `npm run build:css` - Builds the Tailwind CSS file once
-- **Watch CSS Only**: `npm run watch:css` - Watches and rebuilds CSS when source files change
-- **Jekyll Server Only**: `npm run serve` - Runs only the Jekyll server without CSS processing
-- **Production Build**: `npm run build` - Builds both CSS and Jekyll site for production
+- **Watch CSS Only**: `npm run watch:css` - Watches and rebuilds CSS when
+  source files change
+- **Jekyll Server Only**: `npm run serve` - Runs only the Jekyll server
+  without CSS processing
+- **Production Build**: `npm run build` - Builds both CSS and Jekyll site
+  for production
 
 ### Notes
 
@@ -250,33 +276,41 @@ This project includes several linting tools to maintain code quality:
 ### Setup Linting Tools
 
 1. Install Node.js dependencies:
+
    ```bash
    npm install
    ```
 
 2. Run linters:
+
    ```bash
    npm run lint
    ```
 
 3. Fix auto-fixable issues:
+
    ```bash
    npm run fix
    ```
 
 ### VS Code Integration
 
-This project includes VS Code settings for automatic linting on save. Install the recommended extensions when prompted or from the Extensions view.
+This project includes VS Code settings for automatic linting on save.
+Install the recommended extensions when prompted or from the Extensions view.
 
 ### GitHub Actions
 
-Linting checks run automatically on push and pull requests via GitHub Actions workflows.
+Linting checks run automatically on push and pull requests via GitHub Actions
+workflows.
 
 ## Troubleshooting
 
 ### Ruby 3.4.0+ Compatibility
 
-If you're using Ruby 3.4.0 or newer, you might encounter warnings or errors about missing standard libraries. This is because Ruby 3.4.0+ no longer includes certain libraries as default gems. The Gemfile has been updated to include these dependencies and support Ruby 3.4.x:
+If you're using Ruby 3.4.0 or newer, you might encounter warnings or errors
+about missing standard libraries. This is because Ruby 3.4.0+ no longer
+includes certain libraries as default gems. The Gemfile has been updated to
+include these dependencies and support Ruby 3.4.x:
 
 ```ruby
 # Add explicit dependencies for Ruby 3.4.0+ compatibility
@@ -304,7 +338,9 @@ bundle update
 
 ### Ruby Version Management
 
-If you continue experiencing issues with Ruby 3.4.0, consider using a Ruby version manager like `rbenv` or `rvm` to install and use Ruby 3.3.0 for Jekyll projects:
+If you continue experiencing issues with Ruby 3.4.0, consider using a Ruby
+version manager like `rbenv` or `rvm` to install and use Ruby 3.3.0 for
+Jekyll projects:
 
 ```bash
 # Using rbenv
@@ -322,4 +358,5 @@ This project is open source and available under the MIT License.
 
 ## Support
 
-For issues and feature requests, please create an issue in the GitHub repository.
+For issues and feature requests, please create an issue in the GitHub
+repository.

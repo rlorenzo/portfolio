@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "stylelint-config-tailwindcss"
+  ],
+  "customSyntax": "postcss-scss",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "tailwind",
+          "apply",
+          "variants",
+          "responsive",
+          "screen",
+          "layer"
+        ]
+      }
+    ],
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null
+  },
+  "ignoreFiles": [
+    "_site/**/*.css",
+    "vendor/**/*.scss",
+    "vendor/**/*.css"
+  ]
+}

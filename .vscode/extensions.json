@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "davidanson.vscode-markdownlint",
+    "mkaufman.htmlhint",
+    "sissel.shopify-liquid",
+    "redhat.vscode-yaml"
+  ]
+}

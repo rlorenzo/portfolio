@@ -21,9 +21,6 @@ Gemfile.lock
 assets/js/bundle.js
 assets/js/bundle.js.map
 
-# VSCode settings
-.vscode/
-
 # Environment config
 .env
 
