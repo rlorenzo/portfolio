@@ -529,6 +529,9 @@ video {
 .sticky {
   position: sticky;
 }
+.inset-0 {
+  inset: 0px;
+}
 .-bottom-40 {
   bottom: -10rem;
 }
@@ -652,6 +655,12 @@ video {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+.line-clamp-4 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 }
 .block {
   display: block;
@@ -957,6 +966,18 @@ video {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.object-\[center_top_0\.5rem\] {
+  -o-object-position: center top 0.5rem;
+     object-position: center top 0.5rem;
+}
+.object-\[center_top_1\.5rem\] {
+  -o-object-position: center top 1.5rem;
+     object-position: center top 1.5rem;
+}
+.object-\[center_20\%\] {
+  -o-object-position: center 20%;
+     object-position: center 20%;
+}
 .p-1 {
   padding: 0.25rem;
 }
@@ -1088,6 +1109,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
+.text-gray-50 {
+  --tw-text-opacity: 1;
+  color: rgb(249 250 251 / var(--tw-text-opacity, 1));
+}
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
@@ -1195,7 +1220,7 @@ video {
   --warning-color: #f59e0b;
   --danger-color: #ef4444;
   --info-color: #06b6d4;
-  
+
   /* Light theme variables */
   --bg-primary: #ffffff;
   --bg-secondary: #f3f4f6;
@@ -1224,6 +1249,23 @@ video {
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+/* Theme toggle icon fixes */
+#theme-icon-light,
+#theme-icon-light-mobile {
+  display: none !important;
+}
+
+html.dark #theme-icon-light,
+html.dark #theme-icon-light-mobile {
+  display: inline-block !important;
+  color: #f9fafb !important; /* text-gray-50 equivalent for better visibility */
+}
+
+html.dark #theme-icon-dark,
+html.dark #theme-icon-dark-mobile {
+  display: none !important;
 }
 
 /* Utility classes that need to be explicitly included */
@@ -1274,14 +1316,6 @@ video {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
-}
-
-.dark\:block:is(.dark *) {
-  display: block;
-}
-
-.dark\:hidden:is(.dark *) {
-  display: none;
 }
 
 .dark\:border-gray-800:is(.dark *) {

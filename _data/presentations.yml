@@ -1,14 +1,19 @@
-- title: Modern System Design Patterns
-  date: 2023-06-15
-  embed_url: https://docs.google.com/presentation/d/example1/embed
-  description: Overview of contemporary system design patterns and their practical applications.
+- title: Breaking LTI Out of the Box
+  date: 2019-09-17
+  embed_url: https://docs.google.com/presentation/d/1cnQEqANBWF95LSrG1ofH0PtMzYx5BHwn5IT__0rIFyA/embed
+  description: Demostrated our (Learning Tools Interoperability) LTI improvements for at the 2019 MoodleMoot US conference in Philadelphia.
 
-- title: Building High-Performance Teams
-  date: 2023-03-10
-  embed_url: https://docs.google.com/presentation/d/example2/embed
-  description: Strategies for developing and maintaining high-performing engineering teams.
+- title: "0-60: Increase your Velocity with a non-traditional Agile Team"
+  date: 2017-11-07
+  embed_url: https://docs.google.com/presentation/d/1CpG46zfv9g58kuLpR8VvXhGfLKMQcWmDjYEP-696tCE/embed
+  description: We showcased our CCLE summer internship program at the 2017 MoodleMoot US conference in Miami.
 
-- title: Scalable Architecture Design
-  date: 2022-11-25
-  embed_url: https://docs.google.com/presentation/d/example3/embed
-  description: Deep dive into designing scalable and maintainable software architectures.
+- title: "PHP 7: What to Know"
+  date: 2016-06-23
+  embed_url: https://docs.google.com/presentation/d/1eTp9BJ94hfMpkFxASRldZ5peB9kDHUTKd5IKp0eNsWI/embed
+  description: Presented an overview of PHP 7 features and performance improvements at the 2016 MoodleMoot US conference in Los Angeles.
+
+- title: Getting Started with Browser Based Testing
+  date: 2015-08-06
+  embed_url: https://docs.google.com/presentation/d/1xihBq8tIVZfMCFLDPMPeJT3-qV5ihRvvr2Riep7urMA/embed
+  description: Gave a workshop on using Behat, the automated browser based testing framework, at the 2015 MoodleMoot US conference in Minneapolis.

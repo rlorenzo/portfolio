@@ -1,23 +1,27 @@
-- name: Distributed System Design Framework
-  description: A comprehensive framework for designing scalable distributed systems with built-in monitoring and fault tolerance.
+- name: Zoom Integration for Moodle
+  description: The mod_zoom plugin integrates Zoom video conferencing with Moodle, enabling instructors to schedule, manage, and launch Zoom meetings directly from their course pages.
   tech_stack:
-    - Go
-    - gRPC
-    - Kubernetes
-  github_link: https://github.com/rexlorenzo/distributed-system-framework
+    - PHP
+    - REST
+    - Moodle
+    - Zoom API
+  github_link: https://moodle.org/plugins/mod_zoom
 
-- name: Performance Monitoring Tool
-  description: Real-time performance monitoring solution for microservices architecture.
+- name: Moodle
+  description: I contributed to the Moodle open-source learning management system. I was also recognized as a Particularly Helpful Moodler, give to the top 1% of forum contributors.
   tech_stack:
-    - Python
-    - Prometheus
-    - Grafana
-  github_link: https://github.com/rexlorenzo/perf-monitor
+    - PHP
+    - Open Source
+    - Git
+    - JIRA
+  github_link: https://github.com/moodle/moodle/commits?author=rlorenzo
 
-- name: Team Collaboration Platform
-  description: A platform designed to improve engineering team collaboration and knowledge sharing.
+- name: Moodle AWS Disaster Recovery
+  description: Enhanced an AWS Moodle template to provide a disaster recovery solution for CCLE (UCLA's LMS) to ensure business continuity.
   tech_stack:
-    - React
-    - Node.js
-    - MongoDB
-  github_link: https://github.com/rexlorenzo/collab-platform
+    - AWS
+    - CloudFormation
+    - EC2
+    - RDS
+    - EFS
+  github_link: https://github.com/rlorenzo/aws-refarch-moodle

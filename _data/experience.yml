@@ -1,15 +1,27 @@
-- title: Senior Engineering Manager
+- title: Lead Developer
   company: B Capital
-  dates: 2020 - Present
+  dates: 2021 - 2025
   highlights:
-    - Led a team of 15 engineers in developing scalable financial systems
-    - Implemented agile methodologies resulting in 40% faster delivery times
-    - Architected microservices infrastructure handling $1B+ in transactions
+    - Joined as the first full-time developer, established robust engineering workflows, and successfully built and mentored a distributed global development team across the US and India.
+    - Led migration from MySQL to a Databricks/PostgreSQL hybrid infrastructure, improving query and application performance from seconds to milliseconds.
+    - Developed and modernized the investment committee voting and deal sign-off systems, transitioning both from initial WordPress plugins to high-performance, scalable replacements built with SvelteKit, collaborating closely with Finance and Legal teams to streamline investment approvals.
+    - Automated internal operations by integrating HR and finance platforms, saving over 10 administrative hours weekly through streamlined data transfers and workflows.
 
-- title: Software Engineer
-  company: Tech Innovators Inc.
-  dates: 2018 - 2020
+- title: Lead Developer
+  company: Common Collaboration and Learning Environment (CCLE), UCLA
+  dates: 2011 - 2021
   highlights:
-    - Developed distributed systems processing 1M+ requests per day
-    - Led migration from monolithic to microservices architecture
-    - Mentored junior engineers and conducted technical interviews
+    - Led integration and development of UCLA’s campus-wide LMS (CCLE), supporting over 30,000 users.
+    - Significantly contributed to Moodle open-source projects, recognized in the top 1% of contributors and presented at international conferences.
+    - Managed a successful internship program, mentoring students who progressed to roles at major tech companies (IBM, Facebook, Cisco, Workday).
+    - Engineered critical integrations, notably <a href="https://moodle.org/plugins/mod_zoom">mod_zoom</a>, which supported 10,000+ global institutions during the pandemic.
+    - Implemented robust disaster recovery solutions leveraging AWS infrastructure (CloudFormation, EC2, RDS) to ensure business continuity.
+
+- title: Programmer/Analyst
+  company: SEASnet Computing, HSSEAS, UCLA
+  dates: 2003 - 2011
+  highlights:
+    - Developed CourseWeb, a comprehensive LMS serving 3,000+ users across 500+ courses, enhancing educational delivery.
+    - Launched UCLA’s first online master’s program (MSOL), creating essential infrastructure for online education delivery.
+    - Created mentorship and advising systems, facilitating improved student-faculty interactions and academic tracking.
+    - Built an accreditation system, directly contributing to the highest ABET accreditation extension for the engineering school.

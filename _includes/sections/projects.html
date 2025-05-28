@@ -1,7 +1,7 @@
 <section id="projects" class="py-20 bg-gray-50 relative section">
   <!-- Background pattern -->
   <div class="section-pattern"></div>
-  
+
   <div class="container mx-auto px-4 relative z-10">
     <!-- Section heading with animation -->
     <div class="text-center mb-12" data-aos="fade-up">
@@ -9,9 +9,9 @@
         Projects
         <span class="block h-1 w-2/3 bg-primary mt-2 mx-auto"></span>
       </h2>
-      <p class="text-gray-600 text-lg">Explore my recent work and contributions</p>
+      <p class="text-gray-600 text-lg">Explore my public work and contributions</p>
     </div>
-    
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {% for project in site.data.projects %}
       <div class="card bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
@@ -25,7 +25,7 @@
           {% endif %}
         </div>
         {% endif %}
-        
+
         <div class="p-6">
           <div class="flex items-center justify-between mb-3">
             <h3 class="text-xl font-semibold">{{ project.name }}</h3>
@@ -33,15 +33,15 @@
             <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">{{ project.year }}</span>
             {% endif %}
           </div>
-          
-          <p class="text-gray-600 mb-4 line-clamp-3">{{ project.description }}</p>
-          
+
+          <p class="text-gray-600 mb-4">{{ project.description }}</p>
+
           <div class="flex flex-wrap gap-2 mb-4">
             {% for tech in project.tech_stack %}
-            <span class="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded-full text-sm">{{ tech }}</span>
+            <span class="px-3 py-1 bg-primary bg-opacity-10 text-white rounded-full text-sm">{{ tech }}</span>
             {% endfor %}
           </div>
-          
+
           <div class="flex justify-between items-center">
             {% if project.github_link %}
             <a href="{{ project.github_link }}" class="text-primary hover:text-accent transition-colors duration-300 inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">
@@ -49,7 +49,7 @@
               <i class="fas fa-arrow-right text-xs"></i>
             </a>
             {% endif %}
-            
+
             {% if project.demo_link %}
             <a href="{{ project.demo_link }}" class="text-secondary hover:text-accent transition-colors duration-300 inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">
               <span>Live Demo</span>
@@ -61,7 +61,7 @@
       </div>
       {% endfor %}
     </div>
-    
+
     <!-- View more button -->
     {% if site.data.projects.size > 6 %}
     <div class="text-center mt-12">

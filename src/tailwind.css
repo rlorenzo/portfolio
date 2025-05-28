@@ -18,7 +18,7 @@
   --warning-color: #f59e0b;
   --danger-color: #ef4444;
   --info-color: #06b6d4;
-  
+
   /* Light theme variables */
   --bg-primary: #ffffff;
   --bg-secondary: #f3f4f6;
@@ -42,33 +42,33 @@
   .btn {
     @apply px-4 py-2 rounded-md transition-colors duration-200;
   }
-  
+
   .btn-primary {
     @apply bg-primary text-white hover:bg-opacity-90;
   }
-  
+
   .btn-outline {
     @apply border border-primary text-primary hover:bg-primary hover:bg-opacity-10;
   }
-  
+
   /* Card styles */
   .card {
     @apply bg-bg-primary border border-border-color rounded-lg shadow-sm overflow-hidden transition-all duration-300;
   }
-  
+
   .card-hover {
     @apply hover:shadow-md hover:transform hover:scale-[1.02];
   }
-  
+
   /* Section styles */
   .section {
     @apply py-16 md:py-24;
   }
-  
+
   .section-title {
     @apply text-3xl md:text-4xl font-heading font-bold mb-8 text-text-primary;
   }
-  
+
   /* Container with responsive padding */
   .container-custom {
     @apply container mx-auto px-4 sm:px-6 lg:px-8;
@@ -84,6 +84,23 @@
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+/* Theme toggle icon fixes */
+#theme-icon-light,
+#theme-icon-light-mobile {
+  display: none !important;
+}
+
+html.dark #theme-icon-light,
+html.dark #theme-icon-light-mobile {
+  display: inline-block !important;
+  color: #f9fafb !important; /* text-gray-50 equivalent for better visibility */
+}
+
+html.dark #theme-icon-dark,
+html.dark #theme-icon-dark-mobile {
+  display: none !important;
 }
 
 /* Utility classes that need to be explicitly included */

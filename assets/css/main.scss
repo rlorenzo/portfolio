@@ -9,13 +9,13 @@
   --dark-color: #1e293b; /* slate-800 */
   --light-color: #f8fafc; /* slate-50 */
   --accent-color: #8b5cf6; /* violet-500 */
-  
+
   /* Additional UI colors */
   --success-color: #22c55e; /* green-500 */
   --warning-color: #eab308; /* yellow-500 */
   --danger-color: #ef4444; /* red-500 */
   --info-color: #06b6d4; /* cyan-500 */
-  
+
   /* Animation speeds */
   --animation-slow: 1s;
   --animation-normal: 0.5s;
@@ -310,4 +310,21 @@ body {
   border-radius: 4px;
   background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
   transition: width 1s ease-in-out;
+}
+
+/* Theme toggle icon fixes */
+#theme-icon-light,
+#theme-icon-light-mobile {
+  display: none !important;
+}
+
+html.dark #theme-icon-light,
+html.dark #theme-icon-light-mobile {
+  display: inline-block !important;
+  color: #f9fafb !important; /* text-gray-50 equivalent for better visibility */
+}
+
+html.dark #theme-icon-dark,
+html.dark #theme-icon-dark-mobile {
+  display: none !important;
 }

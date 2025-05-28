@@ -78,8 +78,8 @@ A modern, responsive personal portfolio website built with Jekyll and Tailwind C
 
 5. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/your-portfolio.git
-   cd your-portfolio
+   git clone https://github.com/rlorenzo/rlorenzo.github.io.git
+   cd rlorenzo.github.io
    ```
 
 6. Install all dependencies (both npm and bundle) with a single command:
@@ -209,7 +209,7 @@ module.exports = {
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/username/repo-name.git
+   git remote add origin https://github.com/rlorenzo/rlorenzo.github.io.git
    git push -u origin main
    ```
 
@@ -219,7 +219,7 @@ module.exports = {
    - Select "main" branch and "/root" folder
    - Click "Save"
 
-5. Your site will be available at `https://username.github.io/repo-name`
+5. Your site will be available at `https://rlorenzo.github.io/portfolio`
 
 ## Local Development
 
