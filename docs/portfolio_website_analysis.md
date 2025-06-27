@@ -87,8 +87,8 @@ The analytics implementation appears to be pending, with requirements specifying
 
 #### Recommendations
 
-- **Privacy-First Analytics**: Implement Plausible Analytics, which provides comprehensive visitor insights without cookies
-- **Heatmap Integration**: Consider adding Plausible or similar heatmap functionality to understand user engagement patterns
+- **Privacy-First Analytics**: Implement a privacy-focused analytics solution that provides comprehensive visitor insights without cookies
+- **Heatmap Integration**: Consider adding heatmap functionality to understand user engagement patterns
 - **Goal Tracking**: Set up specific conversion goals (e.g., contact form submissions, resume downloads)
 - **UTM Parameters**: Prepare custom UTM parameters for different promotion channels to track marketing effectiveness
 - **Direct Feedback Mechanism**: Add a subtle feedback widget for qualitative insights from visitors
@@ -116,29 +116,24 @@ Compared to leading portfolio websites in 2025, the current implementation:
 
 ## Analytics Implementation
 
-Based on the requirement for analytics without cookie consent forms, we have implemented **GoatCounter Analytics** for the following reasons:
+Based on the requirement for analytics without cookie consent forms, a privacy-focused analytics solution should be implemented with the following characteristics:
 
 1. **Full GDPR, CCPA, and PECR Compliance**: No cookies or personal data collection means no consent popups required
-2. **Lightweight Impact**: Minimal JavaScript footprint compared to Google Analytics
-3. **Essential Metrics**: Provides key insights like:
+2. **Lightweight Impact**: Minimal JavaScript footprint for better performance
+3. **Essential Metrics**: Should provide key insights like:
    - Visitor counts and sources
    - Page popularity and engagement metrics
    - Device and browser statistics
    - Geographic data (country level)
    - Entry/exit pages
 4. **Simple Dashboard**: Clean, intuitive interface that's easy to understand
-5. **Open Source**: Transparent codebase with the option to self-host if desired
-6. **Less Affected by Ad Blockers**: More accurate data collection than cookie-based solutions
+5. **Data Ownership**: Access to analytics data with the option for self-hosting if desired
+6. **Ad Blocker Resilience**: More accurate data collection than cookie-based solutions
 
-### Implementation Details:
+### Implementation Considerations:
 
-1. The site is now using GoatCounter with the following script in the `<head>` section:
-
-```html
-<script data-goatcounter="https://example.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-```
-
-2. The GoatCounter site code is configured in the site's `_config.yml` file for easier management
+1. The analytics script should be included in the site's `<head>` section
+2. Configuration should be managed through the site's `_config.yml` file for easier management
 
 ## Conclusion
 

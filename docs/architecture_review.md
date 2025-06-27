@@ -46,7 +46,7 @@ This document provides a comprehensive review of the portfolio website architect
 
 2. **Analytics Implementation**
    - As noted in the "Anything UNCLEAR" section, a proper analytics solution should be implemented.
-   - The project now uses GoatCounter, a privacy-focused analytics solution without cookies that is GDPR compliant.
+   - Consider implementing a privacy-focused analytics solution that is GDPR compliant and doesn't require cookie consent.
 
 3. **Testing Strategy**
    - The current architecture lacks automated testing for JavaScript functionality.

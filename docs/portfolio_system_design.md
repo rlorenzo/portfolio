@@ -344,9 +344,9 @@ The portfolio website follows a clear flow of operations, particularly for the i
 ## Anything UNCLEAR
 
 1. **Analytics Implementation**
-   - The system now includes GoatCounter analytics integration
-   - GoatCounter provides privacy-focused analytics without cookies
-   - GDPR compliant and doesn't require consent banners
+   - The system should include a privacy-focused analytics solution
+   - Look for analytics that don't use cookies or require consent banners
+   - Ensure GDPR compliance for international visitors
 
 2. **Contact Form Handling**
    - The current design mentions a contact section but does not specify form handling

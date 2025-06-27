@@ -650,18 +650,6 @@ video {
 .mt-4 {
   margin-top: 1rem;
 }
-.line-clamp-3 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-.line-clamp-4 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-}
 .block {
   display: block;
 }
@@ -965,14 +953,6 @@ video {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
-}
-.object-\[center_top_0\.5rem\] {
-  -o-object-position: center top 0.5rem;
-     object-position: center top 0.5rem;
-}
-.object-\[center_top_1\.5rem\] {
-  -o-object-position: center top 1.5rem;
-     object-position: center top 1.5rem;
 }
 .object-\[center_20\%\] {
   -o-object-position: center 20%;

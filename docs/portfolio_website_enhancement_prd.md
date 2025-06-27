@@ -105,7 +105,7 @@ These opportunities span five key dimensions:
    * Core Web Vitals alignment (LCP, FID, CLS)
 
 5. **Privacy-Focused Analytics**
-   * GoatCounter implementation
+   * Implementation of cookie-free analytics solution
    * Event tracking for key interactions
    * Download and outbound link tracking
    * Conversion measurement framework
@@ -224,22 +224,22 @@ The interface should incorporate a consistent yet distinctive visual language th
 
 ## 3. Analytics Implementation Plan
 
-Based on requirements for a privacy-focused analytics solution without cookie consent banners, GoatCounter is recommended as the optimal implementation.
+Based on requirements for a privacy-focused analytics solution without cookie consent banners, a suitable analytics platform should be selected and implemented.
 
-### 3.1 GoatCounter Implementation Benefits
+### 3.1 Analytics Solution Requirements
 
 1. **Privacy Compliance**: No cookies or personal data collection
-2. **Performance Impact**: Minimal script size (~3KB)
-3. **Free for Personal Use**: No cost for portfolios under 100K pageviews/month
+2. **Performance Impact**: Minimal script size for fast loading
+3. **Cost Effective**: Reasonable pricing for personal portfolios
 4. **Data Ownership**: Access to raw data and export capabilities
 5. **Customization**: API access for integration with custom reporting
 
 ### 3.2 Implementation Steps
 
-1. **Account Setup**
-   * Register at GoatCounter.com
-   * Select free personal plan
-   * Configure subdomain and site details
+1. **Platform Selection and Setup**
+   * Research and select appropriate analytics platform
+   * Create account and configure site settings
+   * Set up tracking domain and site details
 
 2. **Script Implementation**
    * Create `_includes/analytics.html` with conditional loading
@@ -274,7 +274,7 @@ Based on requirements for a privacy-focused analytics solution without cookie co
    * Scroll-triggered element animations
 
 3. **Analytics Integration**
-   * GoatCounter implementation
+   * Privacy-focused analytics implementation
    * Basic event tracking configuration
    * Dashboard setup and testing
    * Traffic baseline establishment

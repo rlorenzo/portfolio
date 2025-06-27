@@ -92,7 +92,7 @@ However, the analysis of market-leading portfolio websites and current design tr
    * Mobile-specific design optimizations
 
 3. **Analytics Implementation**
-   * Privacy-focused analytics (GoatCounter)
+   * Privacy-focused analytics solution
    * Event tracking for portfolio interactions
    * Conversion tracking
 
@@ -219,29 +219,30 @@ The interface should incorporate a distinct visual language through typography c
 
 ## 3. Analytics Implementation Recommendation
 
-Based on the requirements for a privacy-focused analytics solution that doesn't require cookie consent, GoatCounter is the recommended implementation.
+Based on the requirements for a privacy-focused analytics solution that doesn't require cookie consent, careful consideration should be given to selecting an appropriate analytics platform.
 
-### 3.1 Comparison: GoatCounter vs. Cloudflare Web Analytics
+### 3.1 Analytics Solution Requirements
 
-| Feature | GoatCounter | Cloudflare Web Analytics |
-|---------|-------------|---------------------------|
-| **Cost** | Free for personal use (<100K pageviews/month) | 100% Free (no limits) |
-| **Cookie Usage** | No cookies | No cookies |
-| **Privacy** | High (EU-based) | High (anonymous data) |
-| **Self-hosting** | Yes (open source) | No |
-| **Data Control** | Full access to raw data | Limited dashboard only |
-| **API Access** | Yes | No |
-| **Data Retention** | Unlimited | 6 months |
-| **Real-time Data** | Updates every few minutes | Near real-time |
-| **Customization** | Moderate | Limited |
+| Feature | Requirements |
+|---------|--------------|
+| **Cost** | Cost-effective for personal portfolios |
+| **Cookie Usage** | No cookies required |
+| **Privacy** | High privacy standards with anonymous data collection |
+| **Self-hosting** | Option for self-hosting preferred |
+| **Data Control** | Full access to raw analytics data |
+| **API Access** | API availability for custom integrations |
+| **Data Retention** | Long-term data retention capabilities |
+| **Real-time Data** | Near real-time or frequent data updates |
+| **Customization** | Moderate to high customization options |
 
 ### 3.2 Implementation Steps
 
-1. **Sign up for GoatCounter**
-   * Create an account on GoatCounter website
-   * Choose a subdomain for the analytics dashboard
+1. **Platform Selection and Setup**
+   * Research and evaluate available analytics platforms
+   * Create account and configure dashboard settings
+   * Set up tracking subdomain or configuration
 
-2. **Add Script to Portfolio Website**
+2. **Script Integration**
    * Implement in Jekyll's `_includes` structure
    * Add conditional loading for production environment
    * Place script before closing body tag
@@ -263,7 +264,7 @@ Based on the competitive analysis and current trends, the following enhancements
 ### 4.1 Immediate Improvements
 
 1. **Analytics Implementation**
-   * Implement GoatCounter for privacy-focused analytics
+   * Implement privacy-focused analytics solution
    * Set up event tracking for key interactions
    * Create conversion funnels for contact and resume download
 

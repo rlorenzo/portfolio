@@ -106,30 +106,6 @@ Tailwind CSS, designed for easy deployment on GitHub Pages.
 
 8. Visit `http://localhost:4000/portfolio` in your browser
 
-## Analytics
-
-### GoatCounter Setup
-
-This site uses GoatCounter for privacy-friendly analytics without cookies.
-To set up GoatCounter:
-
-1. Create a free account at [GoatCounter.com](https://www.goatcounter.com/)
-2. After signing up, you'll get a site code (e.g., "yourname")
-3. Update `_config.yml` with your site code:
-
-   ```yaml
-   goatcounter_code: "yourname" # Replace with your actual GoatCounter site code
-   ```
-
-4. Deploy your site - the tracking script will be automatically included
-
-Benefits of GoatCounter:
-
-- Privacy-focused analytics (no cookies, GDPR compliant)
-- No need for cookie consent banners
-- Simple dashboard with key metrics
-- Free for personal use and small sites
-
 ## Content Management
 
 ### Modifying Content
@@ -215,33 +191,49 @@ module.exports = {
 
 ## Deployment to GitHub Pages
 
-1. Create a new repository on GitHub
+This site uses Jekyll 4.4.1 which requires GitHub Actions for deployment
+(GitHub Pages only supports Jekyll 3.10.0 by default).
 
-2. Update `_config.yml`:
+### Deployment Steps
 
-   ```yaml
-   baseurl: "/portfolio"  # Repository name
-   url: "https://rlorenzo.github.io"  # GitHub Pages URL
-   ```
+1. **Create a GitHub repository:**
+   - Repository can be named anything (e.g., `portfolio`, `my-website`, etc.)
+   - Current configuration uses `baseurl: "/portfolio"` for project-style deployment
 
-3. Push your code to GitHub:
+2. **Push your code to GitHub:**
 
    ```bash
    git init
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/rlorenzo/rlorenzo.github.io.git
+   git remote add origin https://github.com/USERNAME/REPOSITORY_NAME.git
    git push -u origin main
    ```
 
-4. Enable GitHub Pages:
-   - Go to repository Settings
-   - Navigate to "Pages" section
-   - Select "main" branch and "/root" folder
-   - Click "Save"
+3. **Enable GitHub Pages with Actions:**
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under **Source**, select **GitHub Actions**
+   - The deployment workflow is already configured in `.github/workflows/deploy.yml`
 
-5. Your site will be available at `https://rlorenzo.github.io/portfolio`
+4. **Access your live site:**
+   - Your site will be available at: `https://USERNAME.github.io/REPOSITORY_NAME`
+   - Example: `https://rlorenzo.github.io/portfolio`
+
+### How It Works
+
+The GitHub Actions workflow automatically:
+
+- Builds the Tailwind CSS
+- Builds the Jekyll site with production settings
+- Deploys to GitHub Pages on every push to main branch
+
+### Troubleshooting
+
+- Check the **Actions** tab in your GitHub repository for build logs
+- Ensure your repository is public (or you have GitHub Pro for private repos)
+- Verify the GitHub Pages source is set to "GitHub Actions"
 
 ## Local Development
 
@@ -303,7 +295,7 @@ Install the recommended extensions when prompted or from the Extensions view.
 Linting checks run automatically on push and pull requests via GitHub Actions
 workflows.
 
-## Troubleshooting
+## Development Troubleshooting
 
 ### Ruby 3.4.0+ Compatibility
 
