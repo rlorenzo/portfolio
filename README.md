@@ -290,9 +290,25 @@ This project includes several linting tools to maintain code quality:
 This project includes VS Code settings for automatic linting on save.
 Install the recommended extensions when prompted or from the Extensions view.
 
+### Pre-commit Hook
+
+A pre-commit hook is installed that automatically runs linters before accepting
+commits:
+
+- **CSS/SCSS linting** with Stylelint
+- **JavaScript linting** with ESLint  
+- **Markdown linting** with markdownlint
+
+The hook will:
+
+- Only run linters for file types that are staged for commit
+- Reject commits if linting fails
+- Provide helpful error messages and fix suggestions
+- Allow bypassing with `git commit --no-verify` (not recommended)
+
 ### GitHub Actions
 
-Linting checks run automatically on push and pull requests via GitHub Actions
+Linting checks also run automatically on push and pull requests via GitHub Actions
 workflows.
 
 ## Development Troubleshooting
