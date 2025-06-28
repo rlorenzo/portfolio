@@ -17,7 +17,7 @@ import {
 } from './modules/animations.js';
 import { throttle } from './modules/utils.js';
 import { initFaqToggles } from './modules/faq.js';
-import { displayRandomQuote } from './modules/quotes.js';
+import { displayRandomQuote, rotateQuotes } from './modules/quotes.js';
 import { initSmoothScrolling } from './modules/smoothscroll.js';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize theme system
   initTheme();
   
-  // Set up theme toggle buttons
+  // Set up theme toggle buttons - simple light/dark toggle
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
       const currentTheme = getThemePreference();
-      const nextTheme = currentTheme === 'light' ? 'dark' : 
-        currentTheme === 'dark' ? 'auto' : 'light';
+      // Simple toggle: light ↔ dark (remove auto state)
+      const nextTheme = (currentTheme === 'dark') ? 'light' : 'dark';
       applyTheme(nextTheme);
     });
   }
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (themeToggleMobileBtn) {
     themeToggleMobileBtn.addEventListener('click', () => {
       const currentTheme = getThemePreference();
-      const nextTheme = currentTheme === 'light' ? 'dark' : 
-        currentTheme === 'dark' ? 'auto' : 'light';
+      // Simple toggle: light ↔ dark (remove auto state)  
+      const nextTheme = (currentTheme === 'dark') ? 'light' : 'dark';
       applyTheme(nextTheme);
     });
   }
@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize FAQ toggles
   initFaqToggles('.faq-toggle');
   
-  // Display a random testimonial quote
-  displayRandomQuote('.quote', 'animate-fadeIn');
+  // Rotate testimonial quotes every 8 seconds
+  rotateQuotes('.quote', 8000, 'animate-fadeIn');
   
   // Initialize smooth scrolling for anchor links
   initSmoothScrolling('a[href^="#"]', '#site-header');

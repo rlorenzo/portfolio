@@ -1,20 +1,20 @@
-<section id="projects" class="py-20 bg-gray-50 relative section">
+<section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900 relative section">
   <!-- Background pattern -->
   <div class="section-pattern"></div>
 
   <div class="container mx-auto px-4 relative z-10">
     <!-- Section heading with animation -->
     <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block text-gray-900 dark:text-white">
         Projects
         <span class="block h-1 w-2/3 bg-primary mt-2 mx-auto"></span>
       </h2>
-      <p class="text-gray-600 text-lg">Explore my public work and contributions</p>
+      <p class="text-gray-600 dark:text-gray-400 text-lg">Explore my public work and contributions</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {% for project in site.data.projects %}
-      <div class="card bg-white overflow-hidden" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
+      <div class="card bg-white dark:bg-gray-800 overflow-hidden" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
         {% if project.image %}
         <div class="aspect-w-16 relative">
           <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="w-full h-48 object-cover">
@@ -28,17 +28,17 @@
 
         <div class="p-6">
           <div class="flex items-center justify-between mb-3">
-            <h3 class="text-xl font-semibold">{{ project.name }}</h3>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{{ project.name }}</h3>
             {% if project.year %}
-            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">{{ project.year }}</span>
+            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-sm">{{ project.year }}</span>
             {% endif %}
           </div>
 
-          <p class="text-gray-600 mb-4">{{ project.description }}</p>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">{{ project.description }}</p>
 
           <div class="flex flex-wrap gap-2 mb-4">
             {% for tech in project.tech_stack %}
-            <span class="px-3 py-1 bg-primary bg-opacity-10 text-white rounded-full text-sm">{{ tech }}</span>
+            <span class="px-3 py-1 bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-full text-sm">{{ tech }}</span>
             {% endfor %}
           </div>
 

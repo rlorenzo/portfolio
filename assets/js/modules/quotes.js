@@ -46,24 +46,55 @@ export function rotateQuotes(
   intervalMs = 10000,
   animationClass = 'animate-fadeIn'
 ) {
-  // Initial display
-  let currentIndex = displayRandomQuote(quoteSelector, animationClass);
   const quotes = document.querySelectorAll(quoteSelector);
   if (!quotes.length) return null;
   
+  // Initialize: position all quotes and show a random one
+  let currentIndex = Math.floor(Math.random() * quotes.length);
+  quotes.forEach((quote, index) => {
+    if (index === currentIndex) {
+      quote.style.position = 'relative';
+      quote.style.opacity = '1';
+      quote.style.transform = 'translateX(0)';
+      quote.setAttribute('aria-hidden', 'false');
+    } else {
+      quote.style.position = 'absolute';
+      quote.style.opacity = '0';
+      quote.style.transform = 'translateX(100%)';
+      quote.setAttribute('aria-hidden', 'true');
+    }
+  });
+  
   // Set up interval to rotate quotes
   const intervalId = setInterval(() => {
-    // Hide current quote
-    quotes[currentIndex].classList.add('hidden');
-    quotes[currentIndex].setAttribute('aria-hidden', 'true');
+    const currentQuote = quotes[currentIndex];
     
-    // Move to next quote
-    currentIndex = (currentIndex + 1) % quotes.length;
+    // Slide current quote out to the left
+    currentQuote.style.opacity = '0';
+    currentQuote.style.transform = 'translateX(-100%)';
     
-    // Show new quote
-    quotes[currentIndex].classList.remove('hidden');
-    quotes[currentIndex].classList.add(animationClass);
-    quotes[currentIndex].setAttribute('aria-hidden', 'false');
+    // After slide out completes, position it off screen and show next
+    setTimeout(() => {
+      currentQuote.style.position = 'absolute';
+      currentQuote.setAttribute('aria-hidden', 'true');
+      
+      // Move to next quote
+      currentIndex = (currentIndex + 1) % quotes.length;
+      const nextQuote = quotes[currentIndex];
+      
+      // Prepare next quote to slide in from the right
+      nextQuote.style.position = 'relative';
+      nextQuote.style.transform = 'translateX(100%)';
+      nextQuote.style.opacity = '0';
+      nextQuote.setAttribute('aria-hidden', 'false');
+      
+      // Trigger slide in from right after a small delay
+      requestAnimationFrame(() => {
+        nextQuote.style.opacity = '1';
+        nextQuote.style.transform = 'translateX(0)';
+      });
+    }, 500); // Match the CSS transition duration
+    
   }, intervalMs);
   
   return intervalId;

@@ -14,7 +14,12 @@ const THEME_OPTIONS = ['light', 'dark', 'auto'];
  */
 export function getThemePreference() {
   const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-  return savedTheme && THEME_OPTIONS.includes(savedTheme) ? savedTheme : 'auto';
+  if (savedTheme && THEME_OPTIONS.includes(savedTheme)) {
+    return savedTheme;
+  }
+  // For new users, respect system preference but save it as explicit choice
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return systemPrefersDark ? 'dark' : 'light';
 }
 
 /**

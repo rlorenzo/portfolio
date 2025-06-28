@@ -159,3 +159,19 @@ The `docs/` directory contains comprehensive system design documentation includi
 - System design with implementation approach and data structures
 - Performance optimization strategies
 - Component interfaces and program flow documentation
+
+### Critical Rules - DO NOT VIOLATE
+
+- **NEVER create mock data or simplified components** unless explicitly told to do so
+
+- **NEVER replace existing complex components with simplified versions** - always fix the actual problem
+
+- **ALWAYS work with the existing codebase** - do not create new simplified alternatives
+
+- **ALWAYS find and fix the root cause** of issues instead of creating workarounds
+
+- When debugging issues, focus on fixing the existing implementation, not replacing it
+
+- When something doesn't work, debug and fix it - don't start over with a simple version
+
+- Comments: Add code comments sparingly. Focus on why something is done, especially for complex logic, rather than what is done. Only add high-value comments if necessary for clarity or if requested by the user. Do not edit comments that are separate from the code you are changing. NEVER talk to the user or describe your changes through comments.
