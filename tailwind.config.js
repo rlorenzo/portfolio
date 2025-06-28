@@ -28,46 +28,39 @@ module.exports = {
         sans: ['Poppins', 'sans-serif'],
         heading: ['Montserrat', 'sans-serif']
       },
-      animation: {
-        'fadeIn': 'fadeIn 0.5s ease-in',
-        'slideInUp': 'slideInUp 0.5s ease-out',
-        'slideInLeft': 'slideInLeft 0.5s ease-out',
-        'slideInRight': 'slideInRight 0.5s ease-out',
-        'pulse': 'pulse 2s infinite'
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' }
-        },
-        slideInUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' }
-        },
-        slideInLeft: {
-          '0%': { transform: 'translateX(-20px)', opacity: '0' },
-          '100%': { transform: 'translateX(0)', opacity: '1' }
-        },
-        slideInRight: {
-          '0%': { transform: 'translateX(20px)', opacity: '0' },
-          '100%': { transform: 'translateX(0)', opacity: '1' }
-        },
-        pulse: {
-          '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.05)' }
-        }
+      transitionDuration: {
+        'fast': 'var(--transition-fast)',
+        'normal': 'var(--transition-normal)',
+        'slow': 'var(--transition-slow)'
       }
     }
   },
   plugins: [],
   safelist: [
     'text-primary',
-    'font-medium',
+    'text-secondary', 
+    'text-accent',
+    'bg-primary',
+    'bg-secondary',
+    'bg-accent',
+    'bg-bg-primary',
+    'bg-bg-secondary',
+    'text-text-primary',
+    'text-text-secondary',
+    'border-border-color',
     'animate-fadeIn',
-    'animate-slideInUp',
-    'animate-slideInLeft',
+    'animate-fadeInUp',
+    'animate-slideOutLeft',
     'animate-slideInRight',
-    'animate-pulse',
-    'rotate-180'
+    'quote-transition',
+    'nav-link',
+    'btn',
+    'btn-primary',
+    'btn-outline',
+    'card',
+    'card-hover',
+    'section',
+    'section-title',
+    'theme-switch'
   ]
 };

@@ -38,13 +38,11 @@ export function displayRandomQuote(
  * Rotate through quotes at a specified interval
  * @param {string} quoteSelector CSS selector for quote elements
  * @param {number} intervalMs Time in milliseconds between quote rotations
- * @param {string} animationClass CSS class to apply for animation
  * @returns {number} The interval ID (can be used to clear the interval)
  */
 export function rotateQuotes(
   quoteSelector = '.quote',
-  intervalMs = 10000,
-  animationClass = 'animate-fadeIn'
+  intervalMs = 10000
 ) {
   const quotes = document.querySelectorAll(quoteSelector);
   if (!quotes.length) return null;

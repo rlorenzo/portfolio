@@ -29,30 +29,16 @@
   <!-- AOS (Animate On Scroll) library -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-  <!-- Custom CSS Variables (can be customized via user preferences) -->
-  <style>
-    :root {
-      --primary-color: #3b82f6; /* blue-500 */
-      --secondary-color: #10b981; /* emerald-500 */
-      --dark-color: #1e293b; /* slate-800 */
-      --light-color: #f8fafc; /* slate-50 */
-      --accent-color: #8b5cf6; /* violet-500 */
-    }
-
-    /* Add smooth scrolling to the HTML element */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Tailwind CSS text-primary utility */
-    .text-primary { color: var(--primary-color); }
-    .text-secondary { color: var(--secondary-color); }
-    .text-accent { color: var(--accent-color); }
-    .bg-primary { background-color: var(--primary-color); }
-    .bg-secondary { background-color: var(--secondary-color); }
-    .bg-accent { background-color: var(--accent-color); }
-    .hover\:text-primary:hover { color: var(--primary-color); }
-  </style>
+  <!-- Theme detection script to prevent FOUC -->
+  <script>
+    // Prevent Flash of Unstyled Content (FOUC) by early theme detection
+    (function() {
+      const theme = localStorage.getItem('theme') || 'auto';
+      if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
 
   {% seo %}
 </head>

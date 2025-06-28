@@ -10,6 +10,9 @@ deployed on GitHub Pages. The site features a component-based architecture with
 content managed through YAML data files, interactive elements, and performance
 optimizations including PurgeCSS for CSS optimization.
 
+**This project follows Clean Code principles and all code must pass linting
+before committing.**
+
 ## Development Commands
 
 ### Setup
@@ -35,6 +38,8 @@ optimizations including PurgeCSS for CSS optimization.
 - Individual linters: `npm run lint:css`, `npm run lint:js`,
   `npm run lint:html`, `npm run lint:md`
 - Individual fixers: `npm run fix:css`, `npm run fix:js`, `npm run fix:md`
+
+**IMPORTANT: All linting errors must be fixed before committing code.**
 
 ### Jekyll Commands
 
@@ -160,18 +165,103 @@ The `docs/` directory contains comprehensive system design documentation includi
 - Performance optimization strategies
 - Component interfaces and program flow documentation
 
+## Clean Code Principles
+
+This Jekyll portfolio follows Clean Code principles. All contributions must
+adhere to these guidelines.
+
+### File Organization
+
+```text
+.
+├── _includes/      # Reusable HTML/Liquid components
+├── _layouts/       # Page templates
+├── _data/          # Structured data files (YAML/JSON)
+├── assets/         # CSS, JS, images
+│   ├── css/
+│   ├── js/
+│   └── images/
+└── src/            # Source files (Tailwind CSS)
+```
+
+### Liquid Templates
+
+- Keep logic minimal in templates
+- Extract complex logic to includes
+- Use meaningful variable names
+- One include = one responsibility
+- No commented-out code
+- Use semantic HTML5 elements
+
+### CSS/SCSS Guidelines
+
+- Use CSS custom properties for theming
+- Follow BEM-like naming convention
+- Maximum nesting depth: 3 levels
+- Use Tailwind's @layer directive appropriately
+- Mobile-first approach
+- No unused selectors or rules
+
+### JavaScript Standards
+
+- ES6+ syntax required
+- Functions should do one thing
+- Maximum 50 lines per function
+- Use const/let, never var
+- No console.log statements in production
+- Modular architecture with imports/exports
+
+### Naming Conventions
+
+- **Variables**: camelCase, descriptive (e.g., `userProfile` not `up`)
+- **CSS Classes**: Follow component naming (e.g., `nav-link`, `btn-primary`)
+- **Files**: kebab-case (e.g., `navigation-menu.html`)
+- **Functions**: verb-noun pattern (e.g., `initTheme`, `handleClick`)
+
+### Code Quality Standards
+
+All code must pass the following linters before committing:
+
+```bash
+# Run all linters
+npm run lint
+
+# Run individual linters
+npm run lint:css   # Lint CSS files
+npm run lint:js    # Lint JavaScript files
+npm run lint:html  # Lint HTML files
+npm run lint:md    # Lint Markdown files
+```
+
 ### Critical Rules - DO NOT VIOLATE
 
-- **NEVER create mock data or simplified components** unless explicitly told to do so
+- **NEVER create mock data or simplified components** unless explicitly told to
+  do so
 
-- **NEVER replace existing complex components with simplified versions** - always fix the actual problem
+- **NEVER replace existing complex components with simplified versions** -
+  always fix the actual problem
 
-- **ALWAYS work with the existing codebase** - do not create new simplified alternatives
+- **ALWAYS work with the existing codebase** - do not create new simplified
+  alternatives
 
-- **ALWAYS find and fix the root cause** of issues instead of creating workarounds
+- **ALWAYS find and fix the root cause** of issues instead of creating
+  workarounds
 
-- When debugging issues, focus on fixing the existing implementation, not replacing it
+- When debugging issues, focus on fixing the existing implementation, not
+  replacing it
 
-- When something doesn't work, debug and fix it - don't start over with a simple version
+- When something doesn't work, debug and fix it - don't start over with a
+  simple version
 
-- Comments: Add code comments sparingly. Focus on why something is done, especially for complex logic, rather than what is done. Only add high-value comments if necessary for clarity or if requested by the user. Do not edit comments that are separate from the code you are changing. NEVER talk to the user or describe your changes through comments.
+- Comments: Add code comments sparingly. Focus on why something is done,
+  especially for complex logic, rather than what is done. Only add high-value
+  comments if necessary for clarity or if requested by the user. Do not edit
+  comments that are separate from the code you are changing. NEVER talk to the
+  user or describe your changes through comments.
+
+### Linting Requirements
+
+- **ALL linting errors must be fixed before committing**
+- Run `npm run lint:all` before any commit
+- Use `npm run fix` for auto-fixable issues
+- No commits with failing linters allowed

@@ -1,8 +1,3 @@
-/**
- * Main JavaScript file
- * Initializes and coordinates modules for the portfolio website
- */
-
 import { initTheme, applyTheme, getThemePreference } from './modules/theme.js';
 import { 
   initStickyHeader, 
@@ -17,47 +12,57 @@ import {
 } from './modules/animations.js';
 import { throttle } from './modules/utils.js';
 import { initFaqToggles } from './modules/faq.js';
-import { displayRandomQuote, rotateQuotes } from './modules/quotes.js';
+import { rotateQuotes } from './modules/quotes.js';
 import { initSmoothScrolling } from './modules/smoothscroll.js';
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Cache DOM elements
-  const header = document.getElementById('site-header');
-  const backToTopBtn = document.getElementById('back-to-top');
-  const mobileMenuBtn = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-  
-  // Initialize theme system
-  initTheme();
-  
-  // Set up theme toggle buttons - simple light/dark toggle
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = getThemePreference();
-      // Simple toggle: light ↔ dark (remove auto state)
-      const nextTheme = (currentTheme === 'dark') ? 'light' : 'dark';
-      applyTheme(nextTheme);
-    });
-  }
-  
-  if (themeToggleMobileBtn) {
-    themeToggleMobileBtn.addEventListener('click', () => {
-      const currentTheme = getThemePreference();
-      // Simple toggle: light ↔ dark (remove auto state)  
-      const nextTheme = (currentTheme === 'dark') ? 'light' : 'dark';
-      applyTheme(nextTheme);
-    });
-  }
+document.addEventListener('DOMContentLoaded', initializeApp);
 
-  // Initialize navigation components with throttled scroll events
-  initStickyHeader(header);
-  initBackToTopButton(backToTopBtn, 300);
-  initMobileMenu(mobileMenuBtn, mobileMenu);
-  initScrollSpy('.nav-link', 'active');
+function initializeApp() {
+  const elements = cacheElementsById([
+    'site-header',
+    'back-to-top', 
+    'mobile-menu-button',
+    'mobile-menu',
+    'theme-toggle',
+    'theme-toggle-mobile'
+  ]);
   
-  // Initialize animations
+  initTheme();
+  setupThemeToggles(elements);
+  setupNavigation(elements);
+  setupAnimations();
+  setupInteractivity();
+  setupResponsiveBehavior(elements);
+  setupPrintMode();
+}
+
+function cacheElementsById(ids) {
+  return ids.reduce((acc, id) => {
+    acc[id.replace(/-([a-z])/g, (g) => g[1].toUpperCase())] = document.getElementById(id);
+    return acc;
+  }, {});
+}
+
+function setupThemeToggles({ themeToggle, themeToggleMobile }) {
+  const handleThemeToggle = () => {
+    const currentTheme = getThemePreference();
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+  };
+  
+  themeToggle?.addEventListener('click', handleThemeToggle);
+  themeToggleMobile?.addEventListener('click', handleThemeToggle);
+}
+
+function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }) {
+  initStickyHeader(siteHeader);
+  initBackToTopButton(backToTop, 300);
+  initMobileMenu(mobileMenuButton, mobileMenu);
+  initScrollSpy('.nav-link', 'active');
+  initSmoothScrolling('a[href^="#"]', '#site-header');
+}
+
+function setupAnimations() {
   initAOS({
     duration: 800,
     easing: 'ease-in-out',
@@ -65,37 +70,33 @@ document.addEventListener('DOMContentLoaded', function() {
     offset: 50
   });
   
-  // Animate skill bars when they come into view
   animateSkillBars();
-  
-  // Set up entrance animations for elements without AOS
   setupEntranceAnimations('.animate-on-scroll');
-  
-  // Initialize FAQ toggles
+}
+
+function setupInteractivity() {
   initFaqToggles('.faq-toggle');
-  
-  // Rotate testimonial quotes every 8 seconds
-  rotateQuotes('.quote', 8000, 'animate-fadeIn');
-  
-  // Initialize smooth scrolling for anchor links
-  initSmoothScrolling('a[href^="#"]', '#site-header');
-  
-  // Handle responsive behavior
+  rotateQuotes('.quote', 8000);
+}
+
+function setupResponsiveBehavior({ mobileMenu }) {
   const handleResize = throttle(() => {
-    // Handle any responsive adjustments here
-    if (window.innerWidth >= 1024) { // lg breakpoint in Tailwind
-      mobileMenu.classList.add('hidden');
+    if (window.innerWidth >= 1024) {
+      mobileMenu?.classList.add('hidden');
     }
   }, 100);
   
   window.addEventListener('resize', handleResize);
+}
+
+function setupPrintMode() {
+  const printModeClass = 'print-mode';
   
-  // Add support for print mode
   window.addEventListener('beforeprint', () => {
-    document.documentElement.classList.add('print-mode');
+    document.documentElement.classList.add(printModeClass);
   });
   
   window.addEventListener('afterprint', () => {
-    document.documentElement.classList.remove('print-mode');
+    document.documentElement.classList.remove(printModeClass);
   });
-});
+}

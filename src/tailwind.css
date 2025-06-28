@@ -1,33 +1,38 @@
-/* Main Tailwind CSS source file */
-
-/* Tailwind base styles */
 @tailwind base;
-
-/* Tailwind component classes */
 @tailwind components;
-
-/* Tailwind utility classes */
 @tailwind utilities;
 
-/* Custom CSS variables */
+/* CSS Custom Properties */
 :root {
+  /* Brand Colors */
   --primary-color: #3b82f6;
   --secondary-color: #10b981;
   --accent-color: #8b5cf6;
+  
+  /* Status Colors */
   --success-color: #22c55e;
   --warning-color: #f59e0b;
   --danger-color: #ef4444;
   --info-color: #06b6d4;
 
-  /* Light theme variables */
+  /* Light Theme */
   --bg-primary: #ffffff;
   --bg-secondary: #f3f4f6;
   --text-primary: #111827;
   --text-secondary: #4b5563;
   --border-color: #e5e7eb;
+  
+  /* Typography */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  
+  /* Animation Timing */
+  --transition-fast: 0.15s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
 }
 
-/* Dark theme variables */
+/* Dark Theme */
 .dark {
   --bg-primary: #111827;
   --bg-secondary: #1f2937;
@@ -36,128 +41,180 @@
   --border-color: #374151;
 }
 
-/* Custom styles that extend Tailwind */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
 @layer components {
-  /* Button styles */
+  /* Utility Classes */
+  .text-primary { color: var(--primary-color); }
+  .text-secondary { color: var(--secondary-color); }
+  .text-accent { color: var(--accent-color); }
+  .bg-primary { background-color: var(--primary-color); }
+  .bg-secondary { background-color: var(--secondary-color); }
+  .bg-accent { background-color: var(--accent-color); }
+  .bg-bg-primary { background-color: var(--bg-primary); }
+  .bg-bg-secondary { background-color: var(--bg-secondary); }
+  .text-text-primary { color: var(--text-primary); }
+  .text-text-secondary { color: var(--text-secondary); }
+  .border-border-color { border-color: var(--border-color); }
+
+  /* Button Components */
   .btn {
-    @apply px-4 py-2 rounded-md transition-colors duration-200;
+    @apply px-4 py-2 rounded-md font-medium transition-all;
+    transition-duration: var(--transition-normal);
   }
 
   .btn-primary {
-    @apply bg-primary text-white hover:bg-opacity-90;
+    @apply bg-primary text-white hover:bg-opacity-90 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
   }
 
   .btn-outline {
-    @apply border border-primary text-primary hover:bg-primary hover:bg-opacity-10;
+    @apply border border-primary text-primary hover:bg-primary hover:bg-opacity-10 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
   }
 
-  /* Card styles */
+  /* Card Components */
   .card {
-    @apply bg-bg-primary border border-border-color rounded-lg shadow-sm overflow-hidden transition-all duration-300;
+    @apply bg-bg-primary border border-border-color rounded-lg shadow-sm overflow-hidden;
+    transition: all var(--transition-normal);
   }
 
   .card-hover {
     @apply hover:shadow-md hover:transform hover:scale-[1.02];
   }
 
-  /* Section styles */
+  /* Layout Components */
   .section {
     @apply py-16 md:py-24;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-heading font-bold mb-8 text-text-primary;
+    @apply text-3xl md:text-4xl font-bold mb-8 text-text-primary;
+    font-family: var(--font-heading);
   }
 
-  /* Container with responsive padding */
   .container-custom {
     @apply container mx-auto px-4 sm:px-6 lg:px-8;
   }
-}
 
-/* Custom animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px); 
+  /* Navigation Components */
+  .nav-link {
+    @apply relative font-medium transition-colors;
+    transition-duration: var(--transition-normal);
   }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
-}
 
-@keyframes slideOutLeft {
-  from { 
-    opacity: 1; 
-    transform: translateX(0); 
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all;
+    transition-duration: var(--transition-normal);
   }
-  to { 
-    opacity: 0; 
-    transform: translateX(-100%); 
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Theme Toggle */
+  .theme-switch {
+    @apply relative inline-flex items-center p-1 rounded-full bg-bg-secondary border border-border-color cursor-pointer h-9 w-9 transition-all;
+    transition-duration: var(--transition-normal);
+  }
+
+  .theme-switch:hover {
+    @apply bg-border-color;
   }
 }
 
-@keyframes slideInRight {
-  from { 
-    opacity: 0; 
-    transform: translateX(100%); 
+@layer utilities {
+  /* Animation Keyframes */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
-  to { 
-    opacity: 1; 
-    transform: translateX(0); 
+
+  @keyframes fadeInUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(1.25rem); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
   }
-}
 
-/* Theme toggle icon fixes */
-#theme-icon-light,
-#theme-icon-light-mobile {
-  display: none !important;
-}
+  @keyframes slideOutLeft {
+    from { 
+      opacity: 1; 
+      transform: translateX(0); 
+    }
+    to { 
+      opacity: 0; 
+      transform: translateX(-100%); 
+    }
+  }
 
-html.dark #theme-icon-light,
-html.dark #theme-icon-light-mobile {
-  display: inline-block !important;
-  color: #f9fafb !important; /* text-gray-50 equivalent for better visibility */
-}
+  @keyframes slideInRight {
+    from { 
+      opacity: 0; 
+      transform: translateX(100%); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateX(0); 
+    }
+  }
 
-html.dark #theme-icon-dark,
-html.dark #theme-icon-dark-mobile {
-  display: none !important;
-}
+  /* Animation Classes */
+  .animate-fadeIn {
+    animation: fadeIn var(--transition-slow) ease-in;
+  }
 
-/* Utility classes that need to be explicitly included */
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease-in;
-}
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out;
+  }
 
-.animate-slideUp {
-  animation: slideUp 0.5s ease-out;
-}
+  .animate-slideOutLeft {
+    animation: slideOutLeft var(--transition-slow) ease-in-out;
+  }
 
-.animate-fadeInUp {
-  animation: fadeInUp 0.6s ease-out;
-}
+  .animate-slideInRight {
+    animation: slideInRight var(--transition-slow) ease-in-out;
+  }
 
-/* Quote transition styles */
-.quote-transition {
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
+  /* Quote Transitions */
+  .quote-transition {
+    transition: opacity var(--transition-slow) ease-in-out, 
+                transform var(--transition-slow) ease-in-out;
+  }
 
-.animate-slideOutLeft {
-  animation: slideOutLeft 0.5s ease-in-out;
-}
+  /* Theme Toggle Icon States */
+  #theme-icon-light,
+  #theme-icon-light-mobile {
+    display: none;
+  }
 
-.animate-slideInRight {
-  animation: slideInRight 0.5s ease-in-out;
+  .dark #theme-icon-light,
+  .dark #theme-icon-light-mobile {
+    display: inline-block;
+    color: #f9fafb;
+  }
+
+  .dark #theme-icon-dark,
+  .dark #theme-icon-dark-mobile {
+    display: none;
+  }
 }

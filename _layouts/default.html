@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="auto-theme">
+<html lang="en">
   {% include head.html %}
-  <body class="bg-bg-primary transition-colors duration-300">
+  <body class="bg-bg-primary">
     {% include header.html %}
-    <main class="container mx-auto px-4 mt-24"> <!-- Increased margin-top for enhanced fixed header -->
+    <main class="container mx-auto px-4 mt-24">
       {{ content }}
     </main>
     {% include footer.html %}
+    
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <!-- Bundle all JavaScript modules into a single file for production -->
-    <script src="{{ '/assets/js/bundle.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/bundle.js' | relative_url }}" defer></script>
   </body>
 </html>

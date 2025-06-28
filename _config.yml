@@ -25,3 +25,14 @@ exclude:
   - node_modules
   - vendor
   - .git
+  - package.json
+  - package-lock.json
+  - postcss.config.js
+  - rollup.config.js
+  - tailwind.config.js
+  - src/
+  - scripts/
+  - docs/
+  - "*.mermaid"
+  - README.md
+  - CLAUDE.md
