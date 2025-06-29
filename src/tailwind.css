@@ -129,7 +129,7 @@
 
   /* Theme Toggle */
   .theme-switch {
-    @apply relative inline-flex items-center p-1 rounded-full bg-bg-secondary border border-border-color cursor-pointer h-9 w-9 transition-all;
+    @apply relative inline-flex items-center justify-center p-1 rounded-full bg-bg-secondary border border-border-color cursor-pointer h-9 w-9 transition-all;
     transition-duration: var(--transition-normal);
   }
 

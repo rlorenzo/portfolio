@@ -643,7 +643,7 @@ video {
   width: 100%;
 }
 /* Theme Toggle */
-.theme-switch { position: relative; display: inline-flex; height: 2.25rem; width: 2.25rem; cursor: pointer; align-items: center; border-radius: 9999px; border-width: 1px; border-color: var(--border-color); background-color: var(--bg-secondary); padding: 0.25rem; transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms;
+.theme-switch { position: relative; display: inline-flex; height: 2.25rem; width: 2.25rem; cursor: pointer; align-items: center; justify-content: center; border-radius: 9999px; border-width: 1px; border-color: var(--border-color); background-color: var(--bg-secondary); padding: 0.25rem; transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms;
     transition-duration: var(--transition-normal); }
 .theme-switch:hover {
   background-color: var(--border-color);
