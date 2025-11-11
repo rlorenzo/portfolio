@@ -1,4 +1,4 @@
-name: Deploy Jekyll to GitHub Pages
+name: Build and Deploy
 
 on:
   push:
@@ -19,7 +19,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
+  # Build job - runs on both PRs (for testing) and main branch
   build:
     runs-on: ubuntu-latest
     steps:
@@ -42,6 +42,8 @@ jobs:
 
       - name: Install Node dependencies
         run: npm ci
+        env:
+          HUSKY: 0  # Skip Husky installation in CI
 
       - name: Setup Pages
         id: pages
@@ -61,7 +63,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
-  # Deployment job
+  # Deployment job - only runs on main/master branch, not on PRs
   deploy:
     environment:
       name: github-pages

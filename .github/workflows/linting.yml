@@ -22,6 +22,8 @@ jobs:
 
       - name: Install Node dependencies
         run: npm ci
+        env:
+          HUSKY: 0  # Skip Husky installation in CI
 
       - name: Run CSS linting
         run: npm run lint:css
@@ -53,6 +55,8 @@ jobs:
 
       - name: Install Node dependencies
         run: npm ci
+        env:
+          HUSKY: 0  # Skip Husky installation in CI
 
       - name: Install Ruby dependencies
         run: bundle install
