@@ -16,9 +16,9 @@ LINT_FAILED=0
 # Run CSS linting if CSS/SCSS files are staged
 if [ -n "$STAGED_CSS" ]; then
   echo "→ Linting CSS/SCSS files..."
-  if ! npm run lint:css --silent 2>/dev/null; then
+  if ! echo "$STAGED_CSS" | xargs npx stylelint --quiet; then
     echo "❌ CSS linting failed!"
-    echo "💡 Fix issues with: npm run fix:css"
+    echo "💡 Fix issues with: npx stylelint --fix $STAGED_CSS"
     LINT_FAILED=1
   else
     echo "✓ CSS linting passed"
@@ -28,9 +28,9 @@ fi
 # Run JavaScript linting if JS files are staged
 if [ -n "$STAGED_JS" ]; then
   echo "→ Linting JavaScript files..."
-  if ! npm run lint:js --silent 2>/dev/null; then
+  if ! echo "$STAGED_JS" | xargs npx eslint; then
     echo "❌ JavaScript linting failed!"
-    echo "💡 Fix issues with: npm run fix:js"
+    echo "💡 Fix issues with: npx eslint --fix $STAGED_JS"
     LINT_FAILED=1
   else
     echo "✓ JavaScript linting passed"
@@ -40,9 +40,9 @@ fi
 # Run Markdown linting if MD files are staged
 if [ -n "$STAGED_MD" ]; then
   echo "→ Linting Markdown files..."
-  if ! npm run lint:md --silent 2>/dev/null; then
+  if ! echo "$STAGED_MD" | xargs npx markdownlint; then
     echo "❌ Markdown linting failed!"
-    echo "💡 Fix issues with: npm run fix:md"
+    echo "💡 Fix issues with: npx markdownlint --fix $STAGED_MD"
     LINT_FAILED=1
   else
     echo "✓ Markdown linting passed"

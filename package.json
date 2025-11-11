@@ -10,7 +10,6 @@
     "build:css": "postcss ./src/tailwind.css -o ./assets/css/tailwind.css",
     "build:js": "rollup -c",
     "setup": "npm install && bundle install && ./hooks/install.sh",
-    "postinstall": "./hooks/install.sh",
     "lint:css": "stylelint 'src/**/*.{css,scss}' 'assets/**/*.{css,scss}' --allow-empty-input",
     "lint:js": "eslint './assets/js/**/*.js'",
     "lint:html": "htmlhint '_site/**/*.html'",
