@@ -15,13 +15,15 @@ jobs:
           lfs: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install Node dependencies
         run: npm ci
+        env:
+          HUSKY: 0  # Skip Husky installation in CI
 
       - name: Run CSS linting
         run: npm run lint:css
@@ -46,13 +48,15 @@ jobs:
           bundler-cache: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install Node dependencies
         run: npm ci
+        env:
+          HUSKY: 0  # Skip Husky installation in CI
 
       - name: Install Ruby dependencies
         run: bundle install
