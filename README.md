@@ -298,11 +298,12 @@ This project uses **Husky** and **lint-staged** for automated pre-commit linting
 - **JavaScript linting** with ESLint (auto-fix enabled)
 - **Markdown linting** with markdownlint (auto-fix enabled)
 
-#### How It Works
+#### Setup and Installation
 
 The pre-commit hook is **automatically installed** when you run `npm install` (via the `prepare` script).
 
 **Features:**
+
 - Only lints and fixes files that are staged for commit
 - Automatically fixes issues when possible
 - Rejects commits if unfixable linting errors remain
@@ -310,6 +311,7 @@ The pre-commit hook is **automatically installed** when you run `npm install` (v
 - Cross-platform compatible (Windows, macOS, Linux)
 
 **To bypass the hook** (not recommended):
+
 ```bash
 git commit --no-verify
 ```

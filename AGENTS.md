@@ -11,6 +11,7 @@ This document provides guidance for AI coding assistants (Claude, GitHub Copilot
 **Deployment:** GitHub Pages via GitHub Actions
 
 **Key Characteristics:**
+
 - Component-based architecture using Jekyll's templating
 - Data-driven content management via YAML files
 - Performance-optimized with PurgeCSS and build pipeline
@@ -35,7 +36,7 @@ This document provides guidance for AI coding assistants (Claude, GitHub Copilot
 
 ### Directory Structure
 
-```
+```text
 portfolio/
 ├── _data/              # Content in YAML format (experience, projects, FAQ, etc.)
 ├── _includes/          # Reusable components (header, footer, etc.)
@@ -54,6 +55,7 @@ portfolio/
 ### Content Management
 
 All content is stored in `_data/` YAML files:
+
 - `experience.yml` - Work experience with highlights
 - `projects.yml` - Project showcases with tech stacks
 - `presentations.yml` - Embedded presentations
@@ -66,6 +68,7 @@ All content is stored in `_data/` YAML files:
 ### JavaScript Modules
 
 Located in `assets/js/modules/`:
+
 - `theme.js` - Dark/light mode with localStorage
 - `navigation.js` - Sticky header, mobile nav, active states
 - `smoothscroll.js` - Smooth scrolling with header offset
@@ -109,6 +112,7 @@ npm run fix            # Auto-fix linting issues
 ```
 
 **Individual linters:**
+
 - `npm run lint:css` / `npm run fix:css`
 - `npm run lint:js` / `npm run fix:js`
 - `npm run lint:md` / `npm run fix:md`
@@ -141,17 +145,20 @@ npm run fix            # Auto-fix linting issues
 ### File Modification Guidelines
 
 **Editing existing files:**
+
 - Read the entire file first to understand context
 - Match existing indentation and formatting
 - Preserve existing comments unless updating related code
 - Don't add unnecessary comments (code should be self-documenting)
 
 **Creating new files:**
+
 - Follow existing naming conventions (kebab-case for files)
 - Use appropriate directory structure
 - Add to relevant documentation if significant
 
 **Content changes:**
+
 - Edit YAML files in `_data/`, NOT HTML templates
 - Understand Jekyll's Liquid templating before modifying templates
 - Test locally before committing
@@ -254,23 +261,27 @@ Before committing changes:
 ## 🔍 Debugging Tips
 
 ### Jekyll Not Building?
+
 - Check `_config.yml` syntax
 - Ensure all YAML files are valid (use a YAML validator)
 - Look for Liquid template errors in terminal
 
 ### CSS Not Updating?
+
 - Run `npm run build:css` manually
 - Check `src/tailwind.css` for syntax errors
 - Verify Tailwind config in `tailwind.config.js`
 - PurgeCSS might be removing classes (check production build)
 
 ### JavaScript Not Working?
+
 - Check browser console for errors
 - Verify module is imported in `main.js`
 - Ensure DOM elements exist before accessing
 - Check for proper event listener setup
 
 ### Linting Failures?
+
 - Run `npm run fix` for auto-fixable issues
 - Check specific linter output for details
 - Verify linter configs haven't been modified
@@ -361,6 +372,7 @@ Recommended reading order:
 ---
 
 **Questions or Confusion?**
+
 - Consult the [docs/README.md](docs/README.md) for navigation
 - Read relevant source code for examples
 - Check existing patterns before creating new ones
