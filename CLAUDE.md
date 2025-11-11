@@ -130,7 +130,7 @@ Modular components in `assets/js/modules/`:
 - Theme switching prevents Flash of Unstyled Content (FOUC) via early detection script
 - Scroll handlers are throttled for performance
 - Navigation accounts for sticky header height in scroll calculations
-- Pre-commit hook automatically runs linters on staged files before commits
+- Pre-commit hook automatically runs linters on staged files before commits (installed via `npm run setup`)
 
 ## GitHub Pages Deployment
 

@@ -292,12 +292,21 @@ Install the recommended extensions when prompted or from the Extensions view.
 
 ### Pre-commit Hook
 
-A pre-commit hook is installed that automatically runs linters before accepting
-commits:
+A pre-commit hook automatically runs linters before accepting commits:
 
 - **CSS/SCSS linting** with Stylelint
-- **JavaScript linting** with ESLint  
+- **JavaScript linting** with ESLint
 - **Markdown linting** with markdownlint
+
+#### Installation
+
+Install the pre-commit hook by running:
+
+```bash
+./hooks/install.sh
+```
+
+This only needs to be done once per repository clone.
 
 The hook will:
 
