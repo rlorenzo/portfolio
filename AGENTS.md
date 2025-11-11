@@ -49,7 +49,7 @@ portfolio/
 ├── src/                # Source files
 │   └── tailwind.css    # Tailwind CSS source
 ├── docs/               # Technical documentation
-└── hooks/              # Git hooks (pre-commit linting)
+└── .husky/             # Husky git hooks (pre-commit linting)
 ```
 
 ### Content Management
