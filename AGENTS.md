@@ -49,7 +49,7 @@ portfolio/
 ├── src/                # Source files
 │   └── tailwind.css    # Tailwind CSS source
 ├── docs/               # Technical documentation
-└── hooks/              # Git hooks (pre-commit linting)
+└── .husky/             # Husky git hooks (pre-commit linting)
 ```
 
 ### Content Management
@@ -82,10 +82,10 @@ Located in `assets/js/modules/`:
 ### Setup
 
 ```bash
-npm run setup          # Install npm and bundle dependencies + hooks
+npm run setup          # Install npm and bundle dependencies
+```
 
 The Husky pre-commit hook is automatically installed via the `prepare` script when you run `npm install`.
-```
 
 ### Development
 
