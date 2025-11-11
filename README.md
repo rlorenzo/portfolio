@@ -292,28 +292,27 @@ Install the recommended extensions when prompted or from the Extensions view.
 
 ### Pre-commit Hook
 
-A pre-commit hook automatically runs linters before accepting commits:
+This project uses **Husky** and **lint-staged** for automated pre-commit linting:
 
-- **CSS/SCSS linting** with Stylelint
-- **JavaScript linting** with ESLint
-- **Markdown linting** with markdownlint
+- **CSS/SCSS linting** with Stylelint (auto-fix enabled)
+- **JavaScript linting** with ESLint (auto-fix enabled)
+- **Markdown linting** with markdownlint (auto-fix enabled)
 
-#### Installation
+#### How It Works
 
-Install the pre-commit hook by running:
+The pre-commit hook is **automatically installed** when you run `npm install` (via the `prepare` script).
 
+**Features:**
+- Only lints and fixes files that are staged for commit
+- Automatically fixes issues when possible
+- Rejects commits if unfixable linting errors remain
+- Handles CI/CD environments gracefully
+- Cross-platform compatible (Windows, macOS, Linux)
+
+**To bypass the hook** (not recommended):
 ```bash
-./hooks/install.sh
+git commit --no-verify
 ```
-
-This only needs to be done once per repository clone.
-
-The hook will:
-
-- Only run linters for file types that are staged for commit
-- Reject commits if linting fails
-- Provide helpful error messages and fix suggestions
-- Allow bypassing with `git commit --no-verify` (not recommended)
 
 ### GitHub Actions
 

@@ -80,6 +80,8 @@ Located in `assets/js/modules/`:
 
 ```bash
 npm run setup          # Install npm and bundle dependencies + hooks
+
+The Husky pre-commit hook is automatically installed via the `prepare` script when you run `npm install`.
 ```
 
 ### Development
