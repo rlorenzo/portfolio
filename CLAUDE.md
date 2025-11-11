@@ -158,12 +158,18 @@ This site uses Jekyll 4.4.1 and requires GitHub Actions for deployment
 
 ## Architecture Documentation
 
-The `docs/` directory contains comprehensive system design documentation including:
+The `docs/` directory contains comprehensive technical documentation. See [docs/README.md](docs/README.md) for the complete documentation index.
 
-- Architecture review with strengths and improvement recommendations
-- System design with implementation approach and data structures
-- Performance optimization strategies
-- Component interfaces and program flow documentation
+**Key Documents:**
+- **[docs/architecture_review.md](docs/architecture_review.md)**: Comprehensive architecture evaluation with prioritized improvement recommendations
+- **[docs/portfolio_system_design.md](docs/portfolio_system_design.md)**: Technical implementation details, data structures, and design decisions
+- **[docs/portfolio_website_enhancement_prd.md](docs/portfolio_website_enhancement_prd.md)**: Product roadmap and feature requirements
+
+**Quick Reference:**
+- Understanding the codebase → [System Design](docs/portfolio_system_design.md)
+- Code quality standards → [Architecture Review](docs/architecture_review.md) → "Best Practices Assessment"
+- Feature planning → [Enhancement PRD](docs/portfolio_website_enhancement_prd.md)
+- Implementation priorities → [Architecture Review](docs/architecture_review.md) → "Recommendations by Priority"
 
 ## Clean Code Principles
 
