@@ -35,7 +35,7 @@
     "npm": ">=10.0.0"
   },
   "lint-staged": {
-    "*.{css,scss}": "stylelint --fix",
+    "*.{css,scss}": "stylelint --fix --allow-empty-input",
     "*.js": "eslint --fix",
     "*.md": "markdownlint --fix"
   },
