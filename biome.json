@@ -25,6 +25,6 @@
     }
   },
   "files": {
-    "includes": ["assets/js/modules/**/*.js", "assets/js/main.js"]
+    "includes": ["assets/js/**/*.js", "!assets/js/bundle.js", "tests/**/*.js", "*.js", "!_site"]
   }
 }

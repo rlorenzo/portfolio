@@ -5,6 +5,11 @@ const SETTLE_DELAY_MS = 500;
 const ANIMATION_SETTLE_DELAY_MS = 1000;
 
 async function loadPage(page) {
+  // Block external requests to prevent iframe content from loading
+  await page.route(
+    (url) => url.hostname !== 'localhost',
+    (route) => route.abort(),
+  );
   await page.goto('./', { waitUntil: 'domcontentloaded', timeout: 30000 });
   await page.evaluate(() => {
     document.querySelectorAll('[data-aos]').forEach((el) => {
@@ -12,6 +17,14 @@ async function loadPage(page) {
       el.removeAttribute('data-aos-delay');
       el.style.opacity = '1';
       el.style.transform = 'none';
+    });
+
+    // Replace iframes with static placeholders to prevent unstable screenshots
+    document.querySelectorAll('iframe').forEach((iframe) => {
+      const placeholder = document.createElement('div');
+      placeholder.className = iframe.className;
+      placeholder.style.backgroundColor = '#e5e7eb';
+      iframe.replaceWith(placeholder);
     });
 
     // Pin quotes to the first one to prevent random selection causing diffs
@@ -38,7 +51,6 @@ test.describe('Visual Regression', () => {
     await loadPage(page);
     await expect(page).toHaveScreenshot('full-page-light.png', {
       fullPage: true,
-      mask: [page.locator('iframe')],
     });
   });
 
@@ -48,7 +60,6 @@ test.describe('Visual Regression', () => {
     await page.waitForTimeout(SETTLE_DELAY_MS);
     await expect(page).toHaveScreenshot('full-page-dark.png', {
       fullPage: true,
-      mask: [page.locator('iframe')],
     });
   });
 
@@ -64,9 +75,7 @@ test.describe('Visual Regression', () => {
       await el.waitFor({ state: 'attached' });
       await el.scrollIntoViewIfNeeded();
       await page.waitForTimeout(SETTLE_DELAY_MS);
-      await expect(el).toHaveScreenshot(`section-${section}.png`, {
-        mask: [page.locator('iframe')],
-      });
+      await expect(el).toHaveScreenshot(`section-${section}.png`);
     });
   }
 });

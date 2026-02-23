@@ -17,7 +17,12 @@
           "variants",
           "responsive",
           "screen",
-          "layer"
+          "layer",
+          "config",
+          "custom-variant",
+          "source",
+          "theme",
+          "utility"
         ]
       }
     ],
