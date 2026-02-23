@@ -27,5 +27,9 @@ assets/js/bundle.js.map
 # Node.js (if using JS tooling)
 node_modules/
 
+# Playwright test results
+tests/screenshots/results/
+playwright-report/
+
 # Mac system files
 *.DS_Store

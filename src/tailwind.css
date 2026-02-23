@@ -1,207 +1,220 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@source inline("text-primary text-secondary text-accent bg-primary bg-secondary bg-accent bg-bg-primary bg-bg-secondary text-text-primary text-text-secondary border-border-color animate-fadeIn quote-transition nav-link btn btn-primary btn-outline card section theme-switch");
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-primary: var(--primary-color);
+  --color-secondary: var(--secondary-color);
+  --color-accent: var(--accent-color);
+  --color-success: var(--success-color);
+  --color-warning: var(--warning-color);
+  --color-danger: var(--danger-color);
+  --color-info: var(--info-color);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-color: var(--border-color);
+  --font-sans: 'Poppins', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --transition-duration-fast: var(--transition-fast);
+  --transition-duration-normal: var(--transition-normal);
+  --transition-duration-slow: var(--transition-slow);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 /* CSS Custom Properties */
-:root {
-  /* Brand Colors */
-  --primary-color: #3b82f6;
-  --secondary-color: #10b981;
-  --accent-color: #8b5cf6;
-  
-  /* Status Colors */
-  --success-color: #22c55e;
-  --warning-color: #f59e0b;
-  --danger-color: #ef4444;
-  --info-color: #06b6d4;
-
-  /* Light Theme */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f3f4f6;
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
-  --border-color: #e5e7eb;
-  
-  /* Typography */
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Poppins', sans-serif;
-  
-  /* Animation Timing */
-  --transition-fast: 0.15s;
-  --transition-normal: 0.3s;
-  --transition-slow: 0.5s;
-}
-
-/* Dark Theme */
-.dark {
-  --bg-primary: #111827;
-  --bg-secondary: #1f2937;
-  --text-primary: #f9fafb;
-  --text-secondary: #d1d5db;
-  --border-color: #374151;
-}
-
 @layer base {
+  :root {
+    /* Brand Colors */
+    --primary-color: #3b82f6;
+    --secondary-color: #10b981;
+    --accent-color: #8b5cf6;
+
+    /* Status Colors */
+    --success-color: #22c55e;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #06b6d4;
+
+    /* Light Theme */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f3f4f6;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --border-color: #e5e7eb;
+
+    /* Typography */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+
+    /* Animation Timing */
+    --transition-fast: 0.15s;
+    --transition-normal: 0.3s;
+    --transition-slow: 0.5s;
+  }
+
+  /* Dark Theme */
+  .dark {
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --border-color: #374151;
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
   }
-  
+
   body {
     font-family: var(--font-body);
     background-color: var(--bg-primary);
     color: var(--text-primary);
     transition: background-color var(--transition-normal), color var(--transition-normal);
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
 }
 
-@layer components {
-  /* Utility Classes */
-  .text-primary { color: var(--primary-color); }
-  .text-secondary { color: var(--secondary-color); }
-  .text-accent { color: var(--accent-color); }
-  .bg-primary { background-color: var(--primary-color); }
-  .bg-secondary { background-color: var(--secondary-color); }
-  .bg-accent { background-color: var(--accent-color); }
-  .bg-bg-primary { background-color: var(--bg-primary); }
-  .bg-bg-secondary { background-color: var(--bg-secondary); }
-  .text-text-primary { color: var(--text-primary); }
-  .text-text-secondary { color: var(--text-secondary); }
-  .border-border-color { border-color: var(--border-color); }
+/* Utility Classes */
+@utility text-primary {
+  color: var(--primary-color);
+}
 
-  /* Button Components */
-  .btn {
-    @apply px-4 py-2 rounded-md font-medium transition-all;
-    transition-duration: var(--transition-normal);
-  }
+@utility text-secondary {
+  color: var(--secondary-color);
+}
 
-  .btn-primary {
-    @apply bg-primary text-white hover:bg-opacity-90 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
-  }
+@utility text-accent {
+  color: var(--accent-color);
+}
 
-  .btn-outline {
-    @apply border border-primary text-primary hover:bg-primary hover:bg-opacity-10 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
-  }
+@utility bg-primary {
+  background-color: var(--primary-color);
+}
 
-  /* Card Components */
-  .card {
-    @apply bg-bg-primary border border-border-color rounded-lg shadow-sm overflow-hidden;
-    transition: all var(--transition-normal);
-  }
+@utility bg-secondary {
+  background-color: var(--secondary-color);
+}
 
-  .card-hover {
-    @apply hover:shadow-md hover:transform hover:scale-[1.02];
-  }
+@utility bg-accent {
+  background-color: var(--accent-color);
+}
 
-  /* Layout Components */
-  .section {
-    @apply py-16 md:py-24;
-  }
+@utility bg-bg-primary {
+  background-color: var(--bg-primary);
+}
 
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-8 text-text-primary;
-    font-family: var(--font-heading);
-  }
+@utility bg-bg-secondary {
+  background-color: var(--bg-secondary);
+}
 
-  .container-custom {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8;
-  }
+@utility text-text-primary {
+  color: var(--text-primary);
+}
 
-  /* Navigation Components */
-  .nav-link {
-    @apply relative font-medium transition-colors;
-    transition-duration: var(--transition-normal);
-  }
+@utility text-text-secondary {
+  color: var(--text-secondary);
+}
 
-  .nav-link::after {
+@utility border-border-color {
+  border-color: var(--border-color);
+}
+
+/* Button Components */
+@utility btn {
+  @apply px-4 py-2 rounded-md font-medium transition-all;
+  transition-duration: var(--transition-normal);
+}
+
+@utility btn-primary {
+  @apply bg-primary text-white hover:opacity-90 focus:ring-2 focus:ring-blue-500/50;
+}
+
+@utility btn-outline {
+  @apply border border-primary text-primary hover:bg-primary/10 focus:ring-2 focus:ring-blue-500/50;
+}
+
+/* Card Components */
+@utility card {
+  @apply bg-bg-primary border border-border-color rounded-lg shadow-xs overflow-hidden;
+  transition: all var(--transition-normal);
+}
+
+/* Layout Components */
+@utility section {
+  @apply py-16 md:py-24;
+}
+
+/* Navigation Components */
+@utility nav-link {
+  @apply relative font-medium transition-colors;
+  transition-duration: var(--transition-normal);
+
+  &::after {
     content: '';
     @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all;
     transition-duration: var(--transition-normal);
   }
 
-  .nav-link:hover::after {
+  &:hover::after {
     @apply w-full;
   }
+}
 
-  /* Theme Toggle */
-  .theme-switch {
-    @apply relative inline-flex items-center justify-center p-1 rounded-full bg-bg-secondary border border-border-color cursor-pointer h-9 w-9 transition-all;
-    transition-duration: var(--transition-normal);
-  }
+/* Theme Toggle */
+@utility theme-switch {
+  @apply relative inline-flex items-center justify-center p-1 rounded-full bg-bg-secondary border border-border-color cursor-pointer h-9 w-9 transition-all;
+  transition-duration: var(--transition-normal);
 
-  .theme-switch:hover {
+  &:hover {
     @apply bg-border-color;
   }
 }
 
+/* Animation Classes */
+@utility animate-fadeIn {
+  animation: fadeIn var(--transition-slow) ease-in;
+}
+
+/* Quote Transitions */
+@utility quote-transition {
+  transition:
+    opacity var(--transition-slow) ease-in-out,
+    transform var(--transition-slow) ease-in-out;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Theme Toggle Icon States */
 @layer utilities {
-  /* Animation Keyframes */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes fadeInUp {
-    from { 
-      opacity: 0; 
-      transform: translateY(1.25rem); 
-    }
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
-    }
-  }
-
-  @keyframes slideOutLeft {
-    from { 
-      opacity: 1; 
-      transform: translateX(0); 
-    }
-    to { 
-      opacity: 0; 
-      transform: translateX(-100%); 
-    }
-  }
-
-  @keyframes slideInRight {
-    from { 
-      opacity: 0; 
-      transform: translateX(100%); 
-    }
-    to { 
-      opacity: 1; 
-      transform: translateX(0); 
-    }
-  }
-
-  /* Animation Classes */
-  .animate-fadeIn {
-    animation: fadeIn var(--transition-slow) ease-in;
-  }
-
-  .animate-fadeInUp {
-    animation: fadeInUp 0.6s ease-out;
-  }
-
-  .animate-slideOutLeft {
-    animation: slideOutLeft var(--transition-slow) ease-in-out;
-  }
-
-  .animate-slideInRight {
-    animation: slideInRight var(--transition-slow) ease-in-out;
-  }
-
-  /* Quote Transitions */
-  .quote-transition {
-    transition: opacity var(--transition-slow) ease-in-out, 
-                transform var(--transition-slow) ease-in-out;
-  }
-
-  /* Theme Toggle Icon States */
   #theme-icon-light,
   #theme-icon-light-mobile {
     display: none;

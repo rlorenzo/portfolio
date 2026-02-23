@@ -8,7 +8,7 @@ code in this repository.
 This is a Jekyll-based personal portfolio website built with Tailwind CSS and
 deployed on GitHub Pages. The site features a component-based architecture with
 content managed through YAML data files, interactive elements, and performance
-optimizations including PurgeCSS for CSS optimization.
+optimizations including Tailwind v4's automatic unused CSS elimination.
 
 **This project follows Clean Code principles and all code must pass linting
 before committing.**
@@ -40,6 +40,14 @@ before committing.**
 - Individual fixers: `npm run fix:css`, `npm run fix:js`, `npm run fix:md`
 
 **IMPORTANT: All linting errors must be fixed before committing code.**
+
+### Testing
+
+- `npm test` - Run all Playwright tests
+- `npm run test:update` - Update visual regression baseline screenshots
+
+Visual regression tests auto-start the dev server via Playwright's `webServer`
+config. Baseline screenshots are in `tests/screenshots/baseline/`.
 
 ### Jekyll Commands
 
@@ -91,16 +99,16 @@ Modular components in `assets/js/modules/`:
 
 ### CSS Processing and Optimization
 
-- Source: `src/tailwind.css` with Tailwind directives and custom CSS variables
-- Output: `assets/css/tailwind.css` (processed by PostCSS)
-- PurgeCSS integration eliminates unused CSS in production builds
-- Configuration: `tailwind.config.js`, `postcss.config.js`
+- Source: `src/tailwind.css` with Tailwind v4 CSS-first configuration
+- Output: `assets/css/tailwind.css` (processed by PostCSS via `@tailwindcss/postcss`)
+- Tailwind v4 automatic content detection eliminates unused CSS
+- Configuration: CSS-based in `src/tailwind.css` (`@theme`, `@utility`, `@custom-variant`), `postcss.config.js`
 - CSS variables for theme switching (light/dark mode)
 
 ### Performance Optimizations
 
 - Deferred JavaScript loading to prevent render blocking
-- PurgeCSS removes unused Tailwind classes
+- Tailwind v4 automatically eliminates unused CSS
 - Event delegation and throttling for scroll handlers
 - Responsive image handling strategy
 - Mobile-first responsive design approach
@@ -206,7 +214,7 @@ adhere to these guidelines.
 - Use CSS custom properties for theming
 - Follow BEM-like naming convention
 - Maximum nesting depth: 3 levels
-- Use Tailwind's @layer directive appropriately
+- Use Tailwind v4's `@utility` and `@theme` directives appropriately
 - Mobile-first approach
 - No unused selectors or rules
 

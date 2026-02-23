@@ -31,7 +31,7 @@ jobs:
       - name: Run CSS linting
         run: npm run lint:css
 
-      - name: Run JavaScript linting
+      - name: Run Biome (JavaScript linting + formatting)
         run: npm run lint:js
 
       - name: Run Markdown linting

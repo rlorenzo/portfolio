@@ -35,8 +35,9 @@ function updateThemeIcons(theme) {
   const lightIconMobile = document.getElementById('theme-icon-light-mobile');
   const darkIconMobile = document.getElementById('theme-icon-dark-mobile');
 
-  const isDark = theme === 'dark' ||
-                (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const isDark =
+    theme === 'dark' ||
+    (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   // Update desktop icons if they exist
   if (lightIcon && darkIcon) {

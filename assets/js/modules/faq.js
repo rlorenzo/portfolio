@@ -12,11 +12,11 @@
 export function initFaqToggles(
   toggleSelector = '.faq-toggle',
   iconSelector = '.icon',
-  activeClass = 'rotate-180'
+  activeClass = 'rotate-180',
 ) {
   const toggleButtons = document.querySelectorAll(toggleSelector);
 
-  toggleButtons.forEach(button => {
+  toggleButtons.forEach((button) => {
     // Set up event listener for each FAQ toggle
     button.addEventListener('click', () => {
       // Get the associated content (next sibling by default)
