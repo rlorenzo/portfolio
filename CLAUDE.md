@@ -41,6 +41,14 @@ before committing.**
 
 **IMPORTANT: All linting errors must be fixed before committing code.**
 
+### Testing
+
+- `npm test` - Run all Playwright tests
+- `npm run test:visual` - Run visual regression tests only
+
+Visual regression tests require the dev server running (`npm run dev`).
+Baseline screenshots are in `tests/screenshots/baseline/`.
+
 ### Jekyll Commands
 
 - `bundle exec jekyll serve` - Start Jekyll development server

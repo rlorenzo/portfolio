@@ -103,6 +103,22 @@ npm run build:css      # Build Tailwind CSS
 npm run build:js       # Build JavaScript with Rollup
 ```
 
+### Testing
+
+```bash
+npm test               # Run all Playwright tests
+npm run test:visual    # Run visual regression tests only
+```
+
+Visual regression tests require the dev server running (`npm run dev`).
+Baseline screenshots are in `tests/screenshots/baseline/`.
+
+To update baselines after intentional visual changes:
+
+```bash
+npx playwright test --update-snapshots
+```
+
 ### Code Quality
 
 ```bash
@@ -245,6 +261,7 @@ Before committing changes:
 - [ ] Mobile responsive (if UI changes)
 - [ ] No console.log statements
 - [ ] No commented-out code
+- [ ] Visual regression tests pass (`npm run test:visual`, if UI changes)
 - [ ] Documentation updated (if significant changes)
 - [ ] Git hook will run linters automatically
 

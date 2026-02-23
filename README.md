@@ -84,8 +84,8 @@ Tailwind CSS, designed for easy deployment on GitHub Pages.
 5. Clone this repository:
 
    ```bash
-   git clone https://github.com/rlorenzo/rlorenzo.github.io.git
-   cd rlorenzo.github.io
+   git clone https://github.com/rlorenzo/portfolio.git
+   cd portfolio
    ```
 
 6. Install all dependencies (both npm and bundle) with a single command:
@@ -320,6 +320,27 @@ git commit --no-verify
 
 Linting checks also run automatically on push and pull requests via GitHub Actions
 workflows.
+
+## Visual Regression Testing
+
+This project uses [Playwright](https://playwright.dev/) for visual regression
+testing to verify that changes don't break the site's appearance.
+
+Tests require the dev server running in a separate terminal (`npm run dev`):
+
+```bash
+npm test               # Run all Playwright tests
+npm run test:visual    # Run visual regression tests only
+```
+
+Baseline screenshots are stored in `tests/screenshots/baseline/` and cover
+full page (light and dark mode) and individual sections.
+
+To update baselines after intentional visual changes:
+
+```bash
+npx playwright test --update-snapshots
+```
 
 ## Development Troubleshooting
 

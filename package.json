@@ -21,7 +21,8 @@
     "fix:js": "eslint './assets/js/**/*.js' --fix",
     "fix:md": "markdownlint '**/*.md' --ignore node_modules --fix",
     "fix": "npm run fix:css && npm run fix:js && npm run fix:md",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "playwright test",
+    "test:visual": "playwright test tests/visual-regression.spec.js"
   },
   "keywords": [
     "portfolio",
@@ -40,6 +41,7 @@
     "*.md": "markdownlint --fix"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
     "autoprefixer": "^10.4.16",

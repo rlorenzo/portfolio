@@ -28,5 +28,16 @@ module.exports = {
       'error',
       'always'
     ]
-  }
+  },
+  'overrides': [
+    {
+      'files': ['.eslintrc.js', 'playwright.config.js', 'tests/**/*.js'],
+      'env': {
+        'node': true
+      },
+      'parserOptions': {
+        'sourceType': 'script'
+      }
+    }
+  ]
 };
