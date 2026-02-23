@@ -326,11 +326,10 @@ workflows.
 This project uses [Playwright](https://playwright.dev/) for visual regression
 testing to verify that changes don't break the site's appearance.
 
-Tests require the dev server running in a separate terminal (`npm run dev`):
+Tests automatically start the dev server via Playwright's `webServer` configuration:
 
 ```bash
-npm test               # Run all Playwright tests
-npm run test:visual    # Run visual regression tests only
+npm test               # Run all Playwright tests (including visual regression)
 ```
 
 Baseline screenshots are stored in `tests/screenshots/baseline/` and cover

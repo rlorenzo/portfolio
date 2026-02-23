@@ -106,11 +106,10 @@ npm run build:js       # Build JavaScript with Rollup
 ### Testing
 
 ```bash
-npm test               # Run all Playwright tests
-npm run test:visual    # Run visual regression tests only
+npm test               # Run all Playwright tests (including visual regression)
 ```
 
-Visual regression tests require the dev server running (`npm run dev`).
+Visual regression tests automatically start the dev server via Playwright's `webServer` configuration.
 Baseline screenshots are in `tests/screenshots/baseline/`.
 
 To update baselines after intentional visual changes:
@@ -261,7 +260,7 @@ Before committing changes:
 - [ ] Mobile responsive (if UI changes)
 - [ ] No console.log statements
 - [ ] No commented-out code
-- [ ] Visual regression tests pass (`npm run test:visual`, if UI changes)
+- [ ] Visual regression tests pass (`npm test`, if UI changes)
 - [ ] Documentation updated (if significant changes)
 - [ ] Git hook will run linters automatically
 
