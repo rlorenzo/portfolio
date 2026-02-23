@@ -1,32 +1,28 @@
-import { initTheme, applyTheme, getThemePreference } from './modules/theme.js';
-import { 
-  initStickyHeader, 
-  initBackToTopButton, 
-  initMobileMenu, 
-  initScrollSpy 
-} from './modules/navigation.js';
-import { 
-  initAOS, 
-  setupEntranceAnimations, 
-  animateSkillBars 
-} from './modules/animations.js';
-import { throttle } from './modules/utils.js';
+import { animateSkillBars, initAOS, setupEntranceAnimations } from './modules/animations.js';
 import { initFaqToggles } from './modules/faq.js';
+import {
+  initBackToTopButton,
+  initMobileMenu,
+  initScrollSpy,
+  initStickyHeader,
+} from './modules/navigation.js';
 import { rotateQuotes } from './modules/quotes.js';
 import { initSmoothScrolling } from './modules/smoothscroll.js';
+import { applyTheme, getThemePreference, initTheme } from './modules/theme.js';
+import { throttle } from './modules/utils.js';
 
 document.addEventListener('DOMContentLoaded', initializeApp);
 
 function initializeApp() {
   const elements = cacheElementsById([
     'site-header',
-    'back-to-top', 
+    'back-to-top',
     'mobile-menu-button',
     'mobile-menu',
     'theme-toggle',
-    'theme-toggle-mobile'
+    'theme-toggle-mobile',
   ]);
-  
+
   initTheme();
   setupThemeToggles(elements);
   setupNavigation(elements);
@@ -49,7 +45,7 @@ function setupThemeToggles({ themeToggle, themeToggleMobile }) {
     const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
     applyTheme(nextTheme);
   };
-  
+
   themeToggle?.addEventListener('click', handleThemeToggle);
   themeToggleMobile?.addEventListener('click', handleThemeToggle);
 }
@@ -67,9 +63,9 @@ function setupAnimations() {
     duration: 800,
     easing: 'ease-in-out',
     once: true,
-    offset: 50
+    offset: 50,
   });
-  
+
   animateSkillBars();
   setupEntranceAnimations('.animate-on-scroll');
 }
@@ -85,17 +81,17 @@ function setupResponsiveBehavior({ mobileMenu }) {
       mobileMenu?.classList.add('hidden');
     }
   }, 100);
-  
+
   window.addEventListener('resize', handleResize);
 }
 
 function setupPrintMode() {
   const printModeClass = 'print-mode';
-  
+
   window.addEventListener('beforeprint', () => {
     document.documentElement.classList.add(printModeClass);
   });
-  
+
   window.addEventListener('afterprint', () => {
     document.documentElement.classList.remove(printModeClass);
   });

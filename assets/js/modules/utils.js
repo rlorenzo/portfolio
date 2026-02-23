@@ -11,7 +11,7 @@
  */
 export function debounce(func, wait = 100) {
   let timeout;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), wait);
   };
@@ -25,11 +25,11 @@ export function debounce(func, wait = 100) {
  */
 export function throttle(func, limit = 100) {
   let inThrottle;
-  return function(...args) {
+  return function (...args) {
     if (!inThrottle) {
       func.apply(this, args);
       inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
+      setTimeout(() => (inThrottle = false), limit);
     }
   };
 }
@@ -42,13 +42,13 @@ export function throttle(func, limit = 100) {
  */
 export function isInViewport(element, offset = 0) {
   if (!element) return false;
-  
+
   const rect = element.getBoundingClientRect();
   return (
-    rect.top <= (window.innerHeight + offset) && 
-    rect.bottom >= (0 - offset) &&
-    rect.left <= (window.innerWidth + offset) && 
-    rect.right >= (0 - offset)
+    rect.top <= window.innerHeight + offset &&
+    rect.bottom >= 0 - offset &&
+    rect.left <= window.innerWidth + offset &&
+    rect.right >= 0 - offset
   );
 }
 
@@ -59,7 +59,7 @@ export function isInViewport(element, offset = 0) {
  */
 export function getCurrentBreakpoint() {
   const width = window.innerWidth;
-  
+
   if (width < 640) return 'xs';
   if (width < 768) return 'sm';
   if (width < 1024) return 'md';
@@ -76,13 +76,13 @@ export function getCurrentBreakpoint() {
  */
 export function safeEventListener(element, event, callback) {
   if (!element) return;
-  
+
   // Create the actual event handler
   const handler = (e) => callback(e);
-  
+
   // Add the event listener
   element.addEventListener(event, handler);
-  
+
   // Set up automatic cleanup using MutationObserver
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -96,7 +96,7 @@ export function safeEventListener(element, event, callback) {
       }
     });
   });
-  
+
   // Start observing document for element removal
   observer.observe(document.body, { childList: true, subtree: true });
 }
@@ -106,7 +106,5 @@ export function safeEventListener(element, event, callback) {
  * @returns {boolean} True if device supports touch
  */
 export function isTouchDevice() {
-  return ('ontouchstart' in window) || 
-         (navigator.maxTouchPoints > 0) || 
-         (navigator.msMaxTouchPoints > 0);
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 }

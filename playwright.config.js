@@ -3,6 +3,7 @@ const { defineConfig, devices } = require('@playwright/test');
 module.exports = defineConfig({
   testDir: './tests',
   outputDir: './tests/screenshots/results',
+  reporter: [['html', { open: 'on-failure' }]],
   snapshotPathTemplate: '{testDir}/screenshots/baseline/{projectName}/{arg}{ext}',
   fullyParallel: true,
   timeout: 60000,

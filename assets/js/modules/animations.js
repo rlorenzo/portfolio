@@ -9,15 +9,15 @@
  */
 export function initAOS(options = {}) {
   if (typeof AOS === 'undefined') return;
-  
+
   const defaultOptions = {
     duration: 800,
     easing: 'ease-in-out',
     once: true,
-    offset: 50
+    offset: 50,
   };
-  
-  AOS.init({...defaultOptions, ...options});
+
+  AOS.init({ ...defaultOptions, ...options });
 }
 
 /**
@@ -28,23 +28,26 @@ export function initAOS(options = {}) {
  */
 export function setupEntranceAnimations(selector, animationClass = 'animate-fadeIn') {
   if (typeof AOS !== 'undefined') return; // Skip if AOS is handling animations
-  
+
   const elements = document.querySelectorAll(selector);
   if (!elements.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add(animationClass);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-  
-  elements.forEach(element => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(animationClass);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    },
+  );
+
+  elements.forEach((element) => {
     observer.observe(element);
   });
 }
@@ -54,27 +57,27 @@ export function setupEntranceAnimations(selector, animationClass = 'animate-fade
  * @param {string} selector CSS selector for skill bar elements
  * @param {string} valueAttribute Data attribute containing skill percentage
  */
-export function animateSkillBars(
-  selector = '.skill-level', 
-  valueAttribute = 'data-value'
-) {
+export function animateSkillBars(selector = '.skill-level', valueAttribute = 'data-value') {
   const skillBars = document.querySelectorAll(selector);
   if (!skillBars.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const value = entry.target.getAttribute(valueAttribute) || '0';
-        entry.target.style.width = `${value}%`;
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-  });
-  
-  skillBars.forEach(bar => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const value = entry.target.getAttribute(valueAttribute) || '0';
+          entry.target.style.width = `${value}%`;
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px',
+    },
+  );
+
+  skillBars.forEach((bar) => {
     observer.observe(bar);
   });
 }
@@ -90,11 +93,11 @@ export function setupParallax(selector = '.parallax', speed = 0.5) {
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
-    
-    elements.forEach(element => {
+
+    elements.forEach((element) => {
       const topOffset = element.getBoundingClientRect().top + scrollY;
       const yPos = -(scrollY - topOffset) * speed;
-      
+
       element.style.transform = `translateY(${yPos}px)`;
     });
   });

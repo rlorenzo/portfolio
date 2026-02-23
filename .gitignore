@@ -29,6 +29,7 @@ node_modules/
 
 # Playwright test results
 tests/screenshots/results/
+playwright-report/
 
 # Mac system files
 *.DS_Store

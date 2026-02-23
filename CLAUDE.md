@@ -44,10 +44,10 @@ before committing.**
 ### Testing
 
 - `npm test` - Run all Playwright tests
-- `npm run test:visual` - Run visual regression tests only
+- `npm run test:update` - Update visual regression baseline screenshots
 
-Visual regression tests require the dev server running (`npm run dev`).
-Baseline screenshots are in `tests/screenshots/baseline/`.
+Visual regression tests auto-start the dev server via Playwright's `webServer`
+config. Baseline screenshots are in `tests/screenshots/baseline/`.
 
 ### Jekyll Commands
 

@@ -26,7 +26,7 @@ export function initStickyHeader(header) {
  */
 export function initBackToTopButton(backToTopBtn, scrollThreshold = 300) {
   if (!backToTopBtn) return;
-  
+
   // Handle visibility based on scroll position
   window.addEventListener('scroll', () => {
     if (window.scrollY > scrollThreshold) {
@@ -37,12 +37,12 @@ export function initBackToTopButton(backToTopBtn, scrollThreshold = 300) {
       backToTopBtn.classList.remove('opacity-100', 'visible');
     }
   });
-  
+
   // Handle click event
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   });
 }
@@ -54,15 +54,15 @@ export function initBackToTopButton(backToTopBtn, scrollThreshold = 300) {
  */
 export function initMobileMenu(menuButton, mobileMenu) {
   if (!menuButton || !mobileMenu) return;
-  
+
   menuButton.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
-    
+
     // Toggle aria-expanded for accessibility
     const isExpanded = mobileMenu.classList.contains('hidden') ? 'false' : 'true';
     menuButton.setAttribute('aria-expanded', isExpanded);
   });
-  
+
   // Close menu when clicking outside
   document.addEventListener('click', (event) => {
     if (!mobileMenu.contains(event.target) && !menuButton.contains(event.target)) {
@@ -80,19 +80,21 @@ export function initMobileMenu(menuButton, mobileMenu) {
 export function initScrollSpy(navItemSelector = '.nav-link', activeClass = 'active') {
   const navLinks = document.querySelectorAll(navItemSelector);
   if (!navLinks.length) return;
-  
+
   // Get all sections with IDs that match nav links
-  const sections = Array.from(navLinks).map(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('#')) {
-      return document.querySelector(href);
-    }
-    return null;
-  }).filter(Boolean);
-  
+  const sections = Array.from(navLinks)
+    .map((link) => {
+      const href = link.getAttribute('href');
+      if (href?.startsWith('#')) {
+        return document.querySelector(href);
+      }
+      return null;
+    })
+    .filter(Boolean);
+
   window.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY + 100; // Offset for header height
-    
+
     // Find the current section
     let currentSection = sections[0];
     for (const section of sections) {
@@ -101,10 +103,10 @@ export function initScrollSpy(navItemSelector = '.nav-link', activeClass = 'acti
         currentSection = section;
       }
     }
-    
+
     // Update active class on nav items
     if (currentSection) {
-      navLinks.forEach(navLink => {
+      navLinks.forEach((navLink) => {
         navLink.classList.remove(activeClass);
         if (navLink.getAttribute('href') === `#${currentSection.id}`) {
           navLink.classList.add(activeClass);
