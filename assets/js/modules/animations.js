@@ -67,6 +67,16 @@ export function animateCounters(selector = '.counter') {
           const el = entry.target;
           const target = parseInt(el.getAttribute('data-target'), 10);
           const useComma = el.getAttribute('data-format') === 'comma';
+          const prefersReducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+          ).matches;
+
+          if (prefersReducedMotion) {
+            el.textContent = useComma ? target.toLocaleString() : target;
+            observer.unobserve(el);
+            return;
+          }
+
           const duration = 2000;
           let startTime = null;
 

@@ -625,17 +625,26 @@
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
-  .animate-fadeIn {
-    animation: fadeIn var(--transition-slow) ease-in;
-  }
   .animate-float {
     animation: gentleFloat 3s ease-in-out infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
   }
   .animate-glow {
     animation: glowRing 3s ease-in-out infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
   }
   .animate-scroll-cue {
     animation: scrollCue 2s ease-in-out infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+  .animate-fadeIn {
+    animation: fadeIn var(--transition-slow) ease-in;
   }
   .resize {
     resize: both;

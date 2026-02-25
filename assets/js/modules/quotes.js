@@ -44,24 +44,21 @@ export function rotateQuotes(quoteSelector = '.quote', intervalMs = 10000) {
   });
   updateDots(currentIndex);
 
-  // Set up interval to rotate quotes
-  const intervalId = setInterval(() => {
+  function showQuote(nextIndex) {
+    if (nextIndex === currentIndex) return;
+
     const currentQuote = quotes[currentIndex];
 
-    // Slide current quote out to the left
     currentQuote.style.opacity = '0';
     currentQuote.style.transform = 'translateX(-100%)';
 
-    // After slide out completes, position it off screen and show next
     setTimeout(() => {
       currentQuote.style.position = 'absolute';
       currentQuote.setAttribute('aria-hidden', 'true');
 
-      // Move to next quote
-      currentIndex = (currentIndex + 1) % quotes.length;
+      currentIndex = nextIndex;
       const nextQuote = quotes[currentIndex];
 
-      // Prepare next quote to slide in from the right
       nextQuote.style.position = 'relative';
       nextQuote.style.transform = 'translateX(100%)';
       nextQuote.style.opacity = '0';
@@ -69,13 +66,28 @@ export function rotateQuotes(quoteSelector = '.quote', intervalMs = 10000) {
 
       updateDots(currentIndex);
 
-      // Trigger slide in from right after a small delay
       requestAnimationFrame(() => {
         nextQuote.style.opacity = '1';
         nextQuote.style.transform = 'translateX(0)';
       });
-    }, 500); // Match the CSS transition duration
+    }, 500);
+  }
+
+  // Set up interval to rotate quotes
+  let intervalId = setInterval(() => {
+    showQuote((currentIndex + 1) % quotes.length);
   }, intervalMs);
+
+  // Allow clicking dots to jump to a specific quote
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      clearInterval(intervalId);
+      showQuote(index);
+      intervalId = setInterval(() => {
+        showQuote((currentIndex + 1) % quotes.length);
+      }, intervalMs);
+    });
+  });
 
   return intervalId;
 }
