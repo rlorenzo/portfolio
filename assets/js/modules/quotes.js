@@ -1,35 +1,7 @@
 /**
  * Quotes Module
- * Handles random quote selection and display
+ * Handles quote rotation and dot indicator display
  */
-
-/**
- * Display a random quote from a collection
- * @param {string} quoteSelector CSS selector for quote elements
- * @param {string} animationClass CSS class to apply for animation
- */
-export function displayRandomQuote(quoteSelector = '.quote', animationClass = 'animate-fadeIn') {
-  // Get all available quotes
-  const quotes = document.querySelectorAll(quoteSelector);
-  if (!quotes.length) return;
-
-  // Hide all quotes initially
-  quotes.forEach((quote) => {
-    quote.classList.add('hidden');
-    quote.setAttribute('aria-hidden', 'true');
-  });
-
-  // Select a random quote
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const selectedQuote = quotes[randomIndex];
-
-  // Display the selected quote with animation
-  selectedQuote.classList.remove('hidden');
-  selectedQuote.classList.add(animationClass);
-  selectedQuote.setAttribute('aria-hidden', 'false');
-
-  return randomIndex; // Return the selected index for potential reference
-}
 
 /**
  * Rotate through quotes at a specified interval
@@ -40,6 +12,20 @@ export function displayRandomQuote(quoteSelector = '.quote', animationClass = 'a
 export function rotateQuotes(quoteSelector = '.quote', intervalMs = 10000) {
   const quotes = document.querySelectorAll(quoteSelector);
   if (!quotes.length) return null;
+
+  const dots = document.querySelectorAll('.quote-dot');
+
+  function updateDots(activeIndex) {
+    dots.forEach((dot, i) => {
+      if (i === activeIndex) {
+        dot.classList.remove('bg-gray-300', 'dark:bg-gray-600');
+        dot.classList.add('bg-primary');
+      } else {
+        dot.classList.remove('bg-primary');
+        dot.classList.add('bg-gray-300', 'dark:bg-gray-600');
+      }
+    });
+  }
 
   // Initialize: position all quotes and show a random one
   let currentIndex = Math.floor(Math.random() * quotes.length);
@@ -56,6 +42,7 @@ export function rotateQuotes(quoteSelector = '.quote', intervalMs = 10000) {
       quote.setAttribute('aria-hidden', 'true');
     }
   });
+  updateDots(currentIndex);
 
   // Set up interval to rotate quotes
   const intervalId = setInterval(() => {
@@ -79,6 +66,8 @@ export function rotateQuotes(quoteSelector = '.quote', intervalMs = 10000) {
       nextQuote.style.transform = 'translateX(100%)';
       nextQuote.style.opacity = '0';
       nextQuote.setAttribute('aria-hidden', 'false');
+
+      updateDots(currentIndex);
 
       // Trigger slide in from right after a small delay
       requestAnimationFrame(() => {

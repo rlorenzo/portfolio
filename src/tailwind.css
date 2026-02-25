@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@source inline("text-primary text-secondary text-accent bg-primary bg-secondary bg-accent bg-bg-primary bg-bg-secondary text-text-primary text-text-secondary border-border-color animate-fadeIn quote-transition nav-link btn btn-primary btn-outline card section theme-switch");
+@source inline("text-primary text-secondary text-accent bg-primary bg-secondary bg-accent bg-bg-primary bg-bg-secondary text-text-primary text-text-secondary border-border-color animate-fadeIn animate-glow animate-float animate-scroll-cue quote-transition nav-link btn btn-primary btn-outline btn-secondary card card-hover section section-pattern skill-chip timeline-node timeline-card contribution-badge theme-switch");
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -200,6 +200,93 @@
   animation: fadeIn var(--transition-slow) ease-in;
 }
 
+@utility animate-glow {
+  animation: glowRing 3s ease-in-out infinite;
+}
+
+@utility animate-float {
+  animation: gentleFloat 3s ease-in-out infinite;
+}
+
+@utility animate-scroll-cue {
+  animation: scrollCue 2s ease-in-out infinite;
+}
+
+/* Button Secondary - Frosted Glass */
+@utility btn-secondary {
+  @apply bg-white/20 text-white border border-white/30 backdrop-blur-sm;
+  transition: all var(--transition-normal);
+
+  &:hover {
+    @apply bg-white/30;
+  }
+}
+
+/* Card Hover Effect */
+@utility card-hover {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Section Pattern - Dot Grid Overlay */
+@utility section-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* Skill Chip - Rounded Pill Tag */
+@utility skill-chip {
+  @apply inline-block px-3 py-1.5 text-sm font-medium rounded-full border;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: rgba(59, 130, 246, 0.08);
+  transition: all var(--transition-normal);
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: rgba(59, 130, 246, 0.15);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.15);
+  }
+}
+
+/* Timeline Components */
+@utility timeline-node {
+  @apply w-4 h-4 rounded-full border-4;
+  border-color: var(--primary-color);
+  background-color: var(--bg-primary);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  transition: all var(--transition-normal);
+
+  &:hover {
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.2);
+  }
+}
+
+@utility timeline-card {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Contribution Badge */
+@utility contribution-badge {
+  @apply inline-block px-2.5 py-0.5 text-xs font-medium rounded-full mb-3;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--secondary-color);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
 /* Quote Transitions */
 @utility quote-transition {
   transition:
@@ -211,6 +298,21 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes glowRing {
+  0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3), 0 0 30px rgba(59, 130, 246, 0.1); }
+  50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.5), 0 0 50px rgba(59, 130, 246, 0.2); }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes scrollCue {
+  0%, 100% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(6px); opacity: 1; }
 }
 
 /* Theme Toggle Icon States */

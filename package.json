@@ -14,7 +14,7 @@
     "lint": "npm run lint:css && npm run lint:js && npm run lint:md",
     "lint:all": "npm run build && npm run lint && npm run lint:html",
     "lint:css": "stylelint 'src/**/*.{css,scss}' 'assets/**/*.{css,scss}' --allow-empty-input",
-    "lint:html": "htmlhint '_site/**/*.html'",
+    "lint:html": "htmlhint '_site/**/*.html' --ignore '**/playwright-report/**'",
     "lint:js": "biome check .",
     "lint:md": "markdownlint '**/*.md'",
     "prepare": "husky install",

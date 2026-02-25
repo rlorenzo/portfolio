@@ -6,6 +6,7 @@
     - Moodle
     - Zoom API
   github_link: https://moodle.org/plugins/mod_zoom
+  type: project
 
 - name: Moodle
   description: I contributed to the Moodle open-source learning management system. I was also recognized as a Particularly Helpful Moodler, give to the top 1% of forum contributors.
@@ -15,6 +16,43 @@
     - Git
     - JIRA
   github_link: https://github.com/moodle/moodle/commits?author=rlorenzo
+  type: project
+
+- name: Free PST Viewer
+  description: A free, native macOS application for browsing and viewing Microsoft Outlook data files. Built with Swift and SwiftUI.
+  tech_stack:
+    - Swift
+    - SwiftUI
+    - macOS
+  github_link: https://github.com/rlorenzo/Free-PST-Viewer
+  type: project
+
+- name: AI Coding Setup
+  description: A set of prompts, skills, and scripts to aid in utilizing AI coding agents in development workflows.
+  tech_stack:
+    - Shell
+    - AI Agents
+    - Developer Tools
+  github_link: https://github.com/rlorenzo/ai-coding-setup
+  type: project
+
+- name: macOS Compress Screenshots
+  description: A shell utility that automatically compresses screenshots taken by the macOS screenshot tool, reducing file sizes while preserving quality.
+  tech_stack:
+    - Shell
+    - macOS
+    - Automation
+  github_link: https://github.com/rlorenzo/macos-compress-screenshots
+  type: project
+
+- name: Mega Diff
+  description: A Python tool for performing deep diffs between development and production pages to identify rendering differences and catch deployment issues.
+  tech_stack:
+    - Python
+    - QA
+    - Web Testing
+  github_link: https://github.com/rlorenzo/mega-diff
+  type: project
 
 - name: Moodle AWS Disaster Recovery
   description: Enhanced an AWS Moodle template to provide a disaster recovery solution for CCLE (UCLA's LMS) to ensure business continuity.
@@ -25,3 +63,49 @@
     - RDS
     - EFS
   github_link: https://github.com/rlorenzo/aws-refarch-moodle
+  type: project
+
+- name: Internet Archive for Apple TV
+  description: Revamped an open-source Apple TV app for browsing the Internet Archive, modernizing the codebase and preparing it for public release on the App Store.
+  tech_stack:
+    - Swift
+    - tvOS
+    - App Store
+  github_link: https://github.com/rlorenzo/internet-archive-apple-tv
+  type: contribution
+
+- name: PstReader (Swift Library)
+  description: Added memory-mapped file I/O and convenience API to the Swift PST file reading library. Improved message loading and sender display fallback, enabling the Free PST Viewer project.
+  tech_stack:
+    - Swift
+    - File I/O
+    - MAPI
+  github_link: https://github.com/hughbe/PstReader
+  type: contribution
+
+- name: TvOSMoreButton
+  description: Fixed Swift Package Manager support (v1.4.2) for a tvOS library that provides a '... More' button, enabling modern dependency management.
+  tech_stack:
+    - Swift
+    - tvOS
+    - SPM
+  github_link: https://github.com/cgoldsby/TvOSMoreButton
+  type: contribution
+
+- name: TvOSTextViewer
+  description: Added Swift Package Manager support to a tvOS library for presenting scrollable text content, replacing CocoaPods dependency.
+  tech_stack:
+    - Swift
+    - tvOS
+    - SPM
+  github_link: https://github.com/dcordero/TvOSTextViewer
+  type: contribution
+
+- name: stylelint-a11y
+  description: Fixed self-referencing plugin path for stylelint 17 ESM compatibility, unblocking modern stylelint adoption for the accessibility plugin.
+  tech_stack:
+    - JavaScript
+    - ESM
+    - Stylelint
+  github_link: https://github.com/double-great/stylelint-a11y
+  type: contribution
