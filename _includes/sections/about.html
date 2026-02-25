@@ -1,9 +1,7 @@
 <section id="about" class="py-20 bg-bg-primary dark:bg-bg-secondary relative section">
-  <!-- Background pattern -->
   <div class="section-pattern"></div>
 
   <div class="container mx-auto px-4 relative z-10">
-    <!-- Section heading with animation -->
     <div class="text-center mb-12" data-aos="fade-up">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block text-gray-900 dark:text-white">
         About Me
@@ -12,69 +10,105 @@
       <p class="text-gray-600 dark:text-gray-400 text-lg">Get to know more about me and what drives my passion</p>
     </div>
 
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+      <div class="text-center p-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="text-primary mb-2"><i class="fas fa-calendar-alt text-2xl"></i></div>
+        <div class="text-3xl font-bold text-gray-900 dark:text-white">
+          <span class="counter" data-target="20">0</span>+
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Experience</p>
+      </div>
+
+      <div class="text-center p-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="text-primary mb-2"><i class="fas fa-university text-2xl"></i></div>
+        <div class="text-3xl font-bold text-gray-900 dark:text-white">
+          <span class="counter" data-target="10000" data-format="comma">0</span>+
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Institutions Supported</p>
+      </div>
+
+      <div class="text-center p-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="text-primary mb-2"><i class="fas fa-trophy text-2xl"></i></div>
+        <div class="text-3xl font-bold text-gray-900 dark:text-white">
+          Top <span class="counter" data-target="1">0</span>%
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Moodle Contributor</p>
+      </div>
+
+      <div class="text-center p-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-primary mb-2"><i class="fas fa-users text-2xl"></i></div>
+        <div class="text-3xl font-bold text-gray-900 dark:text-white">
+          <span class="counter" data-target="30000" data-format="comma">0</span>+
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Users Supported</p>
+      </div>
+    </div>
+
     <div class="md:flex items-center max-w-6xl mx-auto">
-      <!-- Left column with Skills -->
       <div class="md:w-2/5 mb-10 md:mb-0 p-6" data-aos="fade-right" data-aos-delay="100">
         <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">My Skills</h3>
 
-        <!-- Skill bars -->
-        <div class="space-y-4">
+        <div class="space-y-5">
           <div>
-            <div class="flex justify-between mb-1">
-              <span class="font-medium text-gray-700 dark:text-gray-300">System Architecture</span>
-              <span class="text-sm text-gray-500 dark:text-gray-400">95%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 95%"></div>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Languages</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-chip">PHP</span>
+              <span class="skill-chip">JavaScript</span>
+              <span class="skill-chip">TypeScript</span>
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">SQL</span>
+              <span class="skill-chip">HTML/CSS</span>
             </div>
           </div>
 
           <div>
-            <div class="flex justify-between mb-1">
-              <span class="font-medium text-gray-700 dark:text-gray-300">Team Leadership</span>
-              <span class="text-sm text-gray-500 dark:text-gray-400">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 90%"></div>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between mb-1">
-              <span class="font-medium text-gray-700 dark:text-gray-300">Code Review</span>
-              <span class="text-sm text-gray-500 dark:text-gray-400">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 85%"></div>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Frameworks & Tools</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-chip">React</span>
+              <span class="skill-chip">SvelteKit</span>
+              <span class="skill-chip">VueJS</span>
+              <span class="skill-chip">Moodle</span>
+              <span class="skill-chip">WordPress</span>
+              <span class="skill-chip">Tailwind CSS</span>
             </div>
           </div>
 
           <div>
-            <div class="flex justify-between mb-1">
-              <span class="font-medium text-gray-700 dark:text-gray-300">Project Management</span>
-              <span class="text-sm text-gray-500 dark:text-gray-400">88%</span>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Cloud & DevOps</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-chip">AWS</span>
+              <span class="skill-chip">CloudFormation</span>
+              <span class="skill-chip">Docker</span>
+              <span class="skill-chip">Databricks</span>
+              <span class="skill-chip">CI/CD</span>
             </div>
-            <div class="skill-bar">
-              <div class="skill-level" style="width: 88%"></div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Leadership</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-chip">Team Building</span>
+              <span class="skill-chip">Mentoring</span>
+              <span class="skill-chip">Code Review</span>
+              <span class="skill-chip">System Architecture</span>
+              <span class="skill-chip">Agile</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Right column with Info -->
       <div class="md:w-3/5 md:pl-12" data-aos="fade-left" data-aos-delay="200">
         <div class="p-1 bg-linear-to-r from-primary to-accent rounded-lg shadow-lg mb-8">
           <div class="bg-white dark:bg-gray-800 p-6 rounded-md">
             <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-              I’m a seasoned Lead Developer with a proven track record of building high-performing engineering teams and delivering impactful software solutions across a range of industries. From leading complex system migrations to designing scalable platforms and streamlining business workflows, I bring a collaborative, results-driven approach to every project. I’m passionate about solving real-world problems, mentoring teams, and driving technical excellence.
+              I'm a seasoned Lead Developer with a proven track record of building high-performing engineering teams and delivering impactful software solutions across a range of industries. From leading complex system migrations to designing scalable platforms and streamlining business workflows, I bring a collaborative, results-driven approach to every project. I'm passionate about solving real-world problems, mentoring teams, and driving technical excellence.
             </p>
             <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              Ready to take your engineering initiatives to the next level? <strong>Let’s connect and build something great together.</strong>
+              Ready to take your engineering initiatives to the next level? <strong>Let's connect and build something great together.</strong>
             </p>
           </div>
         </div>
 
-        <!-- Key facts with icons -->
         <div class="grid grid-cols-2 gap-6 mb-8">
           <div class="flex items-start">
             <div class="text-primary mr-3 mt-1"><i class="fas fa-graduation-cap text-xl"></i></div>
@@ -109,7 +143,6 @@
           </div>
         </div>
 
-        <!-- Resume download button -->
         <div class="text-center md:text-left">
           <a href="{{ '/assets/Rex Lorenzo - Resume.pdf' | relative_url }}" class="btn btn-primary inline-flex items-center" target="_blank">
             <i class="fas fa-file-download mr-2"></i> Download Resume
@@ -117,5 +150,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none" aria-hidden="true">
+    <svg class="relative block w-full h-12 md:h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86C130.83,141.14,59.71,118.11,0,95.8V120H1200V3c-67.81,23.12-144.29,15.51-214.34-3Z" class="fill-gray-50 dark:fill-gray-900"></path>
+    </svg>
   </div>
 </section>

@@ -1,4 +1,5 @@
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-lg bg-white dark:bg-gray-900">
+  <a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded">Skip to content</a>
   <div class="container mx-auto px-4 py-4">
     <nav class="flex justify-between items-center">
       <!-- Logo/Brand -->
@@ -25,7 +26,7 @@
         </button>
 
         <!-- Contact Button -->
-        <a href="#contact" class="btn btn-primary ml-2">
+        <a href="#contact" class="btn btn-primary ml-2 whitespace-nowrap">
           <i class="fas fa-envelope mr-1"></i> Contact Me
         </a>
       </div>
@@ -38,7 +39,7 @@
           <i id="theme-icon-dark-mobile" class="fas fa-moon"></i>
         </button>
 
-        <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-hidden hover:text-primary dark:hover:text-primary">
+        <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-hidden hover:text-primary dark:hover:text-primary" aria-label="Open menu" aria-expanded="false">
           <i class="fas fa-bars text-xl"></i>
         </button>
       </div>
@@ -60,6 +61,6 @@
 </header>
 
 <!-- Back to top button -->
-<button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full opacity-0 invisible transition-all duration-300 focus:outline-hidden z-50 bg-primary hover:bg-accent">
+<button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full opacity-0 invisible transition-all duration-300 focus:outline-hidden z-50 bg-primary hover:bg-accent" aria-label="Back to top">
   <i class="fas fa-arrow-up text-white"></i>
 </button>

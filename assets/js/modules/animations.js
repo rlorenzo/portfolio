@@ -53,52 +53,59 @@ export function setupEntranceAnimations(selector, animationClass = 'animate-fade
 }
 
 /**
- * Animate skill bars by setting their width when visible
- * @param {string} selector CSS selector for skill bar elements
- * @param {string} valueAttribute Data attribute containing skill percentage
+ * Animate counter elements by counting up to their target value when visible
+ * @param {string} selector CSS selector for counter elements with data-target attribute
  */
-export function animateSkillBars(selector = '.skill-level', valueAttribute = 'data-value') {
-  const skillBars = document.querySelectorAll(selector);
-  if (!skillBars.length) return;
+export function animateCounters(selector = '.counter') {
+  const counters = document.querySelectorAll(selector);
+  if (!counters.length) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const value = entry.target.getAttribute(valueAttribute) || '0';
-          entry.target.style.width = `${value}%`;
-          observer.unobserve(entry.target);
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10);
+          const useComma = el.getAttribute('data-format') === 'comma';
+          const prefersReducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+          ).matches;
+
+          if (prefersReducedMotion) {
+            el.textContent = useComma ? target.toLocaleString() : target;
+            observer.unobserve(el);
+            return;
+          }
+
+          const duration = 2000;
+          let startTime = null;
+
+          const step = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const eased = 1 - (1 - progress) ** 3;
+            const current = Math.floor(eased * target);
+
+            el.textContent = useComma ? current.toLocaleString() : current;
+
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              el.textContent = useComma ? target.toLocaleString() : target;
+            }
+          };
+
+          requestAnimationFrame(step);
+          observer.unobserve(el);
         }
       });
     },
     {
       threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px',
     },
   );
 
-  skillBars.forEach((bar) => {
-    observer.observe(bar);
-  });
-}
-
-/**
- * Set up parallax scroll effect for elements
- * @param {string} selector CSS selector for elements to apply parallax effect
- * @param {number} speed Parallax speed factor (1 = normal, <1 = slower, >1 = faster)
- */
-export function setupParallax(selector = '.parallax', speed = 0.5) {
-  const elements = document.querySelectorAll(selector);
-  if (!elements.length) return;
-
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-
-    elements.forEach((element) => {
-      const topOffset = element.getBoundingClientRect().top + scrollY;
-      const yPos = -(scrollY - topOffset) * speed;
-
-      element.style.transform = `translateY(${yPos}px)`;
-    });
+  counters.forEach((counter) => {
+    observer.observe(counter);
   });
 }

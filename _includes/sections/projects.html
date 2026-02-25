@@ -14,12 +14,12 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {% for project in site.data.projects %}
-      <div class="card bg-white dark:bg-gray-800 overflow-hidden" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
+      <div class="card card-hover bg-white dark:bg-gray-800 overflow-hidden{% if forloop.index > 6 %} project-hidden hidden{% endif %}" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
         {% if project.image %}
         <div class="aspect-w-16 relative">
-          <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="w-full h-48 object-cover">
+          <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="w-full h-48 object-cover" loading="lazy" width="400" height="192">
           {% if project.github_link %}
-          <a href="{{ project.github_link }}" class="absolute top-4 right-4 bg-white/80 p-2 rounded-full text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+          <a href="{{ project.github_link }}" class="absolute top-4 right-4 bg-white/80 p-2 rounded-full text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" aria-label="View {{ project.name }} on GitHub">
             <i class="fab fa-github"></i>
           </a>
           {% endif %}
@@ -33,6 +33,12 @@
             <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-sm">{{ project.year }}</span>
             {% endif %}
           </div>
+
+          {% if project.type == 'contribution' %}
+          <span class="contribution-badge">
+            <i class="fas fa-code-branch mr-1"></i> Open Source Contribution
+          </span>
+          {% endif %}
 
           <p class="text-gray-600 dark:text-gray-300 mb-4">{{ project.description }}</p>
 
@@ -65,10 +71,17 @@
     <!-- View more button -->
     {% if site.data.projects.size > 6 %}
     <div class="text-center mt-12">
-      <button id="view-more-projects" class="btn btn-secondary">
+      <button id="view-more-projects" class="btn btn-outline">
         <i class="fas fa-plus mr-2"></i> View More Projects
       </button>
     </div>
     {% endif %}
+  </div>
+
+  <!-- Wave divider -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none" aria-hidden="true">
+    <svg class="relative block w-full h-12 md:h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86C130.83,141.14,59.71,118.11,0,95.8V120H1200V3c-67.81,23.12-144.29,15.51-214.34-3Z" class="fill-white dark:fill-gray-800"></path>
+    </svg>
   </div>
 </section>

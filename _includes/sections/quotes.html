@@ -1,13 +1,18 @@
 <section id="quotes" class="py-16 bg-white dark:bg-gray-900">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">What People Say</h2>
-    <div class="max-w-2xl mx-auto relative overflow-hidden">
+    <div class="max-w-2xl mx-auto relative overflow-hidden" aria-live="polite" aria-atomic="true">
       {% for quote in site.data.quotes %}
       <div class="quote text-center quote-transition absolute w-full">
         <blockquote class="text-xl italic text-gray-700 dark:text-gray-300 mb-4">"{{ quote.text }}"</blockquote>
         <p class="font-semibold text-gray-900 dark:text-white">- {{ quote.author }}</p>
         <p class="text-gray-600 dark:text-gray-400">{{ quote.position }}</p>
       </div>
+      {% endfor %}
+    </div>
+    <div class="flex justify-center gap-2 mt-8">
+      {% for quote in site.data.quotes %}
+      <button class="quote-dot w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600 transition-colors duration-300" aria-label="Show quote {{ forloop.index }}"></button>
       {% endfor %}
     </div>
   </div>

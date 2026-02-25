@@ -1,4 +1,4 @@
-import { animateSkillBars, initAOS, setupEntranceAnimations } from './modules/animations.js';
+import { animateCounters, initAOS, setupEntranceAnimations } from './modules/animations.js';
 import { initFaqToggles } from './modules/faq.js';
 import {
   initBackToTopButton,
@@ -66,13 +66,27 @@ function setupAnimations() {
     offset: 50,
   });
 
-  animateSkillBars();
+  animateCounters();
   setupEntranceAnimations('.animate-on-scroll');
 }
 
 function setupInteractivity() {
   initFaqToggles('.faq-toggle');
   rotateQuotes('.quote', 8000);
+  initViewMoreProjects();
+}
+
+function initViewMoreProjects() {
+  const button = document.getElementById('view-more-projects');
+  if (!button) return;
+
+  button.addEventListener('click', () => {
+    const hiddenCards = document.querySelectorAll('.project-hidden');
+    hiddenCards.forEach((card) => {
+      card.classList.remove('hidden');
+    });
+    button.remove();
+  });
 }
 
 function setupResponsiveBehavior({ mobileMenu }) {

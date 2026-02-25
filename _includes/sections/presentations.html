@@ -1,11 +1,17 @@
-<section id="presentations" class="py-16 bg-gray-50 dark:bg-gray-900">
+<section id="presentations" class="py-20 bg-gray-50 dark:bg-gray-900 relative section">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">Presentations</h2>
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block text-gray-900 dark:text-white">
+        Presentations
+        <span class="block h-1 w-2/3 bg-primary mt-2 mx-auto"></span>
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400 text-lg">Talks and workshops from conferences and events</p>
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {% for presentation in site.data.presentations %}
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
         <div class="relative h-96 flex justify-center items-center">
-          <iframe src="{{ presentation.embed_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="absolute inset-0 w-full h-full"></iframe>
+          <iframe src="{{ presentation.embed_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" class="absolute inset-0 w-full h-full" title="{{ presentation.title }}"></iframe>
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{{ presentation.title }}</h3>

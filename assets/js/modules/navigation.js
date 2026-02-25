@@ -3,6 +3,8 @@
  * Handles header scroll effects, mobile menu, and back-to-top functionality
  */
 
+import { throttle } from './utils.js';
+
 /**
  * Set up sticky header behavior
  * @param {HTMLElement} header The header element to make sticky
@@ -10,13 +12,16 @@
 export function initStickyHeader(header) {
   if (!header) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
+  window.addEventListener(
+    'scroll',
+    throttle(() => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, 100),
+  );
 }
 
 /**
@@ -28,15 +33,18 @@ export function initBackToTopButton(backToTopBtn, scrollThreshold = 300) {
   if (!backToTopBtn) return;
 
   // Handle visibility based on scroll position
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > scrollThreshold) {
-      backToTopBtn.classList.remove('opacity-0', 'invisible');
-      backToTopBtn.classList.add('opacity-100', 'visible');
-    } else {
-      backToTopBtn.classList.add('opacity-0', 'invisible');
-      backToTopBtn.classList.remove('opacity-100', 'visible');
-    }
-  });
+  window.addEventListener(
+    'scroll',
+    throttle(() => {
+      if (window.scrollY > scrollThreshold) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    }, 100),
+  );
 
   // Handle click event
   backToTopBtn.addEventListener('click', () => {
@@ -92,26 +100,29 @@ export function initScrollSpy(navItemSelector = '.nav-link', activeClass = 'acti
     })
     .filter(Boolean);
 
-  window.addEventListener('scroll', () => {
-    const scrollPosition = window.scrollY + 100; // Offset for header height
+  window.addEventListener(
+    'scroll',
+    throttle(() => {
+      const scrollPosition = window.scrollY + 100; // Offset for header height
 
-    // Find the current section
-    let currentSection = sections[0];
-    for (const section of sections) {
-      const sectionTop = section.offsetTop;
-      if (scrollPosition >= sectionTop) {
-        currentSection = section;
-      }
-    }
-
-    // Update active class on nav items
-    if (currentSection) {
-      navLinks.forEach((navLink) => {
-        navLink.classList.remove(activeClass);
-        if (navLink.getAttribute('href') === `#${currentSection.id}`) {
-          navLink.classList.add(activeClass);
+      // Find the current section
+      let currentSection = sections[0];
+      for (const section of sections) {
+        const sectionTop = section.offsetTop;
+        if (scrollPosition >= sectionTop) {
+          currentSection = section;
         }
-      });
-    }
-  });
+      }
+
+      // Update active class on nav items
+      if (currentSection) {
+        navLinks.forEach((navLink) => {
+          navLink.classList.remove(activeClass);
+          if (navLink.getAttribute('href') === `#${currentSection.id}`) {
+            navLink.classList.add(activeClass);
+          }
+        });
+      }
+    }, 100),
+  );
 }
