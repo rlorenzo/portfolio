@@ -18,11 +18,11 @@
   <meta name="theme-color" content="#ffffff">
 
   <!-- Preload critical resources for faster FCP/LCP -->
-  <link rel="preload" href="{{ "/assets/css/tailwind.css" | relative_url }}" as="style">
+  <link rel="preload" href="{{ "/assets/css/tailwind.css" | relative_url }}?v={{ site.time | date: '%s' }}" as="style">
   <link rel="preload" href="{{ "/assets/profile.jpg" | relative_url }}" as="image">
 
   <!-- Main CSS -->
-  <link rel="stylesheet" href="{{ "/assets/css/tailwind.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/tailwind.css" | relative_url }}?v={{ site.time | date: '%s' }}">
 
   <!-- Preconnect to external origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
