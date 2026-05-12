@@ -6,7 +6,7 @@
     "build": "npm run build:css && npm run build:js && JEKYLL_ENV=production bundle exec jekyll build",
     "build:css": "postcss ./src/tailwind.css -o ./assets/css/tailwind.css",
     "build:js": "rolldown -c rolldown.config.mjs",
-    "dev": "concurrently \"npm run watch:css\" \"npm run serve\"",
+    "dev": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"npm run serve\"",
     "fix": "npm run fix:css && npm run fix:js && npm run fix:md",
     "fix:css": "stylelint 'src/**/*.{css,scss}' 'assets/**/*.{css,scss}' --fix --allow-empty-input",
     "fix:js": "biome check --fix .",
@@ -22,7 +22,8 @@
     "setup": "npm install && bundle install",
     "test": "playwright test",
     "test:update": "playwright test --update-snapshots",
-    "watch:css": "npm run build:css -- --watch"
+    "watch:css": "npm run build:css -- --watch",
+    "watch:js": "npm run build:js -- --watch"
   },
   "keywords": [
     "portfolio",
