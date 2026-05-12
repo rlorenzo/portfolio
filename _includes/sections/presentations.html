@@ -9,9 +9,12 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {% for presentation in site.data.presentations %}
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
-        <div class="relative h-96 flex justify-center items-center">
-          <iframe src="{{ presentation.embed_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" class="absolute inset-0 w-full h-full" title="{{ presentation.title }}"></iframe>
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden{% if forloop.index > 4 %} presentation-hidden hidden{% endif %}" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
+        <div class="relative h-96 flex justify-center items-center bg-gray-100 dark:bg-gray-700">
+          <div class="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-500" aria-hidden="true">
+            <i class="fas fa-play-circle text-5xl"></i>
+          </div>
+          <iframe data-src="{{ presentation.embed_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" class="absolute inset-0 w-full h-full" title="{{ presentation.title }}"></iframe>
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{{ presentation.title }}</h3>
@@ -21,5 +24,13 @@
       </div>
       {% endfor %}
     </div>
+
+    {% if site.data.presentations.size > 4 %}
+    <div class="text-center mt-12">
+      <button id="view-more-presentations" class="btn btn-outline">
+        <i class="fas fa-plus mr-2"></i> View More Presentations
+      </button>
+    </div>
+    {% endif %}
   </div>
 </section>

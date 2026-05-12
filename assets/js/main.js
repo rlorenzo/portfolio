@@ -1,5 +1,6 @@
 import { initAOS, setupEntranceAnimations } from './modules/animations.js';
 import { initFaqToggles } from './modules/faq.js';
+import { initLazyIframes } from './modules/lazy-iframe.js';
 import {
   initBackToTopButton,
   initMobileMenu,
@@ -72,15 +73,17 @@ function setupAnimations() {
 function setupInteractivity() {
   initFaqToggles('.faq-toggle');
   rotateQuotes('.quote', 8000);
-  initViewMoreProjects();
+  initViewMore('view-more-projects', '.project-hidden');
+  initViewMore('view-more-presentations', '.presentation-hidden');
+  initLazyIframes();
 }
 
-function initViewMoreProjects() {
-  const button = document.getElementById('view-more-projects');
+function initViewMore(buttonId, hiddenSelector) {
+  const button = document.getElementById(buttonId);
   if (!button) return;
 
   button.addEventListener('click', () => {
-    const hiddenCards = document.querySelectorAll('.project-hidden');
+    const hiddenCards = document.querySelectorAll(hiddenSelector);
     hiddenCards.forEach((card) => {
       card.classList.remove('hidden');
     });

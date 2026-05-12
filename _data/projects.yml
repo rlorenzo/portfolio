@@ -1,3 +1,52 @@
+- name: Office Accessibility Checker
+  description: Cross-platform PowerShell CLI that checks Word, Excel, and PowerPoint files for accessibility issues, with no Office installation required. Published to the PowerShell Gallery.
+  tech_stack:
+    - PowerShell
+    - CLI
+    - Accessibility
+    - WCAG
+  github_link: https://github.com/rlorenzo/office-accessibility-checker
+  type: project
+
+- name: UC Homepage Accessibility Report
+  description: Accessibility audit across all University of California campus homepages, inspired by the WebAIM Million project. Surfaces WCAG issues to drive systemwide a11y improvements.
+  tech_stack:
+    - JavaScript
+    - Accessibility
+    - WCAG
+    - Web Audit
+  github_link: https://github.com/rlorenzo/uc-homepage-a11y-report
+  type: project
+
+- name: UC Entrepreneurship Hub
+  description: Catalog of entrepreneurship programs across all 10 University of California campuses, covering incubators, accelerators, funding, competitions, courses, and maker spaces in one place.
+  tech_stack:
+    - TypeScript
+    - React
+    - Vite
+  github_link: https://github.com/rlorenzo/uc-entrepreneurship-hub
+  type: project
+
+- name: Monarch Forecast
+  description: Desktop app that projects your checking account balance day-by-day using Monarch Money data, surfacing low-balance dates before they happen. Monarch Money tells you where your money went; Monarch Forecast tells you where it's going.
+  tech_stack:
+    - Python
+    - Flet
+    - Personal Finance
+    - Desktop App
+  github_link: https://github.com/rlorenzo/Monarch-Forecast
+  type: project
+
+- name: 2048 Solver
+  description: AI-powered 2048 with move coaching, an expectimax solver, strategy guide, and smooth tile animations. Play, learn, or watch the AI solve it.
+  tech_stack:
+    - JavaScript
+    - Vite
+    - AI
+    - Game
+  github_link: https://github.com/rlorenzo/2048-Solver
+  type: project
+
 - name: Zoom Integration for Moodle
   description: The mod_zoom plugin integrates Zoom video conferencing with Moodle, enabling instructors to schedule, manage, and launch Zoom meetings directly from their course pages.
   tech_stack:
@@ -64,6 +113,16 @@
     - EFS
   github_link: https://github.com/rlorenzo/aws-refarch-moodle
   type: project
+
+- name: image-gen-mcp
+  description: Contributed gpt-image-1.5, imagen-4-fast, and gpt-image-2 (with custom sizes) support, provider health checks, OpenAI/Gemini generation fixes, and Claude Code MCP compatibility to this text-to-image MCP server.
+  tech_stack:
+    - Python
+    - MCP
+    - OpenAI
+    - Gemini
+  github_link: https://github.com/rlorenzo/image-gen-mcp
+  type: contribution
 
 - name: Internet Archive for Apple TV
   description: Revamped an open-source Apple TV app for browsing the Internet Archive, modernizing the codebase and preparing it for public release on the App Store.

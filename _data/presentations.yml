@@ -1,7 +1,22 @@
+- title: Agentic Workflows for Accessibility
+  date: 2026-04-28
+  embed_url: https://docs.google.com/presentation/d/1H8dsERbZ55dma1xOLfZAVC0pG4Sq14kSZ4SGVjjuYKI/embed
+  description: Presented to the UC Tech group covering my usage of AI agents in identifying and resolving web site accessibility issues to become WCAG 2.2 AA/AAA compliant.
+
+- title: AI Review Loops
+  date: 2026-03-25
+  embed_url: https://docs.google.com/presentation/d/1-A4pXEqslFqYszdQEvIXXPv4ow97HFaKrjozWo3oBVI/embed
+  description: Presented to the UC Tech group about using AI agents in a loop to accomplish goals such as code reviewing and plan refinement.
+
 - title: "Software Development: Past, Present, Future"
   date: 2026-02-04
   embed_url: https://docs.google.com/presentation/d/12EBXT1sdLIGdELgHxbGr43fkmYD0bDkIEmlTte8lhQA/embed
   description: Presented at Toastmasters and UC Tech, exploring the evolution of software development by examining key milestones that shaped the industry and offering an optimistic perspective on its future.
+
+- title: "Vibecoding: What and How"
+  date: 2025-08-27
+  embed_url: https://docs.google.com/presentation/d/1Yn-zh5idZr9WRKLPC5sjU_9lmAHqtT2Zv29kf1vVZ5Q/embed
+  description: Presented at Toastmasters to explain the buzzword "Vibecoding."
 
 - title: Breaking LTI Out of the Box
   date: 2019-09-17
