@@ -1,4 +1,4 @@
-import { animateCounters, initAOS, setupEntranceAnimations } from './modules/animations.js';
+import { initAOS, setupEntranceAnimations } from './modules/animations.js';
 import { initFaqToggles } from './modules/faq.js';
 import {
   initBackToTopButton,
@@ -66,7 +66,6 @@ function setupAnimations() {
     offset: 50,
   });
 
-  animateCounters();
   setupEntranceAnimations('.animate-on-scroll');
 }
 
