@@ -4,7 +4,8 @@
     "assets/js/main.js",
     "rolldown.config.mjs",
     "playwright.config.js",
-    "tests/**/*.spec.js"
+    "tests/**/*.spec.js",
+    "scripts/**/*.mjs"
   ],
   "ignorePatterns": [
     "assets/css/**",
