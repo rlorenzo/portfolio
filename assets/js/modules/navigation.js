@@ -50,7 +50,7 @@ export function initBackToTopButton(backToTopBtn, scrollThreshold = 300) {
       top: 0,
       behavior: prefersReducedMotion() ? 'auto' : 'smooth',
     });
-    document.querySelector('#hero')?.focus?.();
+    document.querySelector('#hero')?.focus?.({ preventScroll: true });
   });
 }
 

@@ -47,10 +47,19 @@ function cacheElementsById(ids) {
 function setupThemeToggle({ themeToggle }) {
   if (!themeToggle) return;
 
+  syncThemeToggleState(themeToggle, getThemePreference());
+
   themeToggle.addEventListener('click', () => {
     const next = getThemePreference() === 'dark' ? 'light' : 'dark';
     applyTheme(next);
+    syncThemeToggleState(themeToggle, next);
   });
+}
+
+function syncThemeToggleState(button, theme) {
+  const isDark = theme === 'dark';
+  button.setAttribute('aria-pressed', String(isDark));
+  button.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
 }
 
 function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }) {
