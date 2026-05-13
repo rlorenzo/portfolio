@@ -10,7 +10,7 @@ async function loadPage(page) {
     (url) => url.hostname !== 'localhost',
     (route) => route.abort(),
   );
-  await page.goto('./', { waitUntil: 'domcontentloaded', timeout: 30000 });
+  await page.goto('./', { waitUntil: 'load', timeout: 30000 });
   await page.evaluate(() => {
     document.querySelectorAll('[data-aos]').forEach((el) => {
       el.removeAttribute('data-aos');
@@ -34,7 +34,17 @@ async function loadPage(page) {
       quote.classList.toggle('connect__quote--active', isFirst);
       quote.toggleAttribute('hidden', !isFirst);
     });
+
+    // Skip the Rubik's cube assembly so screenshots see the solved portrait.
+    document.querySelectorAll('.hero-portrait__mosaic').forEach((el) => {
+      el.remove();
+    });
+    document.querySelectorAll('.hero-portrait--assembling').forEach((el) => {
+      el.classList.remove('hero-portrait--assembling');
+    });
   });
+  // Custom fonts can repaint after first frame; wait for them before snapshotting.
+  await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(ANIMATION_SETTLE_DELAY_MS);
 }
 

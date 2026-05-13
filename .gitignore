@@ -33,3 +33,4 @@ playwright-report/
 
 # Mac system files
 *.DS_Store
+.fallow/

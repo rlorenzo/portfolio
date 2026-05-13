@@ -50,7 +50,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build CSS
-        run: npm run build:css
+        run: npm run build:css:prod
 
       - name: Build JavaScript
         run: npm run build:js
