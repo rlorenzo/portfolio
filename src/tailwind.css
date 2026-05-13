@@ -808,6 +808,194 @@
   color: var(--brand);
 }
 
+/* Experience (rebuilt per impeccable shape brief)
+   Editorial CV list, type-led, no gradient timeline, no FA checkmarks. */
+.experience {
+  background: var(--paper);
+  color: var(--ink);
+  padding-block: clamp(4.5rem, 10vh, 7.5rem);
+  font-family: var(--font-body);
+}
+
+.experience__inner {
+  max-width: 62rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.experience__header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.experience__heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.experience__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  --col-gap: clamp(2rem, 4vw, 3rem);
+  --date-col: 12rem;
+  --rail-x: calc(var(--date-col) + (var(--col-gap) / 2));
+}
+
+@media (min-width: 768px) {
+  .experience__list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--rail-x);
+    width: 1px;
+    background: var(--rule);
+    pointer-events: none;
+  }
+}
+
+.experience__role {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(0.5rem, 1vw, 1rem);
+  padding-block: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+@media (min-width: 768px) {
+  .experience__role {
+    grid-template-columns: var(--date-col) minmax(0, 1fr);
+    column-gap: var(--col-gap);
+    align-items: baseline;
+  }
+}
+
+.experience__list > .experience__role:last-child {
+  padding-bottom: 0;
+}
+
+.experience__list > .experience__role:first-child {
+  padding-top: 0;
+}
+
+.experience__dates {
+  position: relative;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 0.9vw + 0.85rem, 1.5rem);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 32, 'wdth' 100;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.005em;
+  line-height: 1.1;
+  color: var(--brand);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .experience__dates::after {
+    content: '';
+    position: absolute;
+    right: calc((var(--col-gap) / -2) - 5px);
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--brand);
+    box-shadow: 0 0 0 4px var(--paper);
+    transform: translateY(-50%);
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1;
+  }
+
+  .experience__role:hover .experience__dates::after {
+    transform: translateY(-50%) scale(1.4);
+  }
+}
+
+.experience__detail {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.875rem, 1.5vw, 1.25rem);
+}
+
+.experience__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.375rem, 1.6vw + 0.6rem, 1.75rem);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 32, 'wdth' 100;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.experience__company {
+  margin: -0.25rem 0 0 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.experience__highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  max-width: 65ch;
+}
+
+.experience__highlight {
+  position: relative;
+  padding-inline-start: 1.125rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.experience__highlight::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.625em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--brand);
+}
+
+.experience__highlight a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition:
+    color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    text-decoration-color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.experience__highlight a:hover,
+.experience__highlight a:focus-visible {
+  color: var(--brand);
+  text-decoration-color: var(--brand);
+}
+
+.experience__highlight a:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
 /* Hero (rebuilt per impeccable shape brief)
    Asymmetric, type-led, no gradient, no wave, no FontAwesome, no avatar ring. */
 .hero {
