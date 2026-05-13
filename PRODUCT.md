@@ -8,7 +8,7 @@ brand
 
 Hiring managers, engineering leaders, recruiters, and prospective clients who land on Rex Lorenzo's personal site while evaluating him for senior engineering or engineering-leadership roles. They arrive from LinkedIn, GitHub, a resume link, or a referral; most scan on desktop in a hiring context (focused, time-boxed) and some on mobile in passing.
 
-Their job-to-be-done: in under two minutes, decide whether Rex is worth a conversation. They need a credible signal of seniority, range (IC + leadership), longevity, and the kind of work he ships — without wading through resume bullets.
+Their job-to-be-done: in under two minutes, decide whether Rex is worth a conversation. They need a credible signal of seniority, range (IC + leadership), longevity, and the kind of work he ships, without wading through resume bullets.
 
 ## Product Purpose
 
@@ -32,7 +32,7 @@ Three words: **seasoned, pragmatic, approachable.**
 
 This site should explicitly NOT look like:
 
-- **Generic dev-portfolio templates.** Big gradient hero, hero-metric counter row, identical project card grid, "View More" button, animated floating icons orbiting a circular avatar. The current implementation is leaning into several of these — they're the things to design away from, not toward.
+- **Generic dev-portfolio templates.** Big gradient hero, hero-metric counter row, identical project card grid, "View More" button, animated floating icons orbiting a circular avatar. The current implementation is leaning into several of these; they're the things to design away from, not toward.
 - **Agency / SaaS landing pages.** Glassmorphism buttons, "Building innovative solutions" generic copy, decorative wave dividers between every section, blue-to-purple linear gradients.
 - **AI-generated portfolio look.** Blue primary + purple accent + green success, Poppins everywhere, FontAwesome icons inline with every heading, glow rings around the avatar, dot-grid section backgrounds.
 - **Brutalist or maximalist experiments** at the opposite extreme. The audience is hiring managers, not designers.
