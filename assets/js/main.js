@@ -6,6 +6,7 @@ import {
   initScrollSpy,
   initStickyHeader,
 } from './modules/navigation.js';
+import { initSignature } from './modules/signature.js';
 import { initSmoothScrolling } from './modules/smoothscroll.js';
 import { applyTheme, getThemePreference, initTheme } from './modules/theme.js';
 import { throttle } from './modules/utils.js';
@@ -75,6 +76,7 @@ function setupInteractivity() {
   initLazyIframes();
   initHeroMosaic();
   initQuoteSwitcher();
+  initSignature();
 }
 
 function initQuoteSwitcher() {
