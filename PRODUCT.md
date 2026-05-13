@@ -47,7 +47,7 @@ This site should explicitly NOT look like:
 
 ## Accessibility & Inclusion
 
-- WCAG 2.1 AA as the floor. Color contrast must hold in both light and dark themes, including against the gradient hero.
-- Respect `prefers-reduced-motion` (the current CSS does this for `animate-glow`, `animate-float`, `animate-scroll-cue` — keep that contract for any new motion).
-- All interactive elements must be keyboard-reachable with a visible focus state. FontAwesome icons used as the sole content of a control need an accessible name.
-- Theme toggle must persist across navigation and not flash unstyled content (FOUC prevention is already in place — preserve it).
+- WCAG 2.1 AA as the floor. Color contrast must hold in both light and dark themes.
+- Respect `prefers-reduced-motion`. Any motion introduced after this point must opt out under the reduce-motion media query, the way the existing transitions do.
+- All interactive elements must be keyboard-reachable with a visible focus state. Inline SVG icons used as the sole content of a control need an accessible name.
+- Theme toggle must persist across navigation and not flash unstyled content (FOUC prevention is already in place, preserve it).
