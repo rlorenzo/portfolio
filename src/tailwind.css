@@ -996,6 +996,149 @@
   border-radius: 2px;
 }
 
+/* Presentations (rebuilt per impeccable shape brief)
+   Editorial list, click title to view slides; no inline iframes. */
+.presentations {
+  background: var(--paper-soft);
+  color: var(--ink);
+  padding-block: clamp(4.5rem, 10vh, 7.5rem);
+  font-family: var(--font-body);
+}
+
+.presentations__inner {
+  max-width: 62rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.presentations__header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.presentations__heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.presentations__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 640px) {
+  .presentations__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.presentations__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.presentations__preview {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--paper);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  margin-bottom: 0.375rem;
+}
+
+.presentations__preview iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.presentations__item:hover .presentations__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.presentations__item:hover .presentations__link {
+  color: var(--brand);
+}
+
+.presentations__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 0.7vw + 0.85rem, 1.3125rem);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 22, 'wdth' 100;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  min-width: 0;
+}
+
+.presentations__link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.presentations__link:hover,
+.presentations__link:focus-visible {
+  color: var(--brand);
+}
+
+.presentations__link:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+.presentations__arrow {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  font-size: 0.9em;
+}
+
+.presentations__link:hover .presentations__arrow,
+.presentations__link:focus-visible .presentations__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.presentations__date {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  color: var(--brand);
+  white-space: nowrap;
+}
+
+.presentations__description {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
 /* Hero (rebuilt per impeccable shape brief)
    Asymmetric, type-led, no gradient, no wave, no FontAwesome, no avatar ring. */
 .hero {
