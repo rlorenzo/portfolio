@@ -1,83 +1,68 @@
-<section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900 section relative overflow-hidden">
-  <div class="container mx-auto px-4">
-    <!-- Section heading with animation -->
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block text-gray-900 dark:text-white">
-        Projects
-        <span class="block h-1 w-2/3 bg-primary mt-2 mx-auto"></span>
-      </h2>
-      <p class="text-gray-600 dark:text-gray-400 text-lg">Explore my public work and contributions</p>
-    </div>
+{% assign projects = site.data.projects | where: "type", "project" %}
+{% assign contributions = site.data.projects | where: "type", "contribution" %}
+<section id="projects" class="projects">
+  <div class="projects__inner">
+    <header class="projects__header">
+      <h2 class="projects__heading">Projects</h2>
+    </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {% for project in site.data.projects %}
-      <div class="card card-hover bg-white dark:bg-gray-800 overflow-hidden{% if forloop.index > 6 %} project-hidden hidden{% endif %}" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
-        {% if project.image %}
-        <div class="aspect-w-16 relative">
-          <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="w-full h-48 object-cover" loading="lazy" width="400" height="192">
-          {% if project.github_link %}
-          <a href="{{ project.github_link }}" class="absolute top-4 right-4 bg-white/80 p-2 rounded-full text-gray-700 hover:bg-primary hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" aria-label="View {{ project.name }} on GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          {% endif %}
-        </div>
-        {% endif %}
-
-        <div class="p-6">
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{{ project.name }}</h3>
-            {% if project.year %}
-            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-sm">{{ project.year }}</span>
-            {% endif %}
-          </div>
-
-          {% if project.type == 'contribution' %}
-          <span class="contribution-badge">
-            <i class="fas fa-code-branch mr-1"></i> Open Source Contribution
-          </span>
-          {% endif %}
-
-          <p class="text-gray-600 dark:text-gray-300 mb-4">{{ project.description }}</p>
-
-          <div class="flex flex-wrap gap-2 mb-4">
-            {% for tech in project.tech_stack %}
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-full text-sm">{{ tech }}</span>
-            {% endfor %}
-          </div>
-
-          <div class="flex justify-between items-center">
-            {% if project.github_link %}
-            <a href="{{ project.github_link }}" class="text-primary hover:text-accent transition-colors duration-300 inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">
-              <span>View Project</span>
-              <i class="fas fa-arrow-right text-xs"></i>
+    <ol class="projects__list projects__list--featured" aria-label="Selected projects">
+      {% for project in projects limit: 3 %}
+      <li class="projects__row projects__row--featured">
+        <div class="projects__left">
+          <h3 class="projects__title">
+            <a class="projects__link" href="{{ project.github_link }}" target="_blank" rel="noopener noreferrer">
+              <span class="projects__name">{{ project.name }}</span>
+              <span class="projects__arrow" aria-hidden="true">&rarr;</span>
             </a>
-            {% endif %}
-
-            {% if project.demo_link %}
-            <a href="{{ project.demo_link }}" class="text-secondary hover:text-accent transition-colors duration-300 inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">
-              <span>Live Demo</span>
-              <i class="fas fa-external-link-alt text-xs"></i>
-            </a>
-            {% endif %}
-          </div>
+          </h3>
+          <p class="projects__tech">
+            {% for tech in project.tech_stack %}{{ tech }}{% unless forloop.last %} <span aria-hidden="true">·</span> {% endunless %}{% endfor %}
+          </p>
         </div>
-      </div>
+        <p class="projects__description">{{ project.description }}</p>
+      </li>
       {% endfor %}
-    </div>
+    </ol>
 
-    <!-- View more button -->
-    {% if site.data.projects.size > 6 %}
-    <div class="text-center mt-12">
-      <button id="view-more-projects" class="btn btn-outline">
-        <i class="fas fa-plus mr-2"></i> View More Projects
-      </button>
-    </div>
+    {% assign more_projects = projects | size | minus: 3 %}
+    {% if more_projects > 0 %}
+    <ol class="projects__list projects__list--compact" aria-label="Additional projects">
+      {% for project in projects offset: 3 %}
+      <li class="projects__row projects__row--compact">
+        <h3 class="projects__title projects__title--compact">
+          <a class="projects__link" href="{{ project.github_link }}" target="_blank" rel="noopener noreferrer">
+            <span class="projects__name">{{ project.name }}</span>
+            <span class="projects__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </h3>
+        <p class="projects__tech projects__tech--compact">
+          {% for tech in project.tech_stack %}{{ tech }}{% unless forloop.last %} <span aria-hidden="true">·</span> {% endunless %}{% endfor %}
+        </p>
+        <p class="projects__description projects__description--compact">{{ project.description }}</p>
+      </li>
+      {% endfor %}
+    </ol>
     {% endif %}
-  </div>
 
-  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none" aria-hidden="true">
-    <svg class="relative block w-full h-12 md:h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,130.83,141.14,321.39,56.44Z" class="fill-white dark:fill-gray-800"></path>
-    </svg>
+    {% if contributions.size > 0 %}
+    <p class="projects__eyebrow">Open source contributions</p>
+    <ol class="projects__list projects__list--compact" aria-label="Open source contributions">
+      {% for project in contributions %}
+      <li class="projects__row projects__row--compact">
+        <h3 class="projects__title projects__title--compact">
+          <a class="projects__link" href="{{ project.github_link }}" target="_blank" rel="noopener noreferrer">
+            <span class="projects__name">{{ project.name }}</span>
+            <span class="projects__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </h3>
+        <p class="projects__tech projects__tech--compact">
+          {% for tech in project.tech_stack %}{{ tech }}{% unless forloop.last %} <span aria-hidden="true">·</span> {% endunless %}{% endfor %}
+        </p>
+        <p class="projects__description projects__description--compact">{{ project.description }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+    {% endif %}
   </div>
 </section>
