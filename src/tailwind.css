@@ -410,6 +410,7 @@
 }
 
 .site-nav__contact {
+  position: relative;
   padding: 0.5rem 0;
   margin-inline-start: clamp(0.25rem, 0.75vw, 0.75rem);
   font-family: var(--font-body);
@@ -420,9 +421,32 @@
   transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.site-nav__contact::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: translateY(2px);
+  transition:
+    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .site-nav__contact:hover,
-.site-nav__contact:focus-visible {
+.site-nav__contact:focus-visible,
+.site-nav__contact.active {
   color: var(--brand);
+}
+
+.site-nav__contact:hover::after,
+.site-nav__contact:focus-visible::after,
+.site-nav__contact.active::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .site-nav__contact:focus-visible {
@@ -1879,6 +1903,83 @@
 @keyframes faq-answer-in {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Site footer (rebuilt per impeccable shape brief)
+   Editorial colophon: hairline rule, wordmark + copyright, typeface + stack. */
+.site-footer {
+  background: var(--paper);
+  color: var(--ink-soft);
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-body);
+}
+
+.site-footer__inner {
+  max-width: 62rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.site-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+}
+
+.site-footer__wordmark {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 16, 'wdth' 100;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+.site-footer__copyright {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-soft);
+}
+
+.site-footer__colophon {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.site-footer__link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition:
+    color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    text-decoration-color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-footer__link:hover,
+.site-footer__link:focus-visible {
+  color: var(--brand);
+  text-decoration-color: var(--brand);
+}
+
+.site-footer__link:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 /* Scroll-arrive motion for the About header.
