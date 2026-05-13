@@ -30,6 +30,15 @@ function initializeApp() {
   setupInteractivity();
   setupResponsiveBehavior(elements);
   setupPrintMode();
+  greetTheCurious();
+}
+
+function greetTheCurious() {
+  console.log(
+    '%chi.\n%crexlorenzo@gmail.com',
+    'color: oklch(58% 0.14 50); font: 600 14px/1.2 ui-sans-serif, system-ui;',
+    'color: oklch(46% 0.012 50); font: 400 12px/1.4 ui-sans-serif, system-ui;',
+  );
 }
 
 function cacheElementsById(ids) {

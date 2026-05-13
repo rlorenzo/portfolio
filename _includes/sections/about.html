@@ -1,107 +1,50 @@
-<section id="about" class="py-20 bg-bg-primary dark:bg-bg-secondary section relative overflow-hidden">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block text-gray-900 dark:text-white">
-        About
-        <span class="block h-1 w-2/3 bg-primary mt-2 mx-auto"></span>
-      </h2>
-    </div>
+<section id="about" class="about">
+  <div class="about__inner">
+    <header class="about__header">
+      <div class="chapter" aria-hidden="true">01</div>
+      <h2 class="about__heading">About</h2>
+    </header>
 
-    <div class="max-w-3xl mx-auto mb-16 text-center" data-aos="fade-up">
-      <p class="text-xl md:text-2xl text-gray-800 dark:text-gray-200 leading-relaxed mb-6">
-        Twenty years of building software. UCLA Computer Science. Top-1% Moodle contributor: code I've written runs at 10,000+ institutions and serves 30,000+ users.
+    <div class="about__body">
+      <p class="about__lede">
+        I've been writing production software for twenty years, and leading the teams that ship it. I started at UCLA, scaled engineering at B Capital, and now lead application development at the UC Davis School of Veterinary Medicine. My open-source work on Moodle ended up running at 10,000+ institutions, serving 30,000+ users.
       </p>
-      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-        I've led engineering teams through complex migrations, designed scalable platforms, and done the unglamorous work of making software actually ship. I'm passionate about solving real-world problems, mentoring engineers, and driving technical excellence. Ready to take your engineering initiatives to the next level? <strong>Let's connect and build something great together.</strong>
+      <p class="about__prose">
+        What I enjoy most is the part of the job that doesn't fit on a slide: untangling a legacy migration, mentoring an engineer into a tech lead, replacing a fragile prototype with something that runs for years, writing code other people actually want to read. Beneath all of it: I'm drawn to building tools that help people communicate better, from an LMS used by tens of thousands of students to investment workflows that move decisions faster between Finance and Legal.
       </p>
     </div>
 
-    <div class="md:flex items-start max-w-6xl mx-auto">
-      <div class="md:w-2/5 mb-10 md:mb-0 md:pr-12" data-aos="fade-right" data-aos-delay="100">
-        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">Skills</h3>
+    <p class="about__vitals">
+      <span class="about__vitals-item">Based in Chino, California</span>
+      <span class="about__vitals-item">Open to senior engineering and engineering-leadership conversations</span>
+    </p>
 
-        <div class="space-y-5">
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Languages</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-chip">PHP</span>
-              <span class="skill-chip">JavaScript</span>
-              <span class="skill-chip">TypeScript</span>
-              <span class="skill-chip">Python</span>
-              <span class="skill-chip">C#</span>
-              <span class="skill-chip">SQL</span>
-              <span class="skill-chip">HTML/CSS</span>
-            </div>
-          </div>
+    <div class="about__rule" aria-hidden="true"></div>
 
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Frameworks & Tools</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-chip">React</span>
-              <span class="skill-chip">SvelteKit</span>
-              <span class="skill-chip">VueJS</span>
-              <span class="skill-chip">Moodle</span>
-              <span class="skill-chip">WordPress</span>
-              <span class="skill-chip">Tailwind CSS</span>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Cloud & DevOps</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-chip">AWS</span>
-              <span class="skill-chip">CloudFormation</span>
-              <span class="skill-chip">Docker</span>
-              <span class="skill-chip">Databricks</span>
-              <span class="skill-chip">CI/CD</span>
-              <span class="skill-chip">Jenkins</span>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Leadership</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-chip">Team Building</span>
-              <span class="skill-chip">Mentoring</span>
-              <span class="skill-chip">Code Review</span>
-              <span class="skill-chip">System Architecture</span>
-              <span class="skill-chip">Agile</span>
-            </div>
-          </div>
-        </div>
+    <dl class="about__skills" aria-label="Technical proficiencies">
+      <div class="about__skill">
+        <dt class="about__skill-label">Languages</dt>
+        <dd class="about__skill-value">PHP&nbsp;<span aria-hidden="true">·</span> JavaScript&nbsp;<span aria-hidden="true">·</span> TypeScript&nbsp;<span aria-hidden="true">·</span> Python&nbsp;<span aria-hidden="true">·</span> C#&nbsp;<span aria-hidden="true">·</span> SQL</dd>
       </div>
-
-      <div class="md:w-3/5" data-aos="fade-left" data-aos-delay="200">
-        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">Background</h3>
-        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-8">
-          <div>
-            <dt class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Education</dt>
-            <dd class="text-gray-700 dark:text-gray-300">UCLA Computer Science</dd>
-          </div>
-          <div>
-            <dt class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Experience</dt>
-            <dd class="text-gray-700 dark:text-gray-300">20+ years &middot; B Capital, UCLA, UCD</dd>
-          </div>
-          <div>
-            <dt class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Location</dt>
-            <dd class="text-gray-700 dark:text-gray-300">Chino, CA</dd>
-          </div>
-          <div>
-            <dt class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Languages</dt>
-            <dd class="text-gray-700 dark:text-gray-300">English</dd>
-          </div>
-        </dl>
-
-        <a href="{{ '/assets/Rex Lorenzo - Resume.pdf' | relative_url }}" class="btn btn-primary inline-flex items-center" target="_blank">
-          Download resume
-        </a>
+      <div class="about__skill">
+        <dt class="about__skill-label">Frameworks</dt>
+        <dd class="about__skill-value">React&nbsp;<span aria-hidden="true">·</span> SvelteKit&nbsp;<span aria-hidden="true">·</span> Vue&nbsp;<span aria-hidden="true">·</span> Moodle&nbsp;<span aria-hidden="true">·</span> WordPress&nbsp;<span aria-hidden="true">·</span> Tailwind</dd>
       </div>
-    </div>
-  </div>
+      <div class="about__skill">
+        <dt class="about__skill-label">Infrastructure</dt>
+        <dd class="about__skill-value">AWS&nbsp;<span aria-hidden="true">·</span> CloudFormation&nbsp;<span aria-hidden="true">·</span> Docker&nbsp;<span aria-hidden="true">·</span> Databricks&nbsp;<span aria-hidden="true">·</span> CI/CD&nbsp;<span aria-hidden="true">·</span> Jenkins</dd>
+      </div>
+      <div class="about__skill">
+        <dt class="about__skill-label">Leadership</dt>
+        <dd class="about__skill-value">Team&nbsp;building&nbsp;<span aria-hidden="true">·</span> Mentoring&nbsp;<span aria-hidden="true">·</span> System&nbsp;architecture&nbsp;<span aria-hidden="true">·</span> Code&nbsp;review&nbsp;<span aria-hidden="true">·</span> Agile&nbsp;delivery</dd>
+      </div>
+    </dl>
 
-  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none" aria-hidden="true">
-    <svg class="relative block w-full h-12 md:h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,130.83,141.14,321.39,56.44Z" class="fill-gray-50 dark:fill-gray-900"></path>
-    </svg>
+    <div class="about__rule" aria-hidden="true"></div>
+
+    <a class="about__resume" href="{{ '/assets/Rex Lorenzo - Resume.pdf' | relative_url }}" target="_blank" rel="noopener">
+      <span class="about__resume-text">Download resume</span>
+      <span class="about__resume-arrow" aria-hidden="true">&rarr;</span>
+    </a>
   </div>
 </section>

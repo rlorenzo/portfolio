@@ -1337,3 +1337,232 @@
     transform: translateY(0);
   }
 }
+
+/* Chapter mark: reusable section eyebrow used to punctuate boundaries
+   between editorial sections. Small uppercase numeral + trailing rule. */
+.chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.625rem, 1.25vw, 0.9rem);
+  margin: 0 0 clamp(0.75rem, 1.25vw, 1.25rem) 0;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--brand);
+}
+
+.chapter::after {
+  content: '';
+  display: inline-block;
+  width: clamp(1.75rem, 4vw, 3rem);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+/* About (rebuilt per impeccable shape brief)
+   Editorial bio, single column, type-led; no chips, no card grid, no wave. */
+.about {
+  background: var(--paper);
+  color: var(--ink);
+  padding-block: clamp(4.5rem, 10vh, 7.5rem);
+  font-family: var(--font-body);
+}
+
+.about__inner {
+  max-width: 62rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.about__header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.about__heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 1.75vw, 1.5rem);
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.about__lede {
+  margin: 0;
+  max-width: 56ch;
+  font-size: clamp(1.125rem, 0.9vw + 0.85rem, 1.3125rem);
+  font-weight: 400;
+  font-variation-settings: 'opsz' 18, 'wdth' 100;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.about__prose {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.about__vitals {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.4rem;
+  row-gap: 0.25rem;
+}
+
+.about__vitals-item:not(:last-child)::after {
+  content: '·';
+  color: var(--brand);
+  margin-inline-start: 0.4rem;
+  font-weight: 400;
+}
+
+.about__rule {
+  height: 1px;
+  background: var(--rule);
+  margin-block: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.about__skills {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: clamp(0.875rem, 1.5vw, 1.25rem);
+}
+
+.about__skill {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.125rem;
+  align-items: baseline;
+}
+
+@media (min-width: 640px) {
+  .about__skill {
+    grid-template-columns: 9rem minmax(0, 1fr);
+    column-gap: clamp(1rem, 2vw, 1.75rem);
+    gap: 0;
+  }
+}
+
+.about__skill-label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+  padding-block-start: 0.125rem;
+}
+
+.about__skill-value {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.about__skill-value span[aria-hidden] {
+  color: var(--brand);
+  margin-inline: 0.35rem;
+  font-weight: 400;
+}
+
+.about__resume {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 18, 'wdth' 100;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about__resume:hover,
+.about__resume:focus-visible {
+  color: var(--brand);
+}
+
+.about__resume:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+.about__resume-arrow {
+  display: inline-block;
+  transform: translateX(-2px);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  font-size: 0.95em;
+}
+
+.about__resume:hover .about__resume-arrow,
+.about__resume:focus-visible .about__resume-arrow {
+  transform: translateX(2px);
+}
+
+/* Scroll-arrive motion for the About header.
+   The chapter mark fades up slightly ahead of the heading, marking the
+   hero->about boundary as the section enters the viewport. Progressive
+   enhancement: browsers without view() timeline see the static design. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .about__header .chapter,
+    .about__heading {
+      animation: about-arrive linear both;
+      animation-timeline: view();
+    }
+
+    .about__header .chapter {
+      animation-range: entry 0% cover 18%;
+    }
+
+    .about__heading {
+      animation-range: entry 8% cover 28%;
+    }
+  }
+}
+
+@keyframes about-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
