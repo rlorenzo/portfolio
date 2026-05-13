@@ -1,11 +1,8 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit"
+    "source.fixAll.oxlint": "explicit"
   },
-  "eslint.validate": ["javascript"],
-  "stylelint.validate": ["css", "scss"],
   "html.validate.scripts": true,
   "html.validate.styles": true,
   "markdownlint.config": {
@@ -27,11 +24,11 @@
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "[scss]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  "[css]": {
+    "editor.defaultFormatter": "oxfmt.oxfmt"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "oxfmt.oxfmt"
   },
   "editor.tabSize": 2,
   "editor.insertSpaces": true,

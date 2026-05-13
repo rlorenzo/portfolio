@@ -1,0 +1,13 @@
+/* CSS lint rules for this portfolio site */
+
+/* These vendor prefixes are intentional for browser compat — advisory only */
+:prefixed {
+  level: advice;
+  diagnostic: "Vendor prefix in use — verify browser support still requires it";
+}
+
+/* Flag !important overuse */
+declaration:important {
+  level: warning;
+  diagnostic: "Avoid !important — prefer specificity or custom properties";
+}

@@ -10,7 +10,6 @@ url: "https://rlorenzo.github.io"
 # Build settings
 markdown: kramdown
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
 
 # Collections
