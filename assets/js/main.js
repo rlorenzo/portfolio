@@ -21,7 +21,7 @@ function initializeApp() {
   ]);
 
   initTheme();
-  setupThemeToggles(elements);
+  setupThemeToggle(elements);
   setupNavigation(elements);
   setupInteractivity();
   setupResponsiveBehavior(elements);
@@ -44,14 +44,13 @@ function cacheElementsById(ids) {
   }, {});
 }
 
-function setupThemeToggles({ themeToggle }) {
-  const handleThemeToggle = () => {
-    const currentTheme = getThemePreference();
-    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(nextTheme);
-  };
+function setupThemeToggle({ themeToggle }) {
+  if (!themeToggle) return;
 
-  themeToggle?.addEventListener('click', handleThemeToggle);
+  themeToggle.addEventListener('click', () => {
+    const next = getThemePreference() === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
 }
 
 function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }) {
@@ -63,8 +62,6 @@ function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }
 }
 
 function setupInteractivity() {
-  initViewMore('view-more-projects', '.project-hidden');
-  initViewMore('view-more-presentations', '.presentation-hidden');
   initLazyIframes();
   initQuoteSwitcher();
 }
@@ -90,19 +87,6 @@ function initQuoteSwitcher() {
   advance.addEventListener('click', () => {
     activeIndex = (activeIndex + 1) % quotes.length;
     show(activeIndex);
-  });
-}
-
-function initViewMore(buttonId, hiddenSelector) {
-  const button = document.getElementById(buttonId);
-  if (!button) return;
-
-  button.addEventListener('click', () => {
-    const hiddenCards = document.querySelectorAll(hiddenSelector);
-    hiddenCards.forEach((card) => {
-      card.classList.remove('hidden');
-    });
-    button.remove();
   });
 }
 
