@@ -6,7 +6,7 @@ This document provides guidance for AI coding assistants (Claude, GitHub Copilot
 
 **Project Type:** Personal Portfolio Website
 **Framework:** Jekyll 4.4.1 (Static Site Generator)
-**Styling:** Tailwind CSS with PostCSS processing
+**Styling:** Plain CSS with lightningcss minification
 **JavaScript:** Vanilla JS (ES6+), no framework dependencies
 **Deployment:** GitHub Pages via GitHub Actions
 
@@ -43,11 +43,9 @@ portfolio/
 │   └── sections/       # Page sections (hero, projects, experience, etc.)
 ├── _layouts/           # Page layouts (default.html, home.html)
 ├── assets/
-│   ├── css/            # Generated CSS (from src/tailwind.css)
+│   ├── css/            # CSS (styles.css source, styles.min.css generated)
 │   └── js/
 │       └── modules/    # Modular JavaScript (theme, navigation, etc.)
-├── src/                # Source files
-│   └── tailwind.css    # Tailwind CSS source
 ├── docs/               # Technical documentation
 └── .husky/             # Husky git hooks (pre-commit linting)
 ```
@@ -92,15 +90,15 @@ The Husky pre-commit hook is automatically installed via the `prepare` script wh
 ```bash
 npm run dev            # Start dev server (CSS watching + Jekyll)
 npm run serve          # Jekyll server only
-npm run watch:css      # Watch Tailwind CSS only
+npm run watch:css      # Watch and re-minify CSS only
 ```
 
 ### Building
 
 ```bash
-npm run build          # Production build (CSS + Jekyll)
-npm run build:css      # Build Tailwind CSS
-npm run build:js       # Build JavaScript with Rollup
+npm run build          # Production build (CSS + JS + Jekyll)
+npm run build:css      # Minify CSS with lightningcss
+npm run build:js       # Bundle JavaScript with rolldown
 ```
 
 ### Testing
@@ -190,14 +188,13 @@ npm run fix            # Auto-fix linting issues
 - **Use camelCase** for variables and functions
 - **Verb-noun pattern** for function names (e.g., `initTheme`, `handleClick`)
 
-### CSS/SCSS
+### CSS
 
-- **Use Tailwind utilities first** before custom CSS
-- **CSS custom properties** for theming
+- **Write component CSS in `assets/css/styles.css`** using BEM-like naming
+- **CSS custom properties** for theming (defined in `@layer base`)
 - **Mobile-first approach** (min-width breakpoints)
 - **Maximum 3 levels of nesting**
-- **BEM-like naming** for custom classes
-- **No unused selectors** (PurgeCSS will remove them)
+- **No unused selectors**
 
 ### Liquid Templates
 
@@ -222,7 +219,7 @@ npm run fix            # Auto-fix linting issues
 2. Add data file in `_data/new-section.yml` (if needed)
 3. Include in `_layouts/home.html`
 4. Update navigation in `_data/navigation.yml`
-5. Add CSS in `src/tailwind.css` (if custom styles needed)
+5. Add CSS in `assets/css/styles.css` (if custom styles needed)
 6. Run linters and test locally
 
 ### Modifying Existing Content
@@ -243,12 +240,11 @@ npm run fix            # Auto-fix linting issues
 
 ### Styling Changes
 
-1. Use Tailwind utilities in HTML first
-2. Add custom CSS to `src/tailwind.css` only if necessary
-3. Use CSS custom properties for theming
-4. Ensure dark mode support (test both themes)
-5. Run `npm run build:css` to regenerate CSS
-6. Verify with `npm run lint:css`
+1. Add or update CSS in `assets/css/styles.css`
+2. Use CSS custom properties for theming (tokens in `@layer base`)
+3. Ensure dark mode support (test both themes via `.dark` class on `<html>`)
+4. Run `npm run build:css` to regenerate minified CSS
+5. Verify with `npm run lint:css`
 
 ## 📋 Pre-Flight Checklist
 
@@ -268,7 +264,7 @@ Before committing changes:
 
 - **Jekyll restart required:** Changes to `_config.yml` need server restart
 - **Auto-reload works:** Content changes in `_data/*.yml` reload automatically
-- **CSS rebuilds:** Tailwind CSS rebuilds automatically with `npm run dev`
+- **CSS rebuilds:** CSS is watched and re-minified automatically with `npm run dev`
 - **Base URL:** Site uses `/portfolio` baseurl for GitHub Pages
 - **Theme persistence:** Light/dark mode persists via localStorage
 - **Scroll handlers:** Already throttled for performance
@@ -284,10 +280,9 @@ Before committing changes:
 
 ### CSS Not Updating?
 
-- Run `npm run build:css` manually
-- Check `src/tailwind.css` for syntax errors
-- Verify Tailwind config in `tailwind.config.js`
-- PurgeCSS might be removing classes (check production build)
+- Run `npm run build:css` to regenerate `assets/css/styles.min.css`
+- Check `assets/css/styles.css` for syntax errors
+- Verify the site references `styles.min.css` (check `_includes/head.html`)
 
 ### JavaScript Not Working?
 
@@ -307,7 +302,7 @@ Before committing changes:
 ### Documentation
 
 - [Jekyll Docs](https://jekyllrb.com/docs/)
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [lightningcss Docs](https://lightningcss.dev/)
 - [Liquid Template Language](https://shopify.github.io/liquid/)
 
 ### Project Documentation

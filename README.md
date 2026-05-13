@@ -1,13 +1,13 @@
 # Personal Portfolio Website with Jekyll
 
 A modern, responsive personal portfolio website built with Jekyll and
-Tailwind CSS, designed for easy deployment on GitHub Pages.
+plain CSS, designed for easy deployment on GitHub Pages.
 
 **Live site:** <https://rlorenzo.github.io/portfolio>
 
 ## Features
 
-- 📱 Responsive design using Tailwind CSS
+- 📱 Responsive design with plain CSS and CSS custom properties
 - 🎯 8 customizable sections (Hero, About, Projects, Experience, etc.)
 - 📝 Content management through YAML files
 - 🔄 Interactive components (FAQ accordion, random quotes)
@@ -36,11 +36,9 @@ Tailwind CSS, designed for easy deployment on GitHub Pages.
 │   └── home.html      # Home page layout
 ├── assets/            # Site assets
 │   ├── css/          # CSS files
-│   │   └── tailwind.css  # Generated Tailwind CSS
+│   │   └── styles.css    # CSS source
 │   ├── favicon/      # Favicon files
 │   ├── js/           # JavaScript files
-├── src/              # Source files
-│   └── tailwind.css  # Tailwind CSS source
 └── public/           # Public assets
     └── assets/       # Static files
         └── images/   # Image files
@@ -102,7 +100,7 @@ Tailwind CSS, designed for easy deployment on GitHub Pages.
    npm run dev
    ```
 
-   This command concurrently runs the Tailwind CSS watcher and Jekyll server.
+   This command builds the CSS, then concurrently watches for CSS changes and serves Jekyll.
 
 8. Visit `http://localhost:4000/portfolio` in your browser
 
@@ -166,28 +164,11 @@ All content is stored in YAML files in the `_data` directory:
 
 ## Customization
 
-### Tailwind CSS
+### CSS
 
-Modify Tailwind CSS settings in `tailwind.config.js` or source styles in
-`src/tailwind.css`. The project uses Tailwind CSS utility classes for styling.
-
-Common customizations:
-
-```js
-// tailwind.config.js
-module.exports = {
-  // ...
-  theme: {
-    extend: {
-      colors: {
-        primary: '#3b82f6',  // Change primary color
-        secondary: '#1e40af'  // Change secondary color
-      }
-    }
-  }
-  // ...
-}
-```
+All styles live in `assets/css/styles.css`. Design tokens (colors, fonts, transitions)
+are defined as CSS custom properties in the `@layer base` block at the top of the file.
+Dark mode tokens are on the `.dark` selector in the same block.
 
 ## Deployment to GitHub Pages
 
@@ -225,7 +206,7 @@ This site uses Jekyll 4.4.1 which requires GitHub Actions for deployment
 
 The GitHub Actions workflow automatically:
 
-- Builds the Tailwind CSS
+- Minifies CSS with lightningcss
 - Builds the Jekyll site with production settings
 - Deploys to GitHub Pages on every push to main branch
 
@@ -239,22 +220,19 @@ The GitHub Actions workflow automatically:
 
 ### Build Commands
 
-- **Development Mode**: `npm run dev` - Starts both the Tailwind CSS watcher
-  and Jekyll server concurrently
-- **Build CSS Only**: `npm run build:css` - Builds the Tailwind CSS file once
-- **Watch CSS Only**: `npm run watch:css` - Watches and rebuilds CSS when
-  source files change
+- **Development Mode**: `npm run dev` - Builds CSS, then watches for changes
+  and serves Jekyll concurrently
+- **Build CSS Only**: `npm run build:css` - Minifies CSS once via lightningcss
+- **Watch CSS Only**: `npm run watch:css` - Watches and re-minifies CSS on change
 - **Jekyll Server Only**: `npm run serve` - Runs only the Jekyll server
-  without CSS processing
-- **Production Build**: `npm run build` - Builds both CSS and Jekyll site
-  for production
+- **Production Build**: `npm run build` - Minifies CSS, bundles JS, and builds
+  Jekyll site for production
 
 ### Notes
 
 - Changes to `_config.yml` require server restart
 - Content changes in `_data/*.yml` files are reloaded automatically
-- CSS changes are automatically processed when using `npm run dev`
-- When adding new Tailwind classes, the CSS will be rebuilt automatically
+- CSS changes are automatically re-minified when using `npm run dev`
 
 ## Linting and Code Quality
 
@@ -371,7 +349,7 @@ bundle update
 
 - If Bundler fails, try `gem update bundler`
 - For Jekyll build errors, check `_config.yml` syntax
-- For CSS issues, ensure Tailwind is properly imported
+- For CSS issues, run `npm run build:css` to regenerate `assets/css/styles.min.css`
 - For linting errors, run `npm run fix` to auto-fix issues
 
 ### Ruby Version Management

@@ -3,11 +3,11 @@
   "entry": [
     "assets/js/main.js",
     "rolldown.config.mjs",
-    "postcss.config.js",
     "playwright.config.js",
     "tests/**/*.spec.js"
   ],
   "ignorePatterns": [
+    "assets/css/**",
     "assets/js/bundle.js",
     "_site/**",
     "_includes/**",

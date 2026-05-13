@@ -7,8 +7,8 @@ For the professional Jekyll portfolio website with sticky navigation, back-to-to
 ### Technology Stack
 - **Jekyll 4.4.1**: Static site generator for building the portfolio website
 - **Ruby 3.4 compatibility**: Ensuring the site works with modern Ruby versions
-- **Tailwind CSS**: For responsive and utility-first styling with proper build optimization
-- **PostCSS**: For processing CSS and applying optimizations like autoprefixer and minification
+- **Plain CSS**: BEM-like component CSS with CSS custom properties for theming
+- **lightningcss**: For CSS minification in production builds
 - **JavaScript**: Vanilla JS for interactive elements without framework dependencies
 
 ### Key Design Decisions
@@ -19,9 +19,9 @@ For the professional Jekyll portfolio website with sticky navigation, back-to-to
    - Data-driven approach with YAML files for easy content updates
 
 2. **CSS Architecture**
-   - Tailwind CSS provides a utility-first approach for rapid development
-   - Custom extended theme configuration with CSS variables for theming support
-   - PurgeCSS integration to eliminate unused CSS in the production build
+   - Plain CSS with BEM-like component naming
+   - CSS custom properties for theming (light/dark via `.dark` class on `<html>`)
+   - lightningcss minification eliminates whitespace/comments in production
    - Mobile-first responsive design approach
 
 3. **Performance Optimization**
@@ -53,8 +53,8 @@ For the professional Jekyll portfolio website with sticky navigation, back-to-to
    - **Solution**: Calculate scroll offset based on dynamic header height and use scroll-padding-top
 
 3. **CSS Optimization**
-   - **Challenge**: Balancing the advantages of Tailwind with performance concerns
-   - **Solution**: Implementing PurgeCSS in the build process to eliminate unused CSS
+   - **Challenge**: Keeping CSS lean without a utility framework
+   - **Solution**: Handwritten component CSS (no unused selectors) minified by lightningcss
 
 4. **Responsive Design**
    - **Challenge**: Creating a consistent experience across all device sizes
@@ -296,10 +296,10 @@ The portfolio website follows a clear flow of operations, particularly for the i
 
 ### CSS Optimization
 
-1. **PurgeCSS Implementation**
-   - Configured to scan all template files for used classes
-   - Removes unused CSS from the Tailwind framework
-   - Significantly reduces final CSS bundle size
+1. **lightningcss Minification**
+   - Minifies `assets/css/styles.css` → `assets/css/styles.min.css`
+   - No unused CSS to purge (all CSS is handwritten component styles)
+   - Reduces final CSS bundle size by ~23% before gzip
 
 2. **CSS Variables for Theming**
    - Base variables defined for both light and dark themes

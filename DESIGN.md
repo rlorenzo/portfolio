@@ -47,7 +47,7 @@ components:
 <!-- markdownlint-disable-next-line MD025 -->
 # Design System: Rex Lorenzo Portfolio
 
-> **Snapshot of what currently ships.** This file records the tokens defined in `src/tailwind.css` and the component patterns currently shipped in `_includes/sections/`. The previous design system (Azure/Emerald/Violet palette, Montserrat + Poppins typography, gradient hero, wave dividers) has been removed. Run `/impeccable document` to regenerate `.impeccable/design.json` and refresh this snapshot when tokens change.
+> **Snapshot of what currently ships.** This file records the tokens defined in `assets/css/styles.css` and the component patterns currently shipped in `_includes/sections/`. The previous design system (Azure/Emerald/Violet palette, Montserrat + Poppins typography, gradient hero, wave dividers) has been removed. Run `/impeccable document` to regenerate `.impeccable/design.json` and refresh this snapshot when tokens change.
 
 ## 1. Overview
 

@@ -17,6 +17,9 @@ vendor/
 .bundle/
 Gemfile.lock
 
+# Generated CSS
+assets/css/styles.min.css
+
 # Generated JavaScript bundles
 assets/js/bundle.js
 assets/js/bundle.js.map
