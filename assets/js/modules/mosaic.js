@@ -483,9 +483,10 @@ function frontColumnCells(col) {
 
 function animateRowOrColumn(overlay, state, move, cells, animClass) {
   return new Promise((resolve) => {
-    const elements = cells
-      .map(([r, c]) => overlay.querySelector(`[data-row="${r}"][data-col="${c}"]`))
-      .filter(Boolean);
+    const rawElements = cells.map(([r, c]) =>
+      overlay.querySelector(`[data-row="${r}"][data-col="${c}"]`),
+    );
+    const elements = rawElements.filter(Boolean);
 
     for (const el of elements) {
       el.style.transformOrigin = sharedPivotOrigin(move.face, el);
@@ -494,9 +495,10 @@ function animateRowOrColumn(overlay, state, move, cells, animClass) {
 
     setTimeout(() => {
       applyTurn(state, move);
-      for (const [r, c] of cells) {
+      for (let i = 0; i < cells.length; i++) {
+        const [r, c] = cells[i];
         const sticker = findStickerAt(state, 'F', r, c);
-        const el = overlay.querySelector(`[data-row="${r}"][data-col="${c}"]`);
+        const el = rawElements[i];
         if (sticker && el) applyStickerContent(el, sticker);
       }
     }, MOVE_DURATION_MS / 2);
@@ -541,10 +543,8 @@ function animateFaceTurn(overlay, state, move) {
 }
 
 function animateNoop(state, move) {
-  return new Promise((resolve) => {
-    applyTurn(state, move);
-    resolve();
-  });
+  applyTurn(state, move);
+  return Promise.resolve();
 }
 
 function wait(ms) {

@@ -1,7 +1,6 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "stylelint.vscode-stylelint",
+    "oxc.oxc-vscode",
     "davidanson.vscode-markdownlint",
     "mkaufman.htmlhint",
     "sissel.shopify-liquid",

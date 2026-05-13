@@ -206,7 +206,7 @@ This site uses Jekyll 4.4.1 which requires GitHub Actions for deployment
 
 The GitHub Actions workflow automatically:
 
-- Minifies CSS with lightningcss
+- Minifies CSS with csskit
 - Builds the Jekyll site with production settings
 - Deploys to GitHub Pages on every push to main branch
 
@@ -222,7 +222,7 @@ The GitHub Actions workflow automatically:
 
 - **Development Mode**: `npm run dev` - Builds CSS, then watches for changes
   and serves Jekyll concurrently
-- **Build CSS Only**: `npm run build:css` - Minifies CSS once via lightningcss
+- **Build CSS Only**: `npm run build:css` - Minifies CSS once via csskit
 - **Watch CSS Only**: `npm run watch:css` - Watches and re-minifies CSS on change
 - **Jekyll Server Only**: `npm run serve` - Runs only the Jekyll server
 - **Production Build**: `npm run build` - Minifies CSS, bundles JS, and builds

@@ -8,12 +8,27 @@
   }
 
   body,
-  h1, h2, h3, h4, h5, h6,
-  p, figure, blockquote, dl, dd, pre {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd,
+  pre {
     margin: 0;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-size: inherit;
     font-weight: inherit;
   }
@@ -23,17 +38,29 @@
     text-decoration: inherit;
   }
 
-  img, svg, video, canvas, audio, iframe, embed, object {
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
     display: block;
     vertical-align: middle;
   }
 
-  img, video {
+  img,
+  video {
     max-width: 100%;
     height: auto;
   }
 
-  button, input, optgroup, select, textarea {
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
     font-family: inherit;
     font-size: 100%;
     font-weight: inherit;
@@ -43,7 +70,8 @@
     padding: 0;
   }
 
-  button, [role='button'] {
+  button,
+  [role='button'] {
     cursor: pointer;
   }
 
@@ -56,7 +84,9 @@
     background-image: none;
   }
 
-  ol, ul, menu {
+  ol,
+  ul,
+  menu {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -83,7 +113,7 @@
 
   .dark {
     --brand: oklch(75% 0.13 55);
-    --brand-deep: oklch(85% 0.10 55);
+    --brand-deep: oklch(85% 0.1 55);
     --brand-soft: oklch(28% 0.045 50);
     --paper: oklch(18% 0.008 50);
     --paper-soft: oklch(22% 0.011 50);
@@ -106,10 +136,17 @@
     font-family: var(--font-body);
     background-color: var(--paper);
     color: var(--ink);
-    transition: background-color var(--transition-normal), color var(--transition-normal);
+    transition:
+      background-color var(--transition-normal),
+      color var(--transition-normal);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-body);
   }
 }
@@ -182,7 +219,9 @@
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 1.0625rem;
-  font-variation-settings: 'opsz' 14, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 14,
+    'wdth' 100;
   letter-spacing: -0.005em;
   color: var(--ink);
   text-decoration: none;
@@ -499,7 +538,9 @@
   font-family: var(--font-body);
   font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 96,
+    'wdth' 100;
   line-height: 0.98;
   letter-spacing: -0.03em;
   color: var(--ink);
@@ -588,14 +629,18 @@
   font-family: var(--font-body);
   font-size: clamp(1.375rem, 1.6vw + 0.6rem, 1.875rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 36, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 36,
+    'wdth' 100;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
 .projects__title--compact {
   font-size: clamp(1.0625rem, 0.6vw + 0.85rem, 1.1875rem);
-  font-variation-settings: 'opsz' 20, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 20,
+    'wdth' 100;
   letter-spacing: -0.012em;
   margin-bottom: 0.375rem;
 }
@@ -709,7 +754,9 @@
   font-family: var(--font-body);
   font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 96,
+    'wdth' 100;
   line-height: 0.98;
   letter-spacing: -0.03em;
   color: var(--ink);
@@ -722,7 +769,7 @@
   position: relative;
   --col-gap: clamp(2rem, 4vw, 3rem);
   --date-col: 12rem;
-  --rail-x: calc(var(--date-col) + (var(--col-gap) / 2));
+  --rail-x: calc(var(--col-gap) / 2 + var(--date-col));
 }
 
 @media (min-width: 768px) {
@@ -768,7 +815,9 @@
   font-family: var(--font-body);
   font-size: clamp(1.125rem, 0.9vw + 0.85rem, 1.5rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 32, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 32,
+    'wdth' 100;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.005em;
   line-height: 1.1;
@@ -780,7 +829,7 @@
   .experience__dates::after {
     content: '';
     position: absolute;
-    right: calc((var(--col-gap) / -2) - 5px);
+    right: calc(var(--col-gap) / -2 - 5px);
     top: 50%;
     width: 10px;
     height: 10px;
@@ -808,7 +857,9 @@
   font-family: var(--font-body);
   font-size: clamp(1.375rem, 1.6vw + 0.6rem, 1.75rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 32, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 32,
+    'wdth' 100;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -897,7 +948,9 @@
   font-family: var(--font-body);
   font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 96,
+    'wdth' 100;
   line-height: 0.98;
   letter-spacing: -0.03em;
   color: var(--ink);
@@ -956,7 +1009,9 @@
   font-family: var(--font-body);
   font-size: clamp(1.125rem, 0.7vw + 0.85rem, 1.3125rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 22, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 22,
+    'wdth' 100;
   line-height: 1.25;
   letter-spacing: -0.012em;
   min-width: 0;
@@ -1069,7 +1124,9 @@
   display: block;
   font-size: clamp(2.75rem, 6.5vw + 0.5rem, 5.25rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 96,
+    'wdth' 100;
   line-height: 0.96;
   letter-spacing: -0.035em;
   color: var(--ink);
@@ -1079,7 +1136,9 @@
   display: block;
   font-size: clamp(1rem, 1.2vw + 0.6rem, 1.375rem);
   font-weight: 400;
-  font-variation-settings: 'opsz' 14, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 14,
+    'wdth' 100;
   line-height: 1.25;
   letter-spacing: 0;
   color: var(--brand);
@@ -1089,7 +1148,9 @@
   margin: 0;
   font-size: clamp(1.0625rem, 0.9vw + 0.75rem, 1.3125rem);
   font-weight: 400;
-  font-variation-settings: 'opsz' 16, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 16,
+    'wdth' 100;
   line-height: 1.55;
   color: var(--ink-soft);
   max-width: 32ch;
@@ -1196,10 +1257,18 @@
     animation: hero-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
-  .hero-name__primary { animation-delay: 40ms; }
-  .hero-name__role { animation-delay: 140ms; }
-  .hero-lede { animation-delay: 220ms; }
-  .hero-utility { animation-delay: 320ms; }
+  .hero-name__primary {
+    animation-delay: 40ms;
+  }
+  .hero-name__role {
+    animation-delay: 140ms;
+  }
+  .hero-lede {
+    animation-delay: 220ms;
+  }
+  .hero-utility {
+    animation-delay: 320ms;
+  }
 }
 
 @keyframes hero-enter {
@@ -1236,7 +1305,8 @@
 .hero-portrait__sticker {
   background-image: var(--cube-src);
   background-size: 300% 300%;
-  background-position: calc(var(--col) / 2 * 100%) calc(var(--row) / 2 * 100%);
+  background-position-x: calc(var(--col) / 2 * 100%);
+  background-position-y: calc(var(--row) / 2 * 100%);
   background-repeat: no-repeat;
   filter: saturate(0.92) contrast(1.02);
   transform-style: preserve-3d;
@@ -1255,21 +1325,35 @@
   animation: cube-turn-z 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.hero-portrait--assembling > picture { opacity: 0; }
+.hero-portrait--assembling > picture {
+  opacity: 0;
+}
 
 @keyframes cube-turn-y {
-  from { transform: rotateY(0deg); }
-  to   { transform: rotateY(360deg); }
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 
 @keyframes cube-turn-x {
-  from { transform: rotateX(0deg); }
-  to   { transform: rotateX(360deg); }
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
 }
 
 @keyframes cube-turn-z {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(90deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
 }
 
 /* Chapter mark: reusable section eyebrow used to punctuate boundaries
@@ -1322,7 +1406,9 @@
   font-family: var(--font-body);
   font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 96,
+    'wdth' 100;
   line-height: 0.98;
   letter-spacing: -0.03em;
   color: var(--ink);
@@ -1340,7 +1426,9 @@
   max-width: 56ch;
   font-size: clamp(1.125rem, 0.9vw + 0.85rem, 1.3125rem);
   font-weight: 400;
-  font-variation-settings: 'opsz' 18, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 18,
+    'wdth' 100;
   line-height: 1.5;
   letter-spacing: -0.005em;
   color: var(--ink);
@@ -1438,7 +1526,9 @@
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 600;
-  font-variation-settings: 'opsz' 18, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 18,
+    'wdth' 100;
   letter-spacing: -0.005em;
   color: var(--ink);
   text-decoration: none;
@@ -1493,7 +1583,9 @@
   font-family: var(--font-body);
   font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 96,
+    'wdth' 100;
   line-height: 0.98;
   letter-spacing: -0.03em;
   color: var(--ink);
@@ -1504,7 +1596,9 @@
   max-width: 56ch;
   font-size: clamp(1.0625rem, 0.7vw + 0.85rem, 1.25rem);
   font-weight: 400;
-  font-variation-settings: 'opsz' 18, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 18,
+    'wdth' 100;
   line-height: 1.55;
   letter-spacing: -0.005em;
   color: var(--ink-soft);
@@ -1558,7 +1652,9 @@
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 600;
-  font-variation-settings: 'opsz' 18, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 18,
+    'wdth' 100;
   letter-spacing: -0.005em;
   line-height: 1.3;
   color: var(--ink);
@@ -1711,7 +1807,9 @@
   font-family: var(--font-body);
   font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 96,
+    'wdth' 100;
   line-height: 0.98;
   letter-spacing: -0.03em;
   color: var(--ink);
@@ -1737,7 +1835,9 @@
   font-family: var(--font-body);
   font-size: clamp(1.125rem, 0.7vw + 0.85rem, 1.3125rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 22, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 22,
+    'wdth' 100;
   line-height: 1.3;
   letter-spacing: -0.012em;
   color: var(--ink);
@@ -1807,8 +1907,14 @@
 }
 
 @keyframes faq-answer-in {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Site footer (rebuilt per impeccable shape brief)
@@ -1844,7 +1950,9 @@
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 600;
-  font-variation-settings: 'opsz' 16, 'wdth' 100;
+  font-variation-settings:
+    'opsz' 16,
+    'wdth' 100;
   letter-spacing: -0.005em;
   color: var(--ink);
 }
@@ -1921,8 +2029,18 @@
   }
 }
 
-.hidden { display: none; }
-.invisible { visibility: hidden; }
-.visible { visibility: visible; }
-.opacity-0 { opacity: 0; }
-.opacity-100 { opacity: 1; }
+.hidden {
+  display: none;
+}
+.invisible {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-100 {
+  opacity: 1;
+}

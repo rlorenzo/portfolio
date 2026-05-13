@@ -1,23 +1,11 @@
-/**
- * Smooth Scrolling Module
- * Smooth-scroll for in-page anchor links with sticky-header offset.
- * Respects prefers-reduced-motion.
- */
-
-function scrollBehavior() {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-}
+import { prefersReducedMotion } from './utils.js';
 
 function scrollToElement(targetElement, offsetY = 0) {
   const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
   window.scrollTo({
     top: targetPosition - offsetY,
-    behavior: scrollBehavior(),
+    behavior: prefersReducedMotion() ? 'auto' : 'smooth',
   });
-}
-
-function headerOffset(header) {
-  return header ? header.offsetHeight : 0;
 }
 
 export function initSmoothScrolling(selector = 'a[href^="#"]', headerSelector = '#site-header') {
@@ -32,7 +20,7 @@ export function initSmoothScrolling(selector = 'a[href^="#"]', headerSelector = 
       if (!targetElement) return;
 
       e.preventDefault();
-      scrollToElement(targetElement, headerOffset(header));
+      scrollToElement(targetElement, header?.offsetHeight ?? 0);
       history.pushState(null, null, this.getAttribute('href'));
 
       targetElement.setAttribute('tabindex', '-1');
@@ -45,7 +33,7 @@ export function initSmoothScrolling(selector = 'a[href^="#"]', headerSelector = 
     const targetElement = document.querySelector(window.location.hash);
     if (!targetElement) return;
 
-    setTimeout(() => scrollToElement(targetElement, headerOffset(header)), 10);
+    setTimeout(() => scrollToElement(targetElement, header?.offsetHeight ?? 0), 10);
   });
 }
 

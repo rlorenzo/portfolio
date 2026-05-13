@@ -6,7 +6,7 @@ code in this repository.
 ## Project Overview
 
 This is a Jekyll-based personal portfolio website with plain CSS (minified via
-lightningcss) deployed on GitHub Pages. The site features a component-based
+csskit) deployed on GitHub Pages. The site features a component-based
 architecture with content managed through YAML data files and interactive
 elements.
 
@@ -23,8 +23,8 @@ before committing.**
 
 - `npm run dev` - Start development server with CSS watching and Jekyll serving (concurrently)
 - `npm run serve` - Run Jekyll server only
-- `npm run watch:css` - Watch and minify CSS on changes
-- `npm run build:css` - Minify CSS once (lightningcss)
+- `npm run watch:css` - Watch and minify CSS on changes (chokidar + csskit)
+- `npm run build:css` - Minify CSS once (csskit)
 
 ### Production Build
 
@@ -32,11 +32,11 @@ before committing.**
 
 ### Linting and Code Quality
 
-- `npm run lint` - Run all linters (CSS, JS, Markdown)
+- `npm run lint` - Run all linters (CSS, JS, Markdown, fallow)
 - `npm run lint:all` - Build site first, then run all linters including HTML
 - `npm run fix` - Auto-fix all fixable linting issues
 - Individual linters: `npm run lint:css`, `npm run lint:js`,
-  `npm run lint:html`, `npm run lint:md`
+  `npm run lint:html`, `npm run lint:md`, `npm run lint:fallow`
 - Individual fixers: `npm run fix:css`, `npm run fix:js`, `npm run fix:md`
 
 **IMPORTANT: All linting errors must be fixed before committing code.**
@@ -60,8 +60,9 @@ config. Baseline screenshots are in `tests/screenshots/baseline/`.
 
 - Jekyll 4.4.1 with jekyll-feed and jekyll-seo-tag plugins
 - Ruby >= 3.3.0 (supports Ruby 3.4.0+ with compatibility gems)
-- Plain CSS with lightningcss minification
-- Vanilla JavaScript (no framework dependencies)
+- Plain CSS with csskit minification and oxfmt formatting
+- Vanilla JavaScript bundled with rolldown (no framework dependencies)
+- oxlint for JS linting; oxfmt for JS/CSS/Markdown formatting
 
 ### Key Directories
 
@@ -89,25 +90,24 @@ All content is managed through YAML files in `_data/`:
 
 Modular components in `assets/js/modules/`:
 
-- `animations.js` - Scroll-based animations using intersection observers
-- `faq.js` - FAQ accordion functionality
-- `navigation.js` - Mobile navigation, sticky header, and active states
-- `quotes.js` - Random quote display from testimonials
-- `smoothscroll.js` - Smooth scrolling navigation with header offset calculations
+- `lazy-iframe.js` - Defers iframe `src` until near viewport; prevents third-party scripts from running on initial load
+- `mosaic.js` - Hero portrait Rubik's cube solve animation with CSS 3D transforms
+- `navigation.js` - Mobile navigation, sticky header, scroll spy, and back-to-top
+- `smoothscroll.js` - Smooth scrolling to anchor targets with sticky header offset
 - `theme.js` - Dark/light theme switching with localStorage persistence
-- `utils.js` - Shared utility functions
+- `utils.js` - Shared utilities (throttle, prefersReducedMotion)
 
 ### CSS Processing and Optimization
 
 - Source: `assets/css/styles.css` (plain CSS, human-readable)
-- Output: `assets/css/styles.min.css` (minified by lightningcss, gitignored)
+- Output: `assets/css/styles.min.css` (minified by csskit, gitignored)
 - CSS variables for theme switching (light/dark mode)
 - CSS Cascade Layers (`@layer base`, `@layer utilities`) for specificity control
 
 ### Performance Optimizations
 
 - Deferred JavaScript loading to prevent render blocking
-- CSS minified via lightningcss in production
+- CSS minified via csskit in production
 - Event delegation and throttling for scroll handlers
 - Responsive image handling strategy
 - Mobile-first responsive design approach
@@ -192,11 +192,10 @@ adhere to these guidelines.
 ├── _includes/      # Reusable HTML/Liquid components
 ├── _layouts/       # Page templates
 ├── _data/          # Structured data files (YAML/JSON)
-├── assets/         # CSS, JS, images
-│   ├── css/
-│   ├── js/
-│   └── images/
-└── src/            # (unused, kept for reference)
+└── assets/         # CSS, JS, images
+    ├── css/
+    ├── js/
+    └── images/
 ```
 
 ### Liquid Templates
@@ -208,7 +207,7 @@ adhere to these guidelines.
 - No commented-out code
 - Use semantic HTML5 elements
 
-### CSS/SCSS Guidelines
+### CSS Guidelines
 
 - Use CSS custom properties for theming
 - Follow BEM-like naming convention
@@ -222,7 +221,7 @@ adhere to these guidelines.
 - Functions should do one thing
 - Maximum 50 lines per function
 - Use const/let, never var
-- No console.log statements in production
+- No console.log statements in production (exception: `greetTheCurious()` in `main.js` is an intentional developer Easter egg and must not be removed)
 - Modular architecture with imports/exports
 
 ### Naming Conventions
@@ -260,12 +259,6 @@ npm run lint:md    # Lint Markdown files
 
 - **ALWAYS find and fix the root cause** of issues instead of creating
   workarounds
-
-- When debugging issues, focus on fixing the existing implementation, not
-  replacing it
-
-- When something doesn't work, debug and fix it - don't start over with a
-  simple version
 
 - Comments: Add code comments sparingly. Focus on why something is done,
   especially for complex logic, rather than what is done. Only add high-value
