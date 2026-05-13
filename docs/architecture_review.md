@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This comprehensive review evaluates the portfolio website implementation against modern web development best practices. The project demonstrates strong technical foundations with a component-based architecture, robust performance optimizations, and maintainable code structure. The Jekyll-based static site leverages Tailwind CSS for styling and vanilla JavaScript for interactive features, resulting in a fast, accessible, and professional portfolio.
+This comprehensive review evaluates the portfolio website implementation against modern web development best practices. The project demonstrates strong technical foundations with a component-based architecture, robust performance optimizations, and maintainable code structure. The Jekyll-based static site uses plain CSS (minified via lightningcss) and vanilla JavaScript for interactive features, resulting in a fast, accessible, and professional portfolio.
 
 **Overall Assessment:** The architecture follows industry best practices with comprehensive documentation and efficient implementation. Key strengths include the modular component system, CSS optimization pipeline, and thoughtful performance considerations.
 
@@ -13,14 +13,14 @@ This comprehensive review evaluates the portfolio website implementation against
 - **Component-Based Architecture**: Modular design using Jekyll's templating system with clear separation of concerns
 - **Data-Driven Content**: YAML-based content management in `_data/` for easy updates without touching code
 - **Clean Directory Structure**: Logical organization with dedicated directories for layouts, includes, sections, and assets
-- **CSS Architecture**: Tailwind CSS with proper configuration, custom theme extensions, and PurgeCSS integration
+- **CSS Architecture**: Plain CSS with BEM-like naming, CSS custom properties for theming, and lightningcss minification
 - **JavaScript Organization**: Modular ES6+ modules in `assets/js/modules/` with clear single-responsibility functions
 
 ### ✅ Performance Optimizations
 
 - **CSS Optimization**:
-  - PostCSS pipeline with autoprefixer and cssnano
-  - PurgeCSS eliminates unused Tailwind classes in production
+  - lightningcss minification in production
+  - No unused selectors (CSS is fully handwritten)
   - Critical CSS considerations for above-the-fold content
 - **JavaScript Efficiency**:
   - Vanilla JS (no framework overhead)
@@ -32,8 +32,8 @@ This comprehensive review evaluates the portfolio website implementation against
 
 ### ✅ Responsive Design
 
-- **Mobile-First Approach**: Tailwind's responsive utilities used consistently throughout
-- **Custom Breakpoints**: Defined in `tailwind.config.js` for different device sizes
+- **Mobile-First Approach**: CSS media queries with min-width breakpoints throughout
+- **Custom Breakpoints**: Defined directly in CSS with consistent values across components
 - **Touch-Friendly Interactions**: Mobile navigation and touch-optimized interactive elements
 - **Flexible Layouts**: Grid and flexbox patterns that adapt to various screen sizes
 
@@ -77,12 +77,11 @@ The website follows a well-structured component-based approach that separates co
 
 ### 2. Performance Optimization
 
-The transition from Tailwind CDN to a proper build process with PurgeCSS significantly reduces CSS bundle size. PostCSS processing enhances cross-browser compatibility and optimizes file sizes.
+Plain CSS with lightningcss minification provides a lean build pipeline with no unused styles.
 
 **Key Optimizations:**
-- PurgeCSS removes unused CSS (production builds only)
-- cssnano minification for CSS
-- Rollup bundling for JavaScript
+- lightningcss minification for CSS in production
+- rolldown bundling for JavaScript
 - Deferred JavaScript loading
 - Throttled scroll event handlers
 
@@ -301,8 +300,8 @@ The architecture supports graceful degradation, ensuring basic functionality eve
 
 ### CSS Efficiency
 
-- **✅ Optimized**: PurgeCSS removes unused styles
-- **✅ Optimized**: PostCSS with autoprefixer and cssnano
+- **✅ Optimized**: No unused styles (CSS is fully handwritten)
+- **✅ Optimized**: lightningcss minification
 - **⚠️ Improvement Opportunity**: Critical CSS extraction for faster FCP
 
 ### JavaScript Performance
@@ -317,7 +316,7 @@ The portfolio website architecture demonstrates a strong commitment to modern we
 
 **Key Achievements:**
 - ✅ Well-structured component-based architecture
-- ✅ Robust CSS optimization pipeline with PurgeCSS
+- ✅ Lean CSS pipeline: plain CSS source, lightningcss minification
 - ✅ Clean, maintainable JavaScript with modular organization
 - ✅ Comprehensive linting and code quality tools
 - ✅ Automated deployment with GitHub Actions
@@ -332,6 +331,6 @@ The portfolio website architecture demonstrates a strong commitment to modern we
 
 By addressing the identified areas for improvement, particularly around analytics, testing, and image optimization, the portfolio can evolve into an even more robust and performant showcase of professional capabilities.
 
-The transition from Tailwind CDN to a proper build process with PurgeCSS is particularly noteworthy as a performance optimization that maintains developer experience benefits while significantly improving production bundle sizes.
+The move to plain CSS with lightningcss minification keeps the build pipeline simple and the CSS bundle lean, with no unused styles to purge.
 
 **Overall Grade: A-** - Excellent foundation with clear paths for enhancement.

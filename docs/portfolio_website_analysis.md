@@ -70,7 +70,7 @@ The portfolio follows a traditional sequential section structure with standard c
 ### 3. Technical Implementation
 
 #### Current Implementation
-The site uses Jekyll with Tailwind CSS and includes basic animations and responsive design features.
+The site uses Jekyll with plain CSS (minified via lightningcss) and includes animations and responsive design features.
 
 #### Recommendations
 

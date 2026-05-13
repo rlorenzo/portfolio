@@ -27,7 +27,6 @@
       <button
         type="button"
         class="connect__advance"
-        aria-controls="{% for quote in site.data.quotes %}connect-quote-{{ forloop.index }}{% unless forloop.last %} {% endunless %}{% endfor %}"
       >
         <span class="connect__advance-text">Read another colleague's note</span>
         <span class="connect__advance-arrow" aria-hidden="true">&rarr;</span>

@@ -5,10 +5,10 @@ code in this repository.
 
 ## Project Overview
 
-This is a Jekyll-based personal portfolio website built with Tailwind CSS and
-deployed on GitHub Pages. The site features a component-based architecture with
-content managed through YAML data files, interactive elements, and performance
-optimizations including Tailwind v4's automatic unused CSS elimination.
+This is a Jekyll-based personal portfolio website with plain CSS (minified via
+lightningcss) deployed on GitHub Pages. The site features a component-based
+architecture with content managed through YAML data files and interactive
+elements.
 
 **This project follows Clean Code principles and all code must pass linting
 before committing.**
@@ -23,8 +23,8 @@ before committing.**
 
 - `npm run dev` - Start development server with CSS watching and Jekyll serving (concurrently)
 - `npm run serve` - Run Jekyll server only
-- `npm run watch:css` - Watch and rebuild Tailwind CSS on changes
-- `npm run build:css` - Build Tailwind CSS once
+- `npm run watch:css` - Watch and minify CSS on changes
+- `npm run build:css` - Minify CSS once (lightningcss)
 
 ### Production Build
 
@@ -60,7 +60,7 @@ config. Baseline screenshots are in `tests/screenshots/baseline/`.
 
 - Jekyll 4.4.1 with jekyll-feed and jekyll-seo-tag plugins
 - Ruby >= 3.3.0 (supports Ruby 3.4.0+ with compatibility gems)
-- Tailwind CSS with PostCSS processing
+- Plain CSS with lightningcss minification
 - Vanilla JavaScript (no framework dependencies)
 
 ### Key Directories
@@ -70,7 +70,7 @@ config. Baseline screenshots are in `tests/screenshots/baseline/`.
 - `_includes/sections/` - Modular page sections as HTML partials
 - `_layouts/` - Page layouts (default.html, home.html)
 - `assets/js/modules/` - Modular JavaScript functionality
-- `src/tailwind.css` - Tailwind CSS source (builds to `assets/css/tailwind.css`)
+- `assets/css/styles.css` - CSS source (minified to `assets/css/styles.min.css`)
 - `docs/` - Comprehensive system design and architecture documentation
 
 ### Content Management System
@@ -99,16 +99,15 @@ Modular components in `assets/js/modules/`:
 
 ### CSS Processing and Optimization
 
-- Source: `src/tailwind.css` with Tailwind v4 CSS-first configuration
-- Output: `assets/css/tailwind.css` (processed by PostCSS via `@tailwindcss/postcss`)
-- Tailwind v4 automatic content detection eliminates unused CSS
-- Configuration: CSS-based in `src/tailwind.css` (`@theme`, `@utility`, `@custom-variant`), `postcss.config.js`
+- Source: `assets/css/styles.css` (plain CSS, human-readable)
+- Output: `assets/css/styles.min.css` (minified by lightningcss, gitignored)
 - CSS variables for theme switching (light/dark mode)
+- CSS Cascade Layers (`@layer base`, `@layer utilities`) for specificity control
 
 ### Performance Optimizations
 
 - Deferred JavaScript loading to prevent render blocking
-- Tailwind v4 automatically eliminates unused CSS
+- CSS minified via lightningcss in production
 - Event delegation and throttling for scroll handlers
 - Responsive image handling strategy
 - Mobile-first responsive design approach
@@ -149,7 +148,7 @@ This site uses Jekyll 4.4.1 and requires GitHub Actions for deployment
 
 - Automated deployment via `.github/workflows/deploy.yml`
 - Triggers on push to main/master branch
-- Builds Tailwind CSS, then Jekyll site with production settings
+- Minifies CSS, builds JS, then builds Jekyll site with production settings
 - Deploys to GitHub Pages using actions/deploy-pages@v4
 
 ### Repository Configuration
@@ -197,7 +196,7 @@ adhere to these guidelines.
 │   ├── css/
 │   ├── js/
 │   └── images/
-└── src/            # Source files (Tailwind CSS)
+└── src/            # (unused, kept for reference)
 ```
 
 ### Liquid Templates
@@ -214,7 +213,6 @@ adhere to these guidelines.
 - Use CSS custom properties for theming
 - Follow BEM-like naming convention
 - Maximum nesting depth: 3 levels
-- Use Tailwind v4's `@utility` and `@theme` directives appropriately
 - Mobile-first approach
 - No unused selectors or rules
 

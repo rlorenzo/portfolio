@@ -6,7 +6,6 @@ import {
   initScrollSpy,
   initStickyHeader,
 } from './modules/navigation.js';
-import { initHeroParallax } from './modules/parallax.js';
 import { initSmoothScrolling } from './modules/smoothscroll.js';
 import { applyTheme, getThemePreference, initTheme } from './modules/theme.js';
 import { throttle } from './modules/utils.js';
@@ -75,7 +74,6 @@ function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }
 function setupInteractivity() {
   initLazyIframes();
   initHeroMosaic();
-  initHeroParallax();
   initQuoteSwitcher();
 }
 
@@ -85,6 +83,8 @@ function initQuoteSwitcher() {
 
   const quotes = Array.from(document.querySelectorAll('.connect__quote'));
   if (quotes.length < 2) return;
+
+  advance.setAttribute('aria-controls', quotes.map((q) => q.id).join(' '));
 
   function show(index) {
     quotes.forEach((quote, i) => {

@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "description": "A professional Jekyll portfolio website",
   "scripts": {
-    "build": "npm run build:css:prod && npm run build:js && JEKYLL_ENV=production bundle exec jekyll build",
-    "build:css": "postcss ./src/tailwind.css -o ./assets/css/tailwind.css",
-    "build:css:prod": "NODE_ENV=production postcss ./src/tailwind.css -o ./assets/css/tailwind.css",
+    "build": "npm run build:css && npm run build:js && JEKYLL_ENV=production bundle exec jekyll build",
+    "build:css": "lightningcss --minify assets/css/styles.css -o assets/css/styles.min.css",
     "build:js": "rolldown -c rolldown.config.mjs",
-    "dev": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"npm run serve\"",
+    "dev": "npm run build:css && concurrently \"npm run watch:css\" \"npm run watch:js\" \"npm run serve\"",
+    "watch:css": "lightningcss --minify --watch assets/css/styles.css -o assets/css/styles.min.css",
     "fix": "npm run fix:css && npm run fix:js && npm run fix:md",
-    "fix:css": "stylelint 'src/**/*.{css,scss}' 'assets/**/*.{css,scss}' --fix --allow-empty-input",
+    "fix:css": "stylelint 'assets/css/styles.css' --fix",
     "fix:js": "biome check --fix .",
     "fix:md": "markdownlint '**/*.md' --fix",
     "lint": "npm run lint:css && npm run lint:js && npm run lint:md && npm run lint:fallow",
     "lint:all": "npm run build && npm run lint && npm run lint:html",
-    "lint:css": "stylelint 'src/**/*.{css,scss}' 'assets/**/*.{css,scss}' --allow-empty-input",
+    "lint:css": "stylelint 'assets/css/styles.css'",
     "lint:fallow": "fallow",
     "lint:html": "htmlhint '_site/**/*.html' --ignore '**/playwright-report/**'",
     "lint:js": "biome check .",
@@ -24,13 +24,11 @@
     "setup": "npm install && bundle install",
     "test": "playwright test",
     "test:update": "playwright test --update-snapshots",
-    "watch:css": "npm run build:css -- --watch",
     "watch:js": "npm run build:js -- --watch"
   },
   "keywords": [
     "portfolio",
-    "jekyll",
-    "tailwindcss"
+    "jekyll"
   ],
   "author": "",
   "license": "MIT",
@@ -39,28 +37,21 @@
     "npm": ">=10.0.0"
   },
   "lint-staged": {
-    "*.{css,scss}": "stylelint --fix --allow-empty-input",
+    "*.css": "stylelint --fix",
     "*.js": "biome check --fix",
     "*.md": "markdownlint --fix"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",
     "@playwright/test": "^1.58.2",
-    "@tailwindcss/postcss": "^4.2.0",
     "concurrently": "^9.1.2",
-    "cssnano": "^7.1.2",
     "fallow": "^2.73.0",
     "htmlhint": "^1.1.4",
     "husky": "^9.0.0",
+    "lightningcss-cli": "^1.32.0",
     "lint-staged": "^16.2.7",
     "markdownlint-cli": "^0.48.0",
-    "postcss": "^8.4.32",
-    "postcss-cli": "^11.0.0",
-    "postcss-scss": "^4.0.9",
     "rolldown": "^1.0.0-rc.10",
-    "stylelint": "^17.3.0",
-    "stylelint-config-tailwindcss": "^1.0.0",
-    "stylelint-scss": "^7.0.0",
-    "tailwindcss": "^4.2.0"
+    "stylelint": "^17.3.0"
   }
 }
