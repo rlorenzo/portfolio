@@ -32,8 +32,14 @@ export function initLazyIframes(selector = 'iframe[data-src]', rootMargin = '200
 function loadIframe(iframe) {
   const src = iframe.getAttribute('data-src');
   if (!src) return;
-  // Restrict to http/https schemes so DOM-sourced text cannot inject javascript: URLs.
-  if (!/^https?:\/\//i.test(src)) return;
-  iframe.setAttribute('src', src);
+  // Parse via URL and restrict to http(s) so DOM-sourced text cannot inject other schemes.
+  let parsed;
+  try {
+    parsed = new URL(src, window.location.href);
+  } catch {
+    return;
+  }
+  if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return;
+  iframe.setAttribute('src', parsed.href);
   iframe.removeAttribute('data-src');
 }

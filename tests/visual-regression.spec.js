@@ -28,19 +28,11 @@ async function loadPage(page) {
     });
 
     // Pin quotes to the first one to prevent random selection causing diffs
-    const quotes = document.querySelectorAll('.quote');
+    const quotes = document.querySelectorAll('.connect__quote');
     quotes.forEach((quote, index) => {
-      if (index === 0) {
-        quote.style.position = 'relative';
-        quote.style.opacity = '1';
-        quote.style.transform = 'translateX(0)';
-        quote.setAttribute('aria-hidden', 'false');
-      } else {
-        quote.style.position = 'absolute';
-        quote.style.opacity = '0';
-        quote.style.transform = 'translateX(100%)';
-        quote.setAttribute('aria-hidden', 'true');
-      }
+      const isFirst = index === 0;
+      quote.classList.toggle('connect__quote--active', isFirst);
+      quote.toggleAttribute('hidden', !isFirst);
     });
   });
   await page.waitForTimeout(ANIMATION_SETTLE_DELAY_MS);
