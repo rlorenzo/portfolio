@@ -37,3 +37,4 @@ exclude:
   - "*.mermaid"
   - README.md
   - CLAUDE.md
+  - DESIGN.md
