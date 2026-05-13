@@ -1,5 +1,4 @@
 import { initAOS, setupEntranceAnimations } from './modules/animations.js';
-import { initFaqToggles } from './modules/faq.js';
 import { initLazyIframes } from './modules/lazy-iframe.js';
 import {
   initBackToTopButton,
@@ -77,7 +76,6 @@ function setupAnimations() {
 }
 
 function setupInteractivity() {
-  initFaqToggles('.faq-toggle');
   initViewMore('view-more-projects', '.project-hidden');
   initViewMore('view-more-presentations', '.presentation-hidden');
   initLazyIframes();
