@@ -26,7 +26,7 @@
   type: project
 
 - name: Monarch Forecast
-  description: Desktop app that projects your checking account balance day-by-day using Monarch Money data, surfacing low-balance dates before they happen. Monarch Money tells you where your money went; Monarch Forecast tells you where it's going.
+  description: Day-by-day balance projection from Monarch Money data, flagging low-balance dates before they hit.
   tech_stack:
     - Python
     - Flet
@@ -36,7 +36,7 @@
   type: project
 
 - name: 2048 Solver
-  description: AI-powered 2048 with move coaching, an expectimax solver, strategy guide, and smooth tile animations. Play, learn, or watch the AI solve it.
+  description: 2048 with an expectimax solver, move coaching, and a strategy guide. Play, learn, or watch the AI solve it.
   tech_stack:
     - JavaScript
     - Vite
@@ -46,7 +46,7 @@
   type: project
 
 - name: Zoom Integration for Moodle
-  description: The mod_zoom plugin integrates Zoom video conferencing with Moodle, enabling instructors to schedule, manage, and launch Zoom meetings directly from their course pages.
+  description: Moodle plugin (mod_zoom) for scheduling, managing, and launching Zoom meetings directly from a course page.
   tech_stack:
     - PHP
     - REST
@@ -56,7 +56,7 @@
   type: project
 
 - name: Moodle
-  description: I contributed to the Moodle open-source learning management system. I was also recognized as a Particularly Helpful Moodler, given to the top 1% of forum contributors.
+  description: Long-term contributor to the Moodle LMS; recognized as a Particularly Helpful Moodler (top 1% of forum contributors).
   tech_stack:
     - PHP
     - Open Source
@@ -66,7 +66,7 @@
   type: project
 
 - name: AI Coding Setup
-  description: A set of prompts, skills, and scripts to aid in utilizing AI coding agents in development workflows.
+  description: Prompts, skills, and scripts for working with AI coding agents in development workflows.
   tech_stack:
     - Shell
     - AI Agents
@@ -75,7 +75,7 @@
   type: project
 
 - name: Moodle AWS Disaster Recovery
-  description: Enhanced an AWS Moodle template to provide a disaster recovery solution for CCLE (UCLA's LMS) to ensure business continuity.
+  description: Enhanced an AWS Moodle template into a disaster-recovery solution for CCLE, UCLA's Moodle LMS.
   tech_stack:
     - AWS
     - CloudFormation
@@ -86,7 +86,7 @@
   type: project
 
 - name: image-gen-mcp
-  description: Contributed gpt-image-1.5, imagen-4-fast, and gpt-image-2 (with custom sizes) support, provider health checks, OpenAI/Gemini generation fixes, and Claude Code MCP compatibility to this text-to-image MCP server.
+  description: Added gpt-image-1.5 and imagen-4-fast support, provider health checks, and Claude Code MCP compatibility.
   tech_stack:
     - Python
     - MCP
@@ -96,7 +96,7 @@
   type: contribution
 
 - name: Internet Archive for Apple TV
-  description: Revamped an open-source Apple TV app for browsing the Internet Archive, modernizing the codebase and preparing it for public release on the App Store.
+  description: Modernized an open-source Apple TV Internet Archive browser and prepared it for App Store release.
   tech_stack:
     - Swift
     - tvOS
@@ -105,7 +105,7 @@
   type: contribution
 
 - name: PstReader (Swift Library)
-  description: Added memory-mapped file I/O and convenience API to the Swift PST file reading library. Improved message loading and sender display fallback, enabling the Free PST Viewer project.
+  description: Memory-mapped I/O and a convenience API for the Swift PST file reader, plus improved message loading.
   tech_stack:
     - Swift
     - File I/O
