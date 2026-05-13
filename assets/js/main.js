@@ -1,10 +1,12 @@
 import { initLazyIframes } from './modules/lazy-iframe.js';
+import { initHeroMosaic } from './modules/mosaic.js';
 import {
   initBackToTopButton,
   initMobileMenu,
   initScrollSpy,
   initStickyHeader,
 } from './modules/navigation.js';
+import { initHeroParallax } from './modules/parallax.js';
 import { initSmoothScrolling } from './modules/smoothscroll.js';
 import { applyTheme, getThemePreference, initTheme } from './modules/theme.js';
 import { throttle } from './modules/utils.js';
@@ -72,6 +74,8 @@ function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }
 
 function setupInteractivity() {
   initLazyIframes();
+  initHeroMosaic();
+  initHeroParallax();
   initQuoteSwitcher();
 }
 

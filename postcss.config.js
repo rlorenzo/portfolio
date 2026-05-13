@@ -10,7 +10,6 @@ module.exports = {
               removeAll: true,
             },
             minifyFontValues: false,
-            normalizeWhitespace: false,
           },
         ],
       }),

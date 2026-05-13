@@ -1152,17 +1152,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 22%;
   filter: saturate(0.92) contrast(1.02);
   display: block;
+  /* Scroll parallax: --parallax-y is set from JS, capped at ~28px. Using the
+     `translate` property keeps this independent of the `transform`-based
+     hero-enter animation on the parent figure. */
+  translate: 0 var(--parallax-y, 0);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-name__primary,
   .hero-name__role,
   .hero-lede,
-  .hero-utility,
-  .hero-portrait {
+  .hero-utility {
     opacity: 0;
     transform: translateY(14px);
     animation: hero-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -1172,10 +1174,6 @@
   .hero-name__role { animation-delay: 140ms; }
   .hero-lede { animation-delay: 220ms; }
   .hero-utility { animation-delay: 320ms; }
-  .hero-portrait {
-    animation-delay: 120ms;
-    animation-duration: 800ms;
-  }
 }
 
 @keyframes hero-enter {
@@ -1183,6 +1181,69 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Portrait Rubik's solve: a full Rubik's cube state model runs in JS, but we
+   only render the front face as a flat 3x3 grid of stickers. Each "turn"
+   animates whichever subset of front-face stickers a real cube turn would
+   visibly affect: U/D rotates the top/bottom row around the vertical axis,
+   L/R rotates the left/right column around the horizontal axis, F rotates
+   the whole grid in-plane. Stickers use backface-visibility to hide
+   themselves at the rotation midpoint, when JS swaps in the new content. */
+.hero-portrait {
+  position: relative;
+}
+
+.hero-portrait__mosaic {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  pointer-events: none;
+  border-radius: inherit;
+  perspective: 700px;
+  perspective-origin: center;
+  transform-style: preserve-3d;
+}
+
+.hero-portrait__sticker {
+  background-image: var(--cube-src);
+  background-size: 300% 300%;
+  background-position: calc(var(--col) / 2 * 100%) calc(var(--row) / 2 * 100%);
+  background-repeat: no-repeat;
+  filter: saturate(0.92) contrast(1.02);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.hero-portrait__sticker.is-turning-y {
+  animation: cube-turn-y 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-portrait__sticker.is-turning-x {
+  animation: cube-turn-x 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-portrait__mosaic.is-turning-z {
+  animation: cube-turn-z 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-portrait--assembling > picture { opacity: 0; }
+
+@keyframes cube-turn-y {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+@keyframes cube-turn-x {
+  from { transform: rotateX(0deg); }
+  to   { transform: rotateX(360deg); }
+}
+
+@keyframes cube-turn-z {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(90deg); }
 }
 
 /* Chapter mark: reusable section eyebrow used to punctuate boundaries

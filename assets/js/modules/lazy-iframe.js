@@ -29,17 +29,21 @@ export function initLazyIframes(selector = 'iframe[data-src]', rootMargin = '200
   });
 }
 
+function safeHttpUrl(src) {
+  // Parse via URL and restrict to http(s) so DOM-sourced text cannot inject other schemes.
+  try {
+    const parsed = new URL(src, window.location.href);
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:' ? parsed.href : null;
+  } catch {
+    return null;
+  }
+}
+
 function loadIframe(iframe) {
   const src = iframe.getAttribute('data-src');
   if (!src) return;
-  // Parse via URL and restrict to http(s) so DOM-sourced text cannot inject other schemes.
-  let parsed;
-  try {
-    parsed = new URL(src, window.location.href);
-  } catch {
-    return;
-  }
-  if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return;
-  iframe.setAttribute('src', parsed.href);
+  const safeHref = safeHttpUrl(src);
+  if (!safeHref) return;
+  iframe.setAttribute('src', safeHref);
   iframe.removeAttribute('data-src');
 }
