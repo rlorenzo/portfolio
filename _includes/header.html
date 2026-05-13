@@ -1,66 +1,56 @@
-<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-lg bg-white dark:bg-gray-900">
-  <a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded">Skip to content</a>
-  <div class="container mx-auto px-4 py-4">
-    <nav class="flex justify-between items-center">
-      <!-- Logo/Brand -->
-      <a href="{{ '/' | relative_url }}" class="text-xl font-bold flex items-center">
-        <div class="text-primary mr-2 text-2xl">
-          <i class="fas fa-code"></i>
-        </div>
-        <span class="text-gray-900 dark:text-white">{{ site.title }}</span>
-      </a>
+<header id="site-header" class="site-header">
+  <a href="#hero" class="site-header__skip">Skip to content</a>
+  <div class="site-header__inner">
+    <a href="{{ '/' | relative_url }}" class="site-header__wordmark">{{ site.title }}</a>
 
-      <!-- Desktop Navigation -->
-      <div class="space-x-4 hidden md:flex items-center">
-        {% for item in site.data.navigation %}
-        <a href="{{ item.url }}" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center">
-          {% if item.icon %}<i class="{{ item.icon }} mr-1"></i>{% endif %}
-          {{ item.title }}
-        </a>
-        {% endfor %}
-
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle" class="theme-switch" aria-label="Toggle theme">
-          <i id="theme-icon-light" class="fas fa-sun hidden text-gray-50" style="display:none;"></i>
-          <i id="theme-icon-dark" class="fas fa-moon"></i>
-        </button>
-
-        <!-- Contact Button -->
-        <a href="#contact" class="btn btn-primary ml-2 whitespace-nowrap">
-          <i class="fas fa-envelope mr-1"></i> Contact Me
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden flex items-center space-x-4">
-        <!-- Theme Toggle Button (Mobile) -->
-        <button id="theme-toggle-mobile" class="theme-switch" aria-label="Toggle theme">
-          <i id="theme-icon-light-mobile" class="fas fa-sun hidden text-gray-50" style="display:none;"></i>
-          <i id="theme-icon-dark-mobile" class="fas fa-moon"></i>
-        </button>
-
-        <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-hidden hover:text-primary dark:hover:text-primary" aria-label="Open menu" aria-expanded="false">
-          <i class="fas fa-bars text-xl"></i>
-        </button>
-      </div>
+    <nav class="site-nav" aria-label="Primary">
+      {% for item in site.data.navigation %}
+      <a href="{{ item.url }}" class="site-nav__link nav-link">{{ item.title }}</a>
+      {% endfor %}
+      <a href="#contact" class="site-nav__contact">Contact</a>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden mt-4 hidden rounded-lg shadow-lg bg-white dark:bg-gray-800 p-4">
-      {% for item in site.data.navigation %}
-      <a href="{{ item.url }}" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300">
-        {% if item.icon %}<i class="{{ item.icon }} mr-2"></i>{% endif %}
-        {{ item.title }}
-      </a>
-      {% endfor %}
-      <a href="#contact" class="btn btn-primary mt-4 w-full">
-        <i class="fas fa-envelope mr-1"></i> Contact Me
-      </a>
-    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg id="theme-icon-light" class="theme-toggle__icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="8" cy="8" r="3"/>
+        <line x1="8" y1="1.25" x2="8" y2="3"/>
+        <line x1="8" y1="13" x2="8" y2="14.75"/>
+        <line x1="1.25" y1="8" x2="3" y2="8"/>
+        <line x1="13" y1="8" x2="14.75" y2="8"/>
+        <line x1="3.25" y1="3.25" x2="4.5" y2="4.5"/>
+        <line x1="11.5" y1="11.5" x2="12.75" y2="12.75"/>
+        <line x1="3.25" y1="12.75" x2="4.5" y2="11.5"/>
+        <line x1="11.5" y1="4.5" x2="12.75" y2="3.25"/>
+      </svg>
+      <svg id="theme-icon-dark" class="theme-toggle__icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13.5 9.75A5.5 5.5 0 1 1 6.25 2.5a4.5 4.5 0 0 0 7.25 7.25Z"/>
+      </svg>
+    </button>
+
+    <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="mobile-menu-button__icon mobile-menu-button__icon--bars" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="2" y1="4.75" x2="14" y2="4.75"/>
+        <line x1="2" y1="8" x2="14" y2="8"/>
+        <line x1="2" y1="11.25" x2="14" y2="11.25"/>
+      </svg>
+      <svg class="mobile-menu-button__icon mobile-menu-button__icon--close" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="3.75" y1="3.75" x2="12.25" y2="12.25"/>
+        <line x1="12.25" y1="3.75" x2="3.75" y2="12.25"/>
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu hidden">
+    {% for item in site.data.navigation %}
+    <a href="{{ item.url }}" class="mobile-menu__link">{{ item.title }}</a>
+    {% endfor %}
+    <a href="#contact" class="mobile-menu__link mobile-menu__link--contact">Contact</a>
   </div>
 </header>
 
-<!-- Back to top button -->
-<button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full opacity-0 invisible transition-all duration-300 focus:outline-hidden z-50 bg-primary hover:bg-accent" aria-label="Back to top">
-  <i class="fas fa-arrow-up text-white"></i>
+<button id="back-to-top" class="back-to-top opacity-0 invisible" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 13V3"/>
+    <path d="m3.5 7.5 4.5-4.5 4.5 4.5"/>
+  </svg>
 </button>

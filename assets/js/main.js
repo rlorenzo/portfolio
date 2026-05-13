@@ -21,7 +21,6 @@ function initializeApp() {
     'mobile-menu-button',
     'mobile-menu',
     'theme-toggle',
-    'theme-toggle-mobile',
   ]);
 
   initTheme();
@@ -40,7 +39,7 @@ function cacheElementsById(ids) {
   }, {});
 }
 
-function setupThemeToggles({ themeToggle, themeToggleMobile }) {
+function setupThemeToggles({ themeToggle }) {
   const handleThemeToggle = () => {
     const currentTheme = getThemePreference();
     const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -48,7 +47,6 @@ function setupThemeToggles({ themeToggle, themeToggleMobile }) {
   };
 
   themeToggle?.addEventListener('click', handleThemeToggle);
-  themeToggleMobile?.addEventListener('click', handleThemeToggle);
 }
 
 function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }) {
@@ -91,10 +89,12 @@ function initViewMore(buttonId, hiddenSelector) {
   });
 }
 
-function setupResponsiveBehavior({ mobileMenu }) {
+function setupResponsiveBehavior({ mobileMenu, mobileMenuButton }) {
   const handleResize = throttle(() => {
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 768) {
       mobileMenu?.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      mobileMenuButton?.setAttribute('aria-label', 'Open menu');
     }
   }, 100);
 

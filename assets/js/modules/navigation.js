@@ -32,7 +32,6 @@ export function initStickyHeader(header) {
 export function initBackToTopButton(backToTopBtn, scrollThreshold = 300) {
   if (!backToTopBtn) return;
 
-  // Handle visibility based on scroll position
   window.addEventListener(
     'scroll',
     throttle(() => {
@@ -46,13 +45,17 @@ export function initBackToTopButton(backToTopBtn, scrollThreshold = 300) {
     }, 100),
   );
 
-  // Handle click event
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: prefersReducedMotion() ? 'auto' : 'smooth',
     });
+    document.querySelector('#hero')?.focus?.();
   });
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 /**
@@ -63,19 +66,33 @@ export function initBackToTopButton(backToTopBtn, scrollThreshold = 300) {
 export function initMobileMenu(menuButton, mobileMenu) {
   if (!menuButton || !mobileMenu) return;
 
-  menuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+  const setExpanded = (expanded) => {
+    mobileMenu.classList.toggle('hidden', !expanded);
+    menuButton.setAttribute('aria-expanded', String(expanded));
+    menuButton.setAttribute('aria-label', expanded ? 'Close menu' : 'Open menu');
+  };
 
-    // Toggle aria-expanded for accessibility
-    const isExpanded = mobileMenu.classList.contains('hidden') ? 'false' : 'true';
-    menuButton.setAttribute('aria-expanded', isExpanded);
+  menuButton.addEventListener('click', () => {
+    const willOpen = mobileMenu.classList.contains('hidden');
+    setExpanded(willOpen);
   });
 
-  // Close menu when clicking outside
   document.addEventListener('click', (event) => {
     if (!mobileMenu.contains(event.target) && !menuButton.contains(event.target)) {
-      mobileMenu.classList.add('hidden');
-      menuButton.setAttribute('aria-expanded', 'false');
+      setExpanded(false);
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+      setExpanded(false);
+      menuButton.focus();
+    }
+  });
+
+  mobileMenu.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+      setExpanded(false);
     }
   });
 }
