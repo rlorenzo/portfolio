@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@source inline("text-primary text-secondary text-accent bg-primary bg-secondary bg-accent bg-bg-primary bg-bg-secondary text-text-primary text-text-secondary border-border-color animate-fadeIn quote-transition nav-link btn btn-primary btn-outline card card-hover section skill-chip timeline-node timeline-card contribution-badge theme-switch");
+@source inline("text-primary text-secondary text-accent bg-primary bg-secondary bg-accent bg-bg-primary bg-bg-secondary text-text-primary text-text-secondary border-border-color animate-fadeIn nav-link btn btn-primary btn-outline card card-hover section skill-chip timeline-node timeline-card contribution-badge theme-switch");
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -257,13 +257,6 @@
   background-color: rgba(16, 185, 129, 0.1);
   color: var(--secondary-color);
   border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-/* Quote Transitions */
-@utility quote-transition {
-  transition:
-    opacity var(--transition-slow) ease-in-out,
-    transform var(--transition-slow) ease-in-out;
 }
 
 /* Animation Keyframes */
@@ -1532,6 +1525,225 @@
 .about__resume:hover .about__resume-arrow,
 .about__resume:focus-visible .about__resume-arrow {
   transform: translateX(2px);
+}
+
+/* Let's Connect (combined Quotes + Contact, rebuilt per impeccable shape brief)
+   Closing chapter. Testimonials as letter-style correspondence, contact links
+   as inline utility row. No blue button, no FontAwesome, no template chrome. */
+.connect {
+  background: var(--paper);
+  color: var(--ink);
+  padding-block: clamp(4.5rem, 10vh, 7.5rem);
+  font-family: var(--font-body);
+}
+
+.connect__inner {
+  max-width: 62rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.connect__header {
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.connect__heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 96, 'wdth' 100;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.connect__lede {
+  margin: 0 0 clamp(2.5rem, 4.5vw, 3.75rem) 0;
+  max-width: 56ch;
+  font-size: clamp(1.0625rem, 0.7vw + 0.85rem, 1.25rem);
+  font-weight: 400;
+  font-variation-settings: 'opsz' 18, 'wdth' 100;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.connect__voices {
+  margin-bottom: clamp(2.75rem, 5vw, 4rem);
+  max-width: 60ch;
+  padding-inline-start: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.connect__quote {
+  display: none;
+  flex-direction: column;
+}
+
+.connect__quote--active {
+  display: flex;
+}
+
+.connect__quote-body {
+  margin: 0 0 clamp(1rem, 1.75vw, 1.5rem) 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+  quotes: '\201C' '\201D' '\2018' '\2019';
+  text-wrap: pretty;
+}
+
+.connect__quote-body::before {
+  content: open-quote;
+}
+
+.connect__quote-body::after {
+  content: close-quote;
+}
+
+.connect__quote-rule {
+  width: clamp(2.25rem, 4vw, 3rem);
+  height: 1px;
+  background: var(--brand);
+  opacity: 0.55;
+  margin-bottom: 0.625rem;
+}
+
+.connect__quote-author {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 18, 'wdth' 100;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.connect__quote-role {
+  margin: 0.125rem 0 0 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+
+.connect__advance {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-top: clamp(1rem, 1.75vw, 1.4rem);
+  padding: 0.25rem 0;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.connect__advance:hover,
+.connect__advance:focus-visible {
+  color: var(--brand);
+}
+
+.connect__advance:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.connect__advance-arrow {
+  display: inline-block;
+  transform: translateX(-2px);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  font-size: 0.95em;
+}
+
+.connect__advance:hover .connect__advance-arrow,
+.connect__advance:focus-visible .connect__advance-arrow {
+  transform: translateX(2px);
+}
+
+.connect__close {
+  margin: 0 0 clamp(1.5rem, 2.5vw, 2rem) 0;
+  max-width: 56ch;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.connect__utility {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 1.25rem) clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.connect__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding-block: 0.5rem;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.connect__link::after {
+  content: '';
+  position: absolute;
+  left: calc(1rem + 0.5rem);
+  right: 0;
+  bottom: 0.4rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: translateY(2px);
+  transition:
+    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.connect__link:hover,
+.connect__link:focus-visible {
+  color: var(--brand);
+}
+
+.connect__link:hover::after,
+.connect__link:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.connect__link:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+.connect__icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--ink-soft);
+  transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.connect__link:hover .connect__icon,
+.connect__link:focus-visible .connect__icon {
+  color: var(--brand);
 }
 
 /* Scroll-arrive motion for the About header.

@@ -7,7 +7,6 @@ import {
   initScrollSpy,
   initStickyHeader,
 } from './modules/navigation.js';
-import { rotateQuotes } from './modules/quotes.js';
 import { initSmoothScrolling } from './modules/smoothscroll.js';
 import { applyTheme, getThemePreference, initTheme } from './modules/theme.js';
 import { throttle } from './modules/utils.js';
@@ -79,10 +78,34 @@ function setupAnimations() {
 
 function setupInteractivity() {
   initFaqToggles('.faq-toggle');
-  rotateQuotes('.quote', 8000);
   initViewMore('view-more-projects', '.project-hidden');
   initViewMore('view-more-presentations', '.presentation-hidden');
   initLazyIframes();
+  initQuoteSwitcher();
+}
+
+function initQuoteSwitcher() {
+  const advance = document.querySelector('.connect__advance');
+  if (!advance) return;
+
+  const quotes = Array.from(document.querySelectorAll('.connect__quote'));
+  if (quotes.length < 2) return;
+
+  function show(index) {
+    quotes.forEach((quote, i) => {
+      const isActive = i === index;
+      quote.classList.toggle('connect__quote--active', isActive);
+      quote.toggleAttribute('hidden', !isActive);
+    });
+  }
+
+  let activeIndex = Math.floor(Math.random() * quotes.length);
+  show(activeIndex);
+
+  advance.addEventListener('click', () => {
+    activeIndex = (activeIndex + 1) % quotes.length;
+    show(activeIndex);
+  });
 }
 
 function initViewMore(buttonId, hiddenSelector) {

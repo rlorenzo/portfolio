@@ -1,19 +1,64 @@
-<section id="contact" class="py-16 bg-white dark:bg-gray-900">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">Let's Connect</h2>
-    <div class="max-w-xl mx-auto text-center">
-      <p class="text-xl mb-8 text-gray-700 dark:text-gray-300">I'm always open to discussing new opportunities and interesting projects.</p>
-      <a href="mailto:{{ site.email }}" class="btn btn-primary rounded-full px-8 py-3">
-        Get in touch
-      </a>
-      <div class="mt-10 flex justify-center gap-6">
-        <a href="https://github.com/rlorenzo" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="fab fa-github text-3xl" aria-hidden="true"></i>
-        </a>
-        <a href="https://linkedin.com/in/rexlorenzo" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i class="fab fa-linkedin text-3xl" aria-hidden="true"></i>
-        </a>
-      </div>
+<section id="contact" class="connect">
+  <div class="connect__inner">
+    <header class="connect__header">
+      <div class="chapter" aria-hidden="true">06</div>
+      <h2 class="connect__heading">Let's Connect</h2>
+    </header>
+
+    <p class="connect__lede">
+      If you're weighing a senior engineering or engineering-leadership hire, here is what some of the people I've worked with have said.
+    </p>
+
+    <div class="connect__voices" aria-label="Recommendations from former colleagues">
+      {% for quote in site.data.quotes %}
+      <article
+        class="connect__quote{% if forloop.first %} connect__quote--active{% endif %}"
+        id="connect-quote-{{ forloop.index }}"
+        {% unless forloop.first %}hidden{% endunless %}
+      >
+        <blockquote class="connect__quote-body">{{ quote.text }}</blockquote>
+        <div class="connect__quote-rule" aria-hidden="true"></div>
+        <p class="connect__quote-author">{{ quote.author }}</p>
+        <p class="connect__quote-role">{{ quote.position }}</p>
+      </article>
+      {% endfor %}
+
+      {% if site.data.quotes.size > 1 %}
+      <button
+        type="button"
+        class="connect__advance"
+        aria-controls="{% for quote in site.data.quotes %}connect-quote-{{ forloop.index }}{% unless forloop.last %} {% endunless %}{% endfor %}"
+      >
+        <span class="connect__advance-text">Read another colleague's note</span>
+        <span class="connect__advance-arrow" aria-hidden="true">&rarr;</span>
+      </button>
+      {% endif %}
     </div>
+
+    <p class="connect__close">
+      If any of that lands, the fastest way to reach me is email. Always open to a conversation.
+    </p>
+
+    <nav class="connect__utility" aria-label="Contact links">
+      <a class="connect__link" href="mailto:{{ site.email }}">
+        <svg class="connect__icon" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3.5" width="12" height="9" rx="1"/>
+          <path d="m2.5 4.5 5.5 4 5.5-4"/>
+        </svg>
+        {{ site.email }}
+      </a>
+      <a class="connect__link" href="https://github.com/rlorenzo" target="_blank" rel="noopener">
+        <svg class="connect__icon" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
+          <path d="M8 .5a7.5 7.5 0 0 0-2.37 14.62c.37.07.5-.16.5-.36v-1.27c-2.08.45-2.52-1-2.52-1-.34-.86-.83-1.09-.83-1.09-.68-.46.05-.45.05-.45.75.05 1.14.77 1.14.77.67 1.14 1.75.81 2.18.62.07-.48.26-.81.48-1-1.66-.19-3.4-.83-3.4-3.7 0-.82.29-1.49.77-2.01-.08-.19-.34-.96.07-2 0 0 .63-.2 2.06.77a7.16 7.16 0 0 1 3.74 0c1.43-.97 2.06-.77 2.06-.77.41 1.04.15 1.81.07 2 .48.52.77 1.19.77 2.01 0 2.88-1.75 3.51-3.42 3.7.27.23.51.68.51 1.38v2.04c0 .2.13.43.5.36A7.5 7.5 0 0 0 8 .5Z"/>
+        </svg>
+        GitHub
+      </a>
+      <a class="connect__link" href="https://linkedin.com/in/rexlorenzo" target="_blank" rel="noopener">
+        <svg class="connect__icon" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
+          <path d="M3.5 1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM2 5.75h3v8.75H2V5.75Zm4.5 0h2.87v1.2h.04c.4-.74 1.38-1.52 2.84-1.52 3.04 0 3.6 1.97 3.6 4.53v4.54h-3v-4.03c0-.96-.02-2.2-1.36-2.2-1.37 0-1.58 1.04-1.58 2.13v4.1h-3V5.75Z"/>
+        </svg>
+        LinkedIn
+      </a>
+    </nav>
   </div>
 </section>
