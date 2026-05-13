@@ -1,12 +1,10 @@
-import { animateCounters, initAOS, setupEntranceAnimations } from './modules/animations.js';
-import { initFaqToggles } from './modules/faq.js';
+import { initLazyIframes } from './modules/lazy-iframe.js';
 import {
   initBackToTopButton,
   initMobileMenu,
   initScrollSpy,
   initStickyHeader,
 } from './modules/navigation.js';
-import { rotateQuotes } from './modules/quotes.js';
 import { initSmoothScrolling } from './modules/smoothscroll.js';
 import { applyTheme, getThemePreference, initTheme } from './modules/theme.js';
 import { throttle } from './modules/utils.js';
@@ -20,16 +18,23 @@ function initializeApp() {
     'mobile-menu-button',
     'mobile-menu',
     'theme-toggle',
-    'theme-toggle-mobile',
   ]);
 
   initTheme();
-  setupThemeToggles(elements);
+  setupThemeToggle(elements);
   setupNavigation(elements);
-  setupAnimations();
   setupInteractivity();
   setupResponsiveBehavior(elements);
   setupPrintMode();
+  greetTheCurious();
+}
+
+function greetTheCurious() {
+  console.log(
+    '%chi.\n%crexlorenzo@gmail.com',
+    'color: oklch(58% 0.14 50); font: 600 14px/1.2 ui-sans-serif, system-ui;',
+    'color: oklch(46% 0.012 50); font: 400 12px/1.4 ui-sans-serif, system-ui;',
+  );
 }
 
 function cacheElementsById(ids) {
@@ -39,15 +44,22 @@ function cacheElementsById(ids) {
   }, {});
 }
 
-function setupThemeToggles({ themeToggle, themeToggleMobile }) {
-  const handleThemeToggle = () => {
-    const currentTheme = getThemePreference();
-    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(nextTheme);
-  };
+function setupThemeToggle({ themeToggle }) {
+  if (!themeToggle) return;
 
-  themeToggle?.addEventListener('click', handleThemeToggle);
-  themeToggleMobile?.addEventListener('click', handleThemeToggle);
+  syncThemeToggleState(themeToggle, getThemePreference());
+
+  themeToggle.addEventListener('click', () => {
+    const next = getThemePreference() === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    syncThemeToggleState(themeToggle, next);
+  });
+}
+
+function syncThemeToggleState(button, theme) {
+  const isDark = theme === 'dark';
+  button.setAttribute('aria-pressed', String(isDark));
+  button.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
 }
 
 function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }) {
@@ -58,41 +70,41 @@ function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }
   initSmoothScrolling('a[href^="#"]', '#site-header');
 }
 
-function setupAnimations() {
-  initAOS({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: true,
-    offset: 50,
-  });
-
-  animateCounters();
-  setupEntranceAnimations('.animate-on-scroll');
-}
-
 function setupInteractivity() {
-  initFaqToggles('.faq-toggle');
-  rotateQuotes('.quote', 8000);
-  initViewMoreProjects();
+  initLazyIframes();
+  initQuoteSwitcher();
 }
 
-function initViewMoreProjects() {
-  const button = document.getElementById('view-more-projects');
-  if (!button) return;
+function initQuoteSwitcher() {
+  const advance = document.querySelector('.connect__advance');
+  if (!advance) return;
 
-  button.addEventListener('click', () => {
-    const hiddenCards = document.querySelectorAll('.project-hidden');
-    hiddenCards.forEach((card) => {
-      card.classList.remove('hidden');
+  const quotes = Array.from(document.querySelectorAll('.connect__quote'));
+  if (quotes.length < 2) return;
+
+  function show(index) {
+    quotes.forEach((quote, i) => {
+      const isActive = i === index;
+      quote.classList.toggle('connect__quote--active', isActive);
+      quote.toggleAttribute('hidden', !isActive);
     });
-    button.remove();
+  }
+
+  let activeIndex = Math.floor(Math.random() * quotes.length);
+  show(activeIndex);
+
+  advance.addEventListener('click', () => {
+    activeIndex = (activeIndex + 1) % quotes.length;
+    show(activeIndex);
   });
 }
 
-function setupResponsiveBehavior({ mobileMenu }) {
+function setupResponsiveBehavior({ mobileMenu, mobileMenuButton }) {
   const handleResize = throttle(() => {
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 768) {
       mobileMenu?.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      mobileMenuButton?.setAttribute('aria-label', 'Open menu');
     }
   }, 100);
 

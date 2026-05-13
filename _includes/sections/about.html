@@ -1,161 +1,50 @@
-<section id="about" class="py-20 bg-bg-primary dark:bg-bg-secondary relative section">
-  <div class="section-pattern"></div>
+<section id="about" class="about">
+  <div class="about__inner">
+    <header class="about__header">
+      <div class="chapter" aria-hidden="true">01</div>
+      <h2 class="about__heading">About</h2>
+    </header>
 
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block text-gray-900 dark:text-white">
-        About Me
-        <span class="block h-1 w-2/3 bg-primary mt-2 mx-auto"></span>
-      </h2>
-      <p class="text-gray-600 dark:text-gray-400 text-lg">Get to know more about me and what drives my passion</p>
+    <div class="about__body">
+      <p class="about__lede">
+        I've been writing production software for twenty years, and leading the teams that ship it. I started at UCLA, scaled engineering at B Capital, and now lead application development at the UC Davis School of Veterinary Medicine. My open-source work on Moodle ended up running at 10,000+ institutions, serving 30,000+ users.
+      </p>
+      <p class="about__prose">
+        What I enjoy most is the part of the job that doesn't fit on a slide: untangling a legacy migration, mentoring an engineer into a tech lead, replacing a fragile prototype with something that runs for years, writing code other people actually want to read. Beneath all of it: I'm drawn to building tools that help people communicate better, from an LMS used by tens of thousands of students to investment workflows that move decisions faster between Finance and Legal.
+      </p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
-      <div class="text-center p-4" data-aos="fade-up" data-aos-delay="0">
-        <div class="text-primary mb-2"><i class="fas fa-calendar-alt text-2xl"></i></div>
-        <div class="text-3xl font-bold text-gray-900 dark:text-white">
-          <span class="counter" data-target="20"></span>+
-        </div>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Experience</p>
+    <p class="about__vitals">
+      <span class="about__vitals-item">Based in Chino, California</span>
+      <span class="about__vitals-item">Open to senior engineering and engineering-leadership conversations</span>
+    </p>
+
+    <div class="about__rule" aria-hidden="true"></div>
+
+    <dl class="about__skills" aria-label="Technical proficiencies">
+      <div class="about__skill">
+        <dt class="about__skill-label">Languages</dt>
+        <dd class="about__skill-value">PHP&nbsp;<span aria-hidden="true">·</span> JavaScript&nbsp;<span aria-hidden="true">·</span> TypeScript&nbsp;<span aria-hidden="true">·</span> Python&nbsp;<span aria-hidden="true">·</span> C#&nbsp;<span aria-hidden="true">·</span> SQL</dd>
       </div>
-
-      <div class="text-center p-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="text-primary mb-2"><i class="fas fa-university text-2xl"></i></div>
-        <div class="text-3xl font-bold text-gray-900 dark:text-white">
-          <span class="counter" data-target="10000" data-format="comma"></span>+
-        </div>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Institutions Supported</p>
+      <div class="about__skill">
+        <dt class="about__skill-label">Frameworks</dt>
+        <dd class="about__skill-value">React&nbsp;<span aria-hidden="true">·</span> SvelteKit&nbsp;<span aria-hidden="true">·</span> Vue&nbsp;<span aria-hidden="true">·</span> Moodle&nbsp;<span aria-hidden="true">·</span> WordPress&nbsp;<span aria-hidden="true">·</span> Tailwind</dd>
       </div>
-
-      <div class="text-center p-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="text-primary mb-2"><i class="fas fa-trophy text-2xl"></i></div>
-        <div class="text-3xl font-bold text-gray-900 dark:text-white">
-          Top <span class="counter" data-target="1"></span>%
-        </div>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Moodle Contributor</p>
+      <div class="about__skill">
+        <dt class="about__skill-label">Infrastructure</dt>
+        <dd class="about__skill-value">AWS&nbsp;<span aria-hidden="true">·</span> CloudFormation&nbsp;<span aria-hidden="true">·</span> Docker&nbsp;<span aria-hidden="true">·</span> Databricks&nbsp;<span aria-hidden="true">·</span> CI/CD&nbsp;<span aria-hidden="true">·</span> Jenkins</dd>
       </div>
-
-      <div class="text-center p-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="text-primary mb-2"><i class="fas fa-users text-2xl"></i></div>
-        <div class="text-3xl font-bold text-gray-900 dark:text-white">
-          <span class="counter" data-target="30000" data-format="comma"></span>+
-        </div>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Users Supported</p>
+      <div class="about__skill">
+        <dt class="about__skill-label">Leadership</dt>
+        <dd class="about__skill-value">Team&nbsp;building&nbsp;<span aria-hidden="true">·</span> Mentoring&nbsp;<span aria-hidden="true">·</span> System&nbsp;architecture&nbsp;<span aria-hidden="true">·</span> Code&nbsp;review&nbsp;<span aria-hidden="true">·</span> Agile&nbsp;delivery</dd>
       </div>
-    </div>
+    </dl>
 
-    <div class="md:flex items-center max-w-6xl mx-auto">
-      <div class="md:w-2/5 mb-10 md:mb-0 p-6" data-aos="fade-right" data-aos-delay="100">
-        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">My Skills</h3>
+    <div class="about__rule" aria-hidden="true"></div>
 
-        <div class="space-y-5">
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Languages</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-chip">PHP</span>
-              <span class="skill-chip">JavaScript</span>
-              <span class="skill-chip">TypeScript</span>
-              <span class="skill-chip">Python</span>
-              <span class="skill-chip">SQL</span>
-              <span class="skill-chip">HTML/CSS</span>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Frameworks & Tools</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-chip">React</span>
-              <span class="skill-chip">SvelteKit</span>
-              <span class="skill-chip">VueJS</span>
-              <span class="skill-chip">Moodle</span>
-              <span class="skill-chip">WordPress</span>
-              <span class="skill-chip">Tailwind CSS</span>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Cloud & DevOps</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-chip">AWS</span>
-              <span class="skill-chip">CloudFormation</span>
-              <span class="skill-chip">Docker</span>
-              <span class="skill-chip">Databricks</span>
-              <span class="skill-chip">CI/CD</span>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Leadership</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-chip">Team Building</span>
-              <span class="skill-chip">Mentoring</span>
-              <span class="skill-chip">Code Review</span>
-              <span class="skill-chip">System Architecture</span>
-              <span class="skill-chip">Agile</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="md:w-3/5 md:pl-12" data-aos="fade-left" data-aos-delay="200">
-        <div class="p-1 bg-linear-to-r from-primary to-accent rounded-lg shadow-lg mb-8">
-          <div class="bg-white dark:bg-gray-800 p-6 rounded-md">
-            <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-              I'm a seasoned Lead Developer with a proven track record of building high-performing engineering teams and delivering impactful software solutions across a range of industries. From leading complex system migrations to designing scalable platforms and streamlining business workflows, I bring a collaborative, results-driven approach to every project. I'm passionate about solving real-world problems, mentoring teams, and driving technical excellence.
-            </p>
-            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              Ready to take your engineering initiatives to the next level? <strong>Let's connect and build something great together.</strong>
-            </p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-6 mb-8">
-          <div class="flex items-start">
-            <div class="text-primary mr-3 mt-1"><i class="fas fa-graduation-cap text-xl"></i></div>
-            <div>
-              <h4 class="font-bold text-gray-800 dark:text-gray-200">Education</h4>
-              <p class="text-gray-600 dark:text-gray-400">UCLA Computer Science</p>
-            </div>
-          </div>
-
-          <div class="flex items-start">
-            <div class="text-primary mr-3 mt-1"><i class="fas fa-briefcase text-xl"></i></div>
-            <div>
-              <h4 class="font-bold text-gray-800 dark:text-gray-200">Experience</h4>
-              <p class="text-gray-600 dark:text-gray-400">B Capital, UCLA 20+ years</p>
-            </div>
-          </div>
-
-          <div class="flex items-start">
-            <div class="text-primary mr-3 mt-1"><i class="fas fa-map-marker-alt text-xl"></i></div>
-            <div>
-              <h4 class="font-bold text-gray-800 dark:text-gray-200">Location</h4>
-              <p class="text-gray-600 dark:text-gray-400">Chino, CA</p>
-            </div>
-          </div>
-
-          <div class="flex items-start">
-            <div class="text-primary mr-3 mt-1"><i class="fas fa-language text-xl"></i></div>
-            <div>
-              <h4 class="font-bold text-gray-800 dark:text-gray-200">Languages</h4>
-              <p class="text-gray-600 dark:text-gray-400">English</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="text-center mt-12">
-      <a href="{{ '/assets/Rex Lorenzo - Resume.pdf' | relative_url }}" class="btn btn-primary inline-flex items-center" target="_blank">
-        <i class="fas fa-file-download mr-2"></i> Download Resume
-      </a>
-    </div>
-  </div>
-
-  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none" aria-hidden="true">
-    <svg class="relative block w-full h-12 md:h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,130.83,141.14,321.39,56.44Z" class="fill-gray-50 dark:fill-gray-900"></path>
-    </svg>
+    <a class="about__resume" href="{{ '/assets/Rex Lorenzo - Resume.pdf' | relative_url }}" target="_blank" rel="noopener">
+      <span class="about__resume-text">Download resume</span>
+      <span class="about__resume-arrow" aria-hidden="true">&rarr;</span>
+    </a>
   </div>
 </section>

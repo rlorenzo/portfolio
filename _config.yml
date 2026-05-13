@@ -2,7 +2,7 @@
 title: Rex Lorenzo
 email: rexlorenzo@gmail.com
 description: >-
-  Software Engineer and Engineering Manager with expertise in system design and leadership
+  Rex Lorenzo, software engineer and engineering leader. I build production software, and lead the teams that ship it. Twenty years in.
 baseurl: "/portfolio"
 url: "https://rlorenzo.github.io"
 
@@ -37,3 +37,4 @@ exclude:
   - "*.mermaid"
   - README.md
   - CLAUDE.md
+  - DESIGN.md

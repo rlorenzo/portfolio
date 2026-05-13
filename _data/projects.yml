@@ -1,5 +1,52 @@
+- name: Office Accessibility Checker
+  description: Cross-platform PowerShell CLI that checks Word, Excel, and PowerPoint files for accessibility issues, with no Office installation required. Published to the PowerShell Gallery.
+  tech_stack:
+    - PowerShell
+    - CLI
+    - Accessibility
+  github_link: https://github.com/rlorenzo/office-accessibility-checker
+  type: project
+
+- name: UC Homepage Accessibility Report
+  description: Accessibility audit across all University of California campus homepages, inspired by the WebAIM Million project. Surfaces WCAG issues to drive systemwide a11y improvements.
+  tech_stack:
+    - JavaScript
+    - Accessibility
+    - Web Audit
+  github_link: https://github.com/rlorenzo/uc-homepage-a11y-report
+  type: project
+
+- name: UC Entrepreneurship Hub
+  description: Catalog of entrepreneurship programs across all 10 University of California campuses, covering incubators, accelerators, funding, competitions, courses, and maker spaces in one place.
+  tech_stack:
+    - TypeScript
+    - React
+    - Vite
+  github_link: https://github.com/rlorenzo/uc-entrepreneurship-hub
+  type: project
+
+- name: Monarch Forecast
+  description: Day-by-day balance projection from Monarch Money data, flagging low-balance dates before they hit.
+  tech_stack:
+    - Python
+    - Flet
+    - Personal Finance
+    - Desktop App
+  github_link: https://github.com/rlorenzo/Monarch-Forecast
+  type: project
+
+- name: 2048 Solver
+  description: 2048 with an expectimax solver, move coaching, and a strategy guide. Play, learn, or watch the AI solve it.
+  tech_stack:
+    - JavaScript
+    - Vite
+    - AI
+    - Game
+  github_link: https://github.com/rlorenzo/2048-Solver
+  type: project
+
 - name: Zoom Integration for Moodle
-  description: The mod_zoom plugin integrates Zoom video conferencing with Moodle, enabling instructors to schedule, manage, and launch Zoom meetings directly from their course pages.
+  description: Moodle plugin (mod_zoom) for scheduling, managing, and launching Zoom meetings directly from a course page.
   tech_stack:
     - PHP
     - REST
@@ -9,7 +56,7 @@
   type: project
 
 - name: Moodle
-  description: I contributed to the Moodle open-source learning management system. I was also recognized as a Particularly Helpful Moodler, given to the top 1% of forum contributors.
+  description: Long-term contributor to the Moodle LMS; recognized as a Particularly Helpful Moodler (top 1% of forum contributors).
   tech_stack:
     - PHP
     - Open Source
@@ -18,17 +65,8 @@
   github_link: https://github.com/moodle/moodle/commits?author=rlorenzo
   type: project
 
-- name: Free PST Viewer
-  description: A free, native macOS application for browsing and viewing Microsoft Outlook data files. Built with Swift and SwiftUI.
-  tech_stack:
-    - Swift
-    - SwiftUI
-    - macOS
-  github_link: https://github.com/rlorenzo/Free-PST-Viewer
-  type: project
-
 - name: AI Coding Setup
-  description: A set of prompts, skills, and scripts to aid in utilizing AI coding agents in development workflows.
+  description: Prompts, skills, and scripts for working with AI coding agents in development workflows.
   tech_stack:
     - Shell
     - AI Agents
@@ -36,26 +74,8 @@
   github_link: https://github.com/rlorenzo/ai-coding-setup
   type: project
 
-- name: macOS Compress Screenshots
-  description: A shell utility that automatically compresses screenshots taken by the macOS screenshot tool, reducing file sizes while preserving quality.
-  tech_stack:
-    - Shell
-    - macOS
-    - Automation
-  github_link: https://github.com/rlorenzo/macos-compress-screenshots
-  type: project
-
-- name: Mega Diff
-  description: A Python tool for performing deep diffs between development and production pages to identify rendering differences and catch deployment issues.
-  tech_stack:
-    - Python
-    - QA
-    - Web Testing
-  github_link: https://github.com/rlorenzo/mega-diff
-  type: project
-
 - name: Moodle AWS Disaster Recovery
-  description: Enhanced an AWS Moodle template to provide a disaster recovery solution for CCLE (UCLA's LMS) to ensure business continuity.
+  description: Enhanced an AWS Moodle template into a disaster-recovery solution for CCLE, UCLA's Moodle LMS.
   tech_stack:
     - AWS
     - CloudFormation
@@ -65,8 +85,18 @@
   github_link: https://github.com/rlorenzo/aws-refarch-moodle
   type: project
 
+- name: image-gen-mcp
+  description: Added gpt-image-1.5 and imagen-4-fast support, provider health checks, and Claude Code MCP compatibility.
+  tech_stack:
+    - Python
+    - MCP
+    - OpenAI
+    - Gemini
+  github_link: https://github.com/rlorenzo/image-gen-mcp
+  type: contribution
+
 - name: Internet Archive for Apple TV
-  description: Revamped an open-source Apple TV app for browsing the Internet Archive, modernizing the codebase and preparing it for public release on the App Store.
+  description: Modernized an open-source Apple TV Internet Archive browser and prepared it for App Store release.
   tech_stack:
     - Swift
     - tvOS
@@ -75,7 +105,7 @@
   type: contribution
 
 - name: PstReader (Swift Library)
-  description: Added memory-mapped file I/O and convenience API to the Swift PST file reading library. Improved message loading and sender display fallback, enabling the Free PST Viewer project.
+  description: Memory-mapped I/O and a convenience API for the Swift PST file reader, plus improved message loading.
   tech_stack:
     - Swift
     - File I/O
@@ -83,29 +113,3 @@
   github_link: https://github.com/hughbe/PstReader
   type: contribution
 
-- name: TvOSMoreButton
-  description: Fixed Swift Package Manager support (v1.4.2) for a tvOS library that provides a '... More' button, enabling modern dependency management.
-  tech_stack:
-    - Swift
-    - tvOS
-    - SPM
-  github_link: https://github.com/cgoldsby/TvOSMoreButton
-  type: contribution
-
-- name: TvOSTextViewer
-  description: Added Swift Package Manager support to a tvOS library for presenting scrollable text content, replacing CocoaPods dependency.
-  tech_stack:
-    - Swift
-    - tvOS
-    - SPM
-  github_link: https://github.com/dcordero/TvOSTextViewer
-  type: contribution
-
-- name: stylelint-a11y
-  description: Fixed self-referencing plugin path for stylelint 17 ESM compatibility, unblocking modern stylelint adoption for the accessibility plugin.
-  tech_stack:
-    - JavaScript
-    - ESM
-    - Stylelint
-  github_link: https://github.com/double-great/stylelint-a11y
-  type: contribution
