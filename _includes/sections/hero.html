@@ -40,7 +40,23 @@
       </nav>
     </div>
     <figure class="hero-portrait">
-      <img src="{{ '/assets/profile.jpg' | relative_url }}" alt="Rex Lorenzo, portrait" width="320" height="320" fetchpriority="high">
+      <picture>
+        <source
+          type="image/avif"
+          srcset="{{ '/assets/profile-320.avif' | relative_url }} 320w, {{ '/assets/profile-640.avif' | relative_url }} 640w"
+          sizes="(min-width: 768px) 320px, 42vw">
+        <source
+          type="image/webp"
+          srcset="{{ '/assets/profile-320.webp' | relative_url }} 320w, {{ '/assets/profile-640.webp' | relative_url }} 640w"
+          sizes="(min-width: 768px) 320px, 42vw">
+        <img
+          src="{{ '/assets/profile-320.webp' | relative_url }}"
+          alt="Rex Lorenzo, portrait"
+          width="320"
+          height="320"
+          fetchpriority="high"
+          decoding="async">
+      </picture>
     </figure>
   </div>
 </section>

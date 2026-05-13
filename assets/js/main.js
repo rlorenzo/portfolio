@@ -1,4 +1,3 @@
-import { initAOS, setupEntranceAnimations } from './modules/animations.js';
 import { initLazyIframes } from './modules/lazy-iframe.js';
 import {
   initBackToTopButton,
@@ -24,7 +23,6 @@ function initializeApp() {
   initTheme();
   setupThemeToggles(elements);
   setupNavigation(elements);
-  setupAnimations();
   setupInteractivity();
   setupResponsiveBehavior(elements);
   setupPrintMode();
@@ -62,17 +60,6 @@ function setupNavigation({ siteHeader, backToTop, mobileMenuButton, mobileMenu }
   initMobileMenu(mobileMenuButton, mobileMenu);
   initScrollSpy('.nav-link', 'active');
   initSmoothScrolling('a[href^="#"]', '#site-header');
-}
-
-function setupAnimations() {
-  initAOS({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: true,
-    offset: 50,
-  });
-
-  setupEntranceAnimations('.animate-on-scroll');
 }
 
 function setupInteractivity() {

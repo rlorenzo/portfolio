@@ -1,10 +1,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ site.description | default: 'Personal portfolio website showcasing projects, experience, and skills.' }}">
+  <meta name="description" content="{{ site.description }}">
   <meta name="author" content="{{ site.author | default: site.title }}">
-  <meta name="keywords" content="portfolio, developer, software engineer, web development, projects">
-
 
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 
@@ -19,32 +17,26 @@
 
   <!-- Preload critical resources for faster FCP/LCP -->
   <link rel="preload" href="{{ "/assets/css/tailwind.css" | relative_url }}?v={{ site.time | date: '%s' }}" as="style">
-  <link rel="preload" href="{{ "/assets/profile.jpg" | relative_url }}" as="image">
+  <link rel="preload" as="image" imagesrcset="{{ '/assets/profile-320.webp' | relative_url }} 320w, {{ '/assets/profile-640.webp' | relative_url }} 640w" imagesizes="(min-width: 768px) 320px, 42vw" type="image/webp">
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="{{ "/assets/css/tailwind.css" | relative_url }}?v={{ site.time | date: '%s' }}">
 
-  <!-- Preconnect to external origins -->
+  <!-- Preconnect to font origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-  <!-- Non-critical CSS loaded asynchronously to avoid render-blocking -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <!-- Non-critical font CSS loaded asynchronously -->
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,500;12..96,75..100,600;12..96,75..100,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" media="print" onload="this.media='all'" />
   <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,500;12..96,75..100,600;12..96,75..100,700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </noscript>
 
   <!-- Theme detection script to prevent FOUC -->
   <script>
-    // Prevent Flash of Unstyled Content (FOUC) by early theme detection
     (function() {
-      const theme = localStorage.getItem('theme') || 'auto';
-      if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      var theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
       }
     })();
