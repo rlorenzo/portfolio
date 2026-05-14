@@ -36,17 +36,6 @@
     "node": ">=24.0.0",
     "npm": ">=10.0.0"
   },
-  "lint-staged": {
-    "*.css": [
-      "csskit check lint.cks",
-      "oxfmt --write"
-    ],
-    "*.js": [
-      "oxlint",
-      "oxfmt --write"
-    ],
-    "*.md": "oxfmt --write"
-  },
   "devDependencies": {
     "@playwright/test": "^1.60.0",
     "chokidar-cli": "^3.0.0",
