@@ -5,12 +5,12 @@ const SCROLL_SPY_HEADER_OFFSET = 100;
 export function initStickyHeader(header) {
   if (!header) return;
 
-  window.addEventListener(
-    'scroll',
-    throttle(() => {
-      header.classList.toggle('scrolled', window.scrollY > 50);
-    }, 100),
-  );
+  const updateScrolled = () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  };
+
+  updateScrolled();
+  window.addEventListener('scroll', throttle(updateScrolled, 100));
 }
 
 export function initBackToTopButton(backToTopBtn, scrollThreshold = 300) {

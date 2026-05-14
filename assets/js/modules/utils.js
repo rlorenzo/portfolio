@@ -5,12 +5,26 @@ export function prefersReducedMotion() {
 }
 
 export function throttle(func, limit = 100) {
-  let inThrottle;
+  let inThrottle = false;
+  let trailingArgs = null;
+  let trailingThis = null;
   return function (...args) {
-    if (!inThrottle) {
-      func.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
+    if (inThrottle) {
+      trailingArgs = args;
+      trailingThis = this;
+      return;
     }
+    func.apply(this, args);
+    inThrottle = true;
+    setTimeout(() => {
+      inThrottle = false;
+      if (trailingArgs) {
+        const a = trailingArgs;
+        const t = trailingThis;
+        trailingArgs = null;
+        trailingThis = null;
+        func.apply(t, a);
+      }
+    }, limit);
   };
 }
