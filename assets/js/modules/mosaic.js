@@ -25,10 +25,10 @@
 const FACES = ['F', 'B', 'U', 'D', 'L', 'R'];
 const GRID = 3;
 const NUM_MOVES = 5;
-const MOVE_DURATION_MS = 720;
-const PAUSE_BETWEEN_MS = 80;
-const PRELUDE_MS = 220;
 const MOVE_POOL = ['U', 'D', 'L', 'R'];
+
+const NORMAL_TIMING = { moveMs: 720, pauseMs: 80, preludeMs: 220 };
+const FAST_TIMING = { moveMs: 200, pauseMs: 30, preludeMs: 0 };
 
 const ADJACENT = {
   U: [
@@ -247,7 +247,25 @@ export function initHeroMosaic(selector = '.hero-portrait') {
   const img = portrait.querySelector('img');
   if (!img) return;
 
-  whenImageReady(img, () => run(portrait, img));
+  let isSolving = false;
+  let hasPlayedInitial = false;
+  const trigger = () => {
+    if (isSolving) return;
+    isSolving = true;
+    const sequence = hasPlayedInitial ? scrambleThenSolve : run;
+    hasPlayedInitial = true;
+    sequence(portrait, img).finally(() => {
+      isSolving = false;
+    });
+  };
+
+  whenImageReady(img, () => {
+    trigger();
+    portrait.addEventListener('pointerenter', (e) => {
+      if (e.pointerType === 'mouse') trigger();
+    });
+    portrait.addEventListener('click', trigger);
+  });
 }
 
 function whenImageReady(img, callback) {
@@ -260,24 +278,41 @@ function whenImageReady(img, callback) {
 }
 
 function run(portrait, img) {
+  return playCubeAnimation(portrait, img, { scrambleVisible: false });
+}
+
+function scrambleThenSolve(portrait, img) {
+  return playCubeAnimation(portrait, img, { scrambleVisible: true });
+}
+
+async function playCubeAnimation(portrait, img, { scrambleVisible }) {
   const src = img.currentSrc || img.src;
   if (!src) return;
 
-  const moves = generateMoves(NUM_MOVES);
-  const state = createSolvedState();
-  for (const move of moves) {
-    applyTurn(state, move);
-  }
-
+  const scramble = generateMoves(NUM_MOVES);
+  const state = createInitialState(scramble, scrambleVisible);
   const overlay = buildOverlay(src, state);
   portrait.appendChild(overlay);
   portrait.classList.add('hero-portrait--assembling');
 
-  const solveSequence = moves.slice().reverse().map(invertMove);
-  playSolveSequence(overlay, state, solveSequence).then(() => {
-    portrait.classList.remove('hero-portrait--assembling');
-    overlay.remove();
-  });
+  await playPhases(overlay, state, scramble, scrambleVisible);
+  portrait.classList.remove('hero-portrait--assembling');
+  overlay.remove();
+}
+
+function createInitialState(scramble, scrambleVisible) {
+  const state = createSolvedState();
+  if (scrambleVisible) return state;
+  for (const move of scramble) applyTurn(state, move);
+  return state;
+}
+
+async function playPhases(overlay, state, scramble, scrambleVisible) {
+  const solve = scramble.slice().reverse().map(invertMove);
+  if (scrambleVisible) {
+    await playMoveSequence(overlay, state, scramble, FAST_TIMING);
+  }
+  await playMoveSequence(overlay, state, solve, NORMAL_TIMING);
 }
 
 function createSolvedState() {
@@ -445,21 +480,22 @@ function rotateOnFace(row, col, direction) {
   return { row: GRID - 1 - col, col: row };
 }
 
-async function playSolveSequence(overlay, state, moves) {
-  await wait(PRELUDE_MS);
+async function playMoveSequence(overlay, state, moves, timing) {
+  overlay.style.setProperty('--cube-turn-duration', `${timing.moveMs}ms`);
+  await wait(timing.preludeMs);
   for (const move of moves) {
-    await animateMove(overlay, state, move);
-    await wait(PAUSE_BETWEEN_MS);
+    await animateMove(overlay, state, move, timing);
+    await wait(timing.pauseMs);
   }
 }
 
-function animateMove(overlay, state, move) {
+function animateMove(overlay, state, move, timing) {
   const handlers = {
-    U: () => animateRowOrColumn(overlay, state, move, frontRowCells(0), 'is-turning-y'),
-    D: () => animateRowOrColumn(overlay, state, move, frontRowCells(2), 'is-turning-y'),
-    L: () => animateRowOrColumn(overlay, state, move, frontColumnCells(0), 'is-turning-x'),
-    R: () => animateRowOrColumn(overlay, state, move, frontColumnCells(2), 'is-turning-x'),
-    F: () => animateFaceTurn(overlay, state, move),
+    U: () => animateRowOrColumn(overlay, state, move, frontRowCells(0), 'is-turning-y', timing),
+    D: () => animateRowOrColumn(overlay, state, move, frontRowCells(2), 'is-turning-y', timing),
+    L: () => animateRowOrColumn(overlay, state, move, frontColumnCells(0), 'is-turning-x', timing),
+    R: () => animateRowOrColumn(overlay, state, move, frontColumnCells(2), 'is-turning-x', timing),
+    F: () => animateFaceTurn(overlay, state, move, timing),
     B: () => animateNoop(state, move),
   };
   return (handlers[move.face] || handlers.B)();
@@ -481,7 +517,7 @@ function frontColumnCells(col) {
   ];
 }
 
-function animateRowOrColumn(overlay, state, move, cells, animClass) {
+function animateRowOrColumn(overlay, state, move, cells, animClass, timing) {
   return new Promise((resolve) => {
     const rawElements = cells.map(([r, c]) =>
       overlay.querySelector(`[data-row="${r}"][data-col="${c}"]`),
@@ -501,7 +537,7 @@ function animateRowOrColumn(overlay, state, move, cells, animClass) {
         const el = rawElements[i];
         if (sticker && el) applyStickerContent(el, sticker);
       }
-    }, MOVE_DURATION_MS / 2);
+    }, timing.moveMs / 2);
 
     setTimeout(() => {
       for (const el of elements) {
@@ -509,7 +545,7 @@ function animateRowOrColumn(overlay, state, move, cells, animClass) {
         el.style.transformOrigin = '';
       }
       resolve();
-    }, MOVE_DURATION_MS + 30);
+    }, timing.moveMs + 30);
   });
 }
 
@@ -526,7 +562,7 @@ function sharedPivotOrigin(face, el) {
   return axis === 'x' ? `${offset}% 50%` : `50% ${offset}%`;
 }
 
-function animateFaceTurn(overlay, state, move) {
+function animateFaceTurn(overlay, state, move, timing) {
   return new Promise((resolve) => {
     overlay.classList.add('is-turning-z');
     setTimeout(() => {
@@ -538,7 +574,7 @@ function animateFaceTurn(overlay, state, move) {
       }
       overlay.classList.remove('is-turning-z');
       resolve();
-    }, MOVE_DURATION_MS);
+    }, timing.moveMs);
   });
 }
 
