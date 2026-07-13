@@ -16,7 +16,7 @@ module.exports = defineConfig({
     },
   },
   use: {
-    baseURL: 'http://localhost:4000/portfolio/',
+    baseURL: 'http://localhost:4000/',
     screenshot: 'only-on-failure',
   },
   projects: [
@@ -43,7 +43,7 @@ module.exports = defineConfig({
   ],
   webServer: {
     command: 'npm run build:css && bundle exec jekyll serve',
-    url: 'http://localhost:4000/portfolio/',
+    url: 'http://localhost:4000/',
     reuseExistingServer: true,
     timeout: 60000,
   },
