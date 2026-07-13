@@ -1,3 +1,13 @@
+- name: Rush Call
+  description: Adds the filtering that Central Casting's job board lacks, so background actors can find the roles they actually qualify for. Narrow by region, union status, gender, age, or keyword, then subscribe to an RSS feed that surfaces new matches as they open.
+  tech_stack:
+    - SvelteKit
+    - TypeScript
+    - SQLite
+    - RSS
+  live_link: https://rushcall.rexlorenzo.com
+  type: project
+
 - name: Office Accessibility Checker
   description: Cross-platform PowerShell CLI that checks Word, Excel, and PowerPoint files for accessibility issues, with no Office installation required. Published to the PowerShell Gallery.
   tech_stack:

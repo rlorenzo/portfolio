@@ -12,7 +12,7 @@
       <li class="projects__row projects__row--featured">
         <div class="projects__left">
           <h3 class="projects__title">
-            <a class="projects__link" href="{{ project.github_link }}" target="_blank" rel="noopener noreferrer">
+            <a class="projects__link" href="{{ project.live_link | default: project.github_link }}" target="_blank" rel="noopener noreferrer">
               <span class="projects__name">{{ project.name }}</span>
               <span class="projects__arrow" aria-hidden="true">&rarr;</span>
             </a>
@@ -32,7 +32,7 @@
       {% for project in projects offset: 3 %}
       <li class="projects__row projects__row--compact">
         <h3 class="projects__title projects__title--compact">
-          <a class="projects__link" href="{{ project.github_link }}" target="_blank" rel="noopener noreferrer">
+          <a class="projects__link" href="{{ project.live_link | default: project.github_link }}" target="_blank" rel="noopener noreferrer">
             <span class="projects__name">{{ project.name }}</span>
             <span class="projects__arrow" aria-hidden="true">&rarr;</span>
           </a>
