@@ -3,7 +3,7 @@
 A modern, responsive personal portfolio website built with Jekyll and
 plain CSS, designed for easy deployment on GitHub Pages.
 
-**Live site:** <https://rlorenzo.github.io/portfolio>
+**Live site:** <https://portfolio.rexlorenzo.com>
 
 ## Features
 
@@ -102,7 +102,7 @@ plain CSS, designed for easy deployment on GitHub Pages.
 
    This command builds the CSS, then concurrently watches for CSS changes and serves Jekyll.
 
-8. Visit `http://localhost:4000/portfolio` in your browser
+8. Visit `http://localhost:4000` in your browser
 
 ## Content Management
 
@@ -179,7 +179,7 @@ This site uses Jekyll 4.4.1 which requires GitHub Actions for deployment
 
 1. **Create a GitHub repository:**
    - Repository can be named anything (e.g., `portfolio`, `my-website`, etc.)
-   - Current configuration uses `baseurl: "/portfolio"` for project-style deployment
+   - This site is served from the custom domain `portfolio.rexlorenzo.com` (see the `CNAME` file), so `baseurl` is `""`. Without a custom domain, use `baseurl: "/REPOSITORY_NAME"` for project-style deployment.
 
 2. **Push your code to GitHub:**
 
@@ -199,8 +199,8 @@ This site uses Jekyll 4.4.1 which requires GitHub Actions for deployment
    - The deployment workflow is already configured in `.github/workflows/deploy.yml`
 
 4. **Access your live site:**
-   - Your site will be available at: `https://USERNAME.github.io/REPOSITORY_NAME`
-   - Example: `https://rlorenzo.github.io/portfolio`
+   - Without a custom domain: `https://USERNAME.github.io/REPOSITORY_NAME`
+   - With a custom domain (this site): `https://portfolio.rexlorenzo.com`
 
 ### How It Works
 

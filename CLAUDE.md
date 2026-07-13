@@ -133,7 +133,7 @@ Modular components in `assets/js/modules/`:
 
 - Changes to `_config.yml` require server restart
 - Content changes in `_data/*.yml` files are hot-reloaded
-- Site uses baseurl "/portfolio" for GitHub Pages deployment
+- Site is served from the custom domain portfolio.rexlorenzo.com with baseurl "" (see the `CNAME` file)
 - Theme switching prevents Flash of Unstyled Content (FOUC) via early detection script
 - Scroll handlers are throttled for performance
 - Navigation accounts for sticky header height in scroll calculations
@@ -149,17 +149,19 @@ This site uses Jekyll 4.4.1 and requires GitHub Actions for deployment
 - Automated deployment via `.github/workflows/deploy.yml`
 - Triggers on push to main/master branch
 - Minifies CSS, builds JS, then builds Jekyll site with production settings
-- Deploys to GitHub Pages using actions/deploy-pages@v4
+- Deploys to GitHub Pages using the actions/deploy-pages action
+- All GitHub Actions are pinned to commit SHAs (with a version comment); update the SHA and comment together when bumping
 
 ### Repository Configuration
 
-- For project site: Any repository name (current: baseurl="/portfolio")
+- For project site: Any repository name (baseurl="/REPO", or "" when using a custom domain as this site does with portfolio.rexlorenzo.com)
 - For user site: Repository must be named `USERNAME.github.io` (set baseurl="")
+- Custom domain is set in the `CNAME` file and the repo's Pages settings; DNS is a CNAME record pointing the subdomain at `rlorenzo.github.io`
 - GitHub Pages source must be set to "GitHub Actions" in Settings → Pages
 
 ## Local Development
 
-- Development server: `http://localhost:4000/portfolio`
+- Development server: `http://localhost:4000`
 - VS Code settings configured for automatic linting on save
 - GitHub Actions run linting checks and deployment on push/PR
 
