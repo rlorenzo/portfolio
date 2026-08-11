@@ -42,7 +42,10 @@ module.exports = defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run build:css && bundle exec jekyll serve',
+    // build:js is required: bundle.js is gitignored, so without it a fresh
+    // clone serves a page whose only script tag 404s and the suite passes
+    // against a site with no JavaScript at all.
+    command: 'npm run build:css && npm run build:js && bundle exec jekyll serve',
     url: 'http://localhost:4000/',
     reuseExistingServer: true,
     timeout: 60000,

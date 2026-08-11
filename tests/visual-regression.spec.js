@@ -11,16 +11,10 @@ async function loadPage(page) {
     (route) => route.abort(),
   );
   await page.goto('./', { waitUntil: 'load', timeout: 30000 });
-  await page.evaluate(() => {
-    document.querySelectorAll('[data-aos]').forEach((el) => {
-      el.removeAttribute('data-aos');
-      el.removeAttribute('data-aos-delay');
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
-
+  const stabilized = await page.evaluate(() => {
     // Replace iframes with static placeholders to prevent unstable screenshots
-    document.querySelectorAll('iframe').forEach((iframe) => {
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach((iframe) => {
       const placeholder = document.createElement('div');
       placeholder.className = iframe.className;
       placeholder.style.backgroundColor = '#e5e7eb';
@@ -36,13 +30,25 @@ async function loadPage(page) {
     });
 
     // Skip the Rubik's cube assembly so screenshots see the solved portrait.
+    // Not asserted below: the overlay removes itself when the solve finishes,
+    // so a zero count here legitimately means "already resolved", not a bug.
     document.querySelectorAll('.hero-portrait__mosaic').forEach((el) => {
       el.remove();
     });
     document.querySelectorAll('.hero-portrait--assembling').forEach((el) => {
       el.classList.remove('hero-portrait--assembling');
     });
+
+    return { iframes: iframes.length, quotes: quotes.length };
   });
+
+  // These selectors target static markup, so a zero count means the templates
+  // moved and stabilization silently became a no-op. That is not hypothetical:
+  // the quote pin targeted `.quote` for months while the real class was
+  // `.connect__quote`, and random quotes leaked into the baselines.
+  expect(stabilized.iframes, 'expected presentation iframes to replace').toBeGreaterThan(0);
+  expect(stabilized.quotes, 'expected testimonial quotes to pin').toBeGreaterThan(0);
+
   // Custom fonts can repaint after first frame; wait for them before snapshotting.
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(ANIMATION_SETTLE_DELAY_MS);
