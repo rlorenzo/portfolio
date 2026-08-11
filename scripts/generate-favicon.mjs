@@ -112,7 +112,16 @@ mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, 'favicon.svg'), tabSvg);
 console.log('  favicon.svg');
 
-const browser = await chromium.launch();
+let browser;
+try {
+  browser = await chromium.launch();
+} catch (error) {
+  console.error(
+    '\nCould not launch Chromium. Playwright downloads browsers separately from\n' +
+      'the npm package; run `npx playwright install` (or `npm run setup`).\n',
+  );
+  throw error;
+}
 try {
   for (const { file, size, svg, transparent } of RASTERS) {
     writeFileSync(join(outDir, file), await rasterize(browser, svg, size, transparent));

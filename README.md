@@ -95,7 +95,10 @@ plain CSS, designed for easy deployment on GitHub Pages.
    npm run setup
    ```
 
-   This command runs both `npm install` and `bundle install`.
+   This runs `npm install`, `bundle install`, and `npx playwright install`.
+   The last one matters: Playwright downloads its browsers separately from the
+   npm package, and without them `npm test` and
+   `node scripts/generate-favicon.mjs` both fail on a fresh clone.
 
 7. Start the development server with both CSS building and Jekyll:
 
