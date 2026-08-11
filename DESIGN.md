@@ -44,17 +44,13 @@ components:
     typography: '{typography.body}'
 ---
 
-<!-- markdownlint-disable-next-line MD025 -->
-
 # Design System: Rex Lorenzo Portfolio
 
 > **Snapshot of what currently ships.** This file records the tokens defined in `assets/css/styles.css` and the component patterns currently shipped in `_includes/sections/`. The previous design system (Azure/Emerald/Violet palette, Montserrat + Poppins typography, gradient hero, wave dividers) has been removed. Run `/impeccable document` to regenerate `.impeccable/design.json` and refresh this snapshot when tokens change.
 
 ## 1. Overview
 
-<!-- markdownlint-disable-next-line MD036 -->
-
-**Creative North Star: "The Practitioner's Portfolio"**
+### Creative North Star: "The Practitioner's Portfolio"
 
 This is the personal site of a 20+ year engineer. The design is the work sample, not the chrome around it. A senior engineer's portfolio should read like the work of someone who ships production software: typography that breathes, spacing that has rhythm, motion that earns its frame budget, copy in one confident voice. Every detail is either evidence Rex builds quality software or evidence against it.
 
@@ -92,8 +88,6 @@ Same token names, redefined under the `.dark` class on `<html>`:
 - **Ink** (`oklch(95% 0.008 50)`), **Ink Soft** (`oklch(72% 0.012 50)`).
 - **Brand** lifts to `oklch(75% 0.13 55)` for legible contrast on the darker paper.
 
-<!-- markdownlint-disable-next-line MD024 -->
-
 ### Named Rules
 
 **The Single-Hue Rule.** One brand color per screen. No status palette is defined because no status messaging is rendered. If status is added later, choose semantic colors then; do not pre-allocate them.
@@ -112,8 +106,6 @@ Same token names, redefined under the `.dark` class on `<html>`:
 - **Body** (Bricolage 400, ~1rem, line-height ~1.5): Paragraph copy.
 - **Label** (Bricolage 500, smaller scale, set in all caps with widened tracking): The chapter numeral above each section heading.
 
-<!-- markdownlint-disable-next-line MD024 -->
-
 ### Named Rules
 
 **The One Voice Rule.** Hero, About, and Contact copy are written as the same person. First-person, plainspoken, no marketing verbs.
@@ -125,8 +117,6 @@ Same token names, redefined under the `.dark` class on `<html>`:
 ## 4. Elevation
 
 Flat by default. There is no shadow vocabulary; surfaces separate via `--rule` hairlines and `--paper-soft` fills. The sticky header crosses a 1px `--rule` border-bottom only after the page has scrolled past 50px (`.site-header.scrolled`).
-
-<!-- markdownlint-disable-next-line MD024 -->
 
 ### Named Rules
 
