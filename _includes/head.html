@@ -13,7 +13,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon/favicon-16x16.png' | relative_url }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | relative_url }}">
   <link rel="manifest" href="{{ '/assets/favicon/site.webmanifest' | relative_url }}">
-  <meta name="theme-color" content="#ffffff">
+  <!-- Browser chrome matches the page background. Hex rather than oklch because
+       theme-color support for wide-gamut syntax is uneven; these are the resolved
+       sRGB values of --paper in each theme. -->
+  <meta name="theme-color" content="#fdf7f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#15110e" media="(prefers-color-scheme: dark)">
 
   <!-- Preload critical resources for faster FCP/LCP -->
   <link rel="preload" href="{{ "/assets/css/styles.min.css" | relative_url }}?v={{ site.time | date: '%s' }}" as="style">

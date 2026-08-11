@@ -88,6 +88,28 @@ console.log('\nSelf-hosted fonts');
 check('no Google Fonts requests', !/fonts\.(googleapis|gstatic)\.com/.test(html));
 check('font preload present', html.includes('bricolage-grotesque-latin.woff2'));
 
+console.log('\nFavicon matches the palette');
+// The whole icon set sat on the pre-2026-05 blue palette for months because the
+// SVG was an unreadable LFS pointer and nothing compared it to the design tokens.
+const BRAND_HEX = '#a94e00'; // resolved oklch(53% 0.14 50)
+const PAPER_HEX = '#fdf7f3'; // resolved oklch(98% 0.008 60)
+const faviconSvg = existsSync(svg) ? readFileSync(svg, 'utf8') : '';
+check('favicon.svg uses the brand ground', faviconSvg.includes(BRAND_HEX));
+const manifestPath = join(SITE, 'assets/favicon/site.webmanifest');
+const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
+// The manifest and the meta tag both colour browser chrome, so a mismatch shows
+// up as the toolbar changing shade when the site is installed.
+check(
+  'manifest theme_color is --paper',
+  manifest.theme_color === PAPER_HEX,
+  `got ${manifest.theme_color}`,
+);
+check(
+  'meta theme-color agrees with the manifest',
+  html.includes(`content="${PAPER_HEX}" media="(prefers-color-scheme: light)"`),
+);
+check('no legacy blue in the icon set', !/#(3b82f6|1f4ed8|0b1220)/i.test(faviconSvg + JSON.stringify(manifest)));
+
 console.log('\nPublish boundary');
 // _config.yml `exclude` is the only thing keeping these out of the deploy, and
 // they were all being served publicly until 7cbacd5. Listed explicitly rather
