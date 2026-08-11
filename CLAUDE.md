@@ -58,7 +58,7 @@ config. Baseline screenshots are in `tests/screenshots/baseline/`.
 
 ### Technology Stack
 
-- Jekyll 4.4.1 with jekyll-feed and jekyll-seo-tag plugins
+- Jekyll 4.4.1 with the jekyll-seo-tag plugin
 - Ruby >= 3.3.0 (supports Ruby 3.4.0+ with compatibility gems)
 - Plain CSS with csskit minification and oxfmt formatting
 - Vanilla JavaScript bundled with rolldown (no framework dependencies)
@@ -72,7 +72,8 @@ config. Baseline screenshots are in `tests/screenshots/baseline/`.
 - `_layouts/` - Page layouts (default.html, home.html)
 - `assets/js/modules/` - Modular JavaScript functionality
 - `assets/css/styles.css` - CSS source (minified to `assets/css/styles.min.css`)
-- `docs/` - Comprehensive system design and architecture documentation
+- `tests/` - Playwright visual regression spec and committed baseline screenshots
+- `scripts/` - Build-time helpers (signature SVG generation, Ruby version check)
 
 ### Content Management System
 
@@ -116,8 +117,10 @@ Modular components in `assets/js/modules/`:
 
 - Ruby version: >= 3.3.0 (includes compatibility gems for Ruby 3.4.0+:
   logger, csv, bigdecimal)
-- Jekyll 4.4.1 with plugins: jekyll-feed, jekyll-seo-tag
-- Excludes: node_modules, vendor, .git, Gemfile, Gemfile.lock
+- Jekyll 4.4.1 with plugins: jekyll-seo-tag
+- Excludes: node_modules, vendor, .git, Gemfile, Gemfile.lock, scripts/,
+  README.md, CLAUDE.md, DESIGN.md (a markdown file at repo root is rendered as
+  a page unless excluded)
 
 ## Interactive Features
 
@@ -165,22 +168,24 @@ This site uses Jekyll 4.4.1 and requires GitHub Actions for deployment
 - VS Code settings configured for automatic linting on save
 - GitHub Actions run linting checks and deployment on push/PR
 
-## Architecture Documentation
+## Context Documents
 
-The `docs/` directory contains comprehensive technical documentation. See [docs/README.md](docs/README.md) for the complete documentation index.
+Two root documents carry the design intent. Read both before changing anything
+visual; they are the standard any design critique is run against.
 
-**Key Documents:**
-
-- **[docs/architecture_review.md](docs/architecture_review.md)**: Comprehensive architecture evaluation with prioritized improvement recommendations
-- **[docs/portfolio_system_design.md](docs/portfolio_system_design.md)**: Technical implementation details, data structures, and design decisions
-- **[docs/portfolio_website_enhancement_prd.md](docs/portfolio_website_enhancement_prd.md)**: Product roadmap and feature requirements
+- **[PRODUCT.md](PRODUCT.md)**: Audience, register, brand voice, design
+  principles, and an explicit anti-reference list of looks this site must avoid.
+  The premise is that the design _is_ the product.
+- **[DESIGN.md](DESIGN.md)**: Snapshot of the design system that currently
+  ships — colors, typography, spacing, component patterns. Regenerate with
+  `/impeccable document` when tokens change, and keep it in sync with
+  `assets/css/styles.css`.
 
 **Quick Reference:**
 
-- Understanding the codebase → [System Design](docs/portfolio_system_design.md)
-- Code quality standards → [Architecture Review](docs/architecture_review.md) → "Best Practices Assessment"
-- Feature planning → [Enhancement PRD](docs/portfolio_website_enhancement_prd.md)
-- Implementation priorities → [Architecture Review](docs/architecture_review.md) → "Recommendations by Priority"
+- Who the site is for, and what it must not look like → [PRODUCT.md](PRODUCT.md)
+- Tokens, type scale, component patterns → [DESIGN.md](DESIGN.md)
+- Whether a flourish earns its place → [PRODUCT.md](PRODUCT.md) → "Design Principles"
 
 ## Clean Code Principles
 

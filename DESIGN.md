@@ -2,49 +2,50 @@
 name: Rex Lorenzo Portfolio
 description: Personal site for a 20+ year engineer and engineering leader; the design is the work sample.
 colors:
-  brand: "oklch(58% 0.14 50)"
-  brand-deep: "oklch(38% 0.11 50)"
-  brand-soft: "oklch(96% 0.025 60)"
-  paper: "oklch(98% 0.008 60)"
-  paper-soft: "oklch(95% 0.014 60)"
-  rule: "oklch(88% 0.012 60)"
-  ink: "oklch(22% 0.012 50)"
-  ink-soft: "oklch(46% 0.012 50)"
-  brand-dark: "oklch(75% 0.13 55)"
-  brand-deep-dark: "oklch(85% 0.10 55)"
-  brand-soft-dark: "oklch(28% 0.045 50)"
-  paper-dark: "oklch(18% 0.008 50)"
-  paper-soft-dark: "oklch(22% 0.011 50)"
-  rule-dark: "oklch(30% 0.013 50)"
-  ink-dark: "oklch(95% 0.008 50)"
-  ink-soft-dark: "oklch(72% 0.012 50)"
+  brand: 'oklch(53% 0.14 50)'
+  brand-deep: 'oklch(38% 0.11 50)'
+  brand-soft: 'oklch(96% 0.025 60)'
+  paper: 'oklch(98% 0.008 60)'
+  paper-soft: 'oklch(95% 0.014 60)'
+  rule: 'oklch(88% 0.012 60)'
+  ink: 'oklch(22% 0.012 50)'
+  ink-soft: 'oklch(46% 0.012 50)'
+  brand-dark: 'oklch(75% 0.13 55)'
+  brand-deep-dark: 'oklch(85% 0.10 55)'
+  brand-soft-dark: 'oklch(28% 0.045 50)'
+  paper-dark: 'oklch(18% 0.008 50)'
+  paper-soft-dark: 'oklch(22% 0.011 50)'
+  rule-dark: 'oklch(30% 0.013 50)'
+  ink-dark: 'oklch(95% 0.008 50)'
+  ink-soft-dark: 'oklch(72% 0.012 50)'
 typography:
   body:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
+    fontFamily: 'Bricolage Grotesque, system-ui, sans-serif'
     fontWeight: 400
     lineHeight: 1.5
   display:
-    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
+    fontFamily: 'Bricolage Grotesque, system-ui, sans-serif'
     fontWeight: 600
     lineHeight: 1.1
 rounded:
-  control: "4px"
-  card: "0.5rem"
+  control: '4px'
+  card: '0.5rem'
 spacing:
-  transitionFast: "0.15s"
-  transitionNormal: "0.3s"
-  transitionSlow: "0.5s"
+  transitionFast: '0.15s'
+  transitionNormal: '0.3s'
+  transitionSlow: '0.5s'
 components:
   primary-button:
-    backgroundColor: "{colors.brand}"
-    textColor: "{colors.paper}"
-    rounded: "{rounded.control}"
+    backgroundColor: '{colors.brand}'
+    textColor: '{colors.paper}'
+    rounded: '{rounded.control}'
   nav-link:
-    textColor: "{colors.ink-soft}"
-    typography: "{typography.body}"
+    textColor: '{colors.ink-soft}'
+    typography: '{typography.body}'
 ---
 
 <!-- markdownlint-disable-next-line MD025 -->
+
 # Design System: Rex Lorenzo Portfolio
 
 > **Snapshot of what currently ships.** This file records the tokens defined in `assets/css/styles.css` and the component patterns currently shipped in `_includes/sections/`. The previous design system (Azure/Emerald/Violet palette, Montserrat + Poppins typography, gradient hero, wave dividers) has been removed. Run `/impeccable document` to regenerate `.impeccable/design.json` and refresh this snapshot when tokens change.
@@ -52,6 +53,7 @@ components:
 ## 1. Overview
 
 <!-- markdownlint-disable-next-line MD036 -->
+
 **Creative North Star: "The Practitioner's Portfolio"**
 
 This is the personal site of a 20+ year engineer. The design is the work sample, not the chrome around it. A senior engineer's portfolio should read like the work of someone who ships production software: typography that breathes, spacing that has rhythm, motion that earns its frame budget, copy in one confident voice. Every detail is either evidence Rex builds quality software or evidence against it.
@@ -70,7 +72,7 @@ The palette is intentionally narrow: a single warm brand hue plus warm-tinted ne
 
 ### Brand
 
-- **Brand** (`oklch(58% 0.14 50)`): The single brand hue, a deep warm amber. Used for the primary button background, the skip-link, the chapter numeral underline, and the focus-ring color.
+- **Brand** (`oklch(53% 0.14 50)`): The single brand hue, a deep warm amber. Used for the primary button background, the skip-link, the chapter numeral underline, and the focus-ring color. The lightness is set at 53% rather than a more saturated 58% so brand-colored text clears WCAG 4.5:1 against both `--paper` and `--paper-soft`; do not lighten it without re-checking contrast in both themes.
 - **Brand Deep** (`oklch(38% 0.11 50)`): Darker tone of the same hue. Used for hover states and emphasis where the lighter brand would lack contrast on `--paper`.
 - **Brand Soft** (`oklch(96% 0.025 60)`): Tinted-paper background for subtle brand surfaces (e.g. button hover tint, callout fills).
 
@@ -91,6 +93,7 @@ Same token names, redefined under the `.dark` class on `<html>`:
 - **Brand** lifts to `oklch(75% 0.13 55)` for legible contrast on the darker paper.
 
 <!-- markdownlint-disable-next-line MD024 -->
+
 ### Named Rules
 
 **The Single-Hue Rule.** One brand color per screen. No status palette is defined because no status messaging is rendered. If status is added later, choose semantic colors then; do not pre-allocate them.
@@ -110,6 +113,7 @@ Same token names, redefined under the `.dark` class on `<html>`:
 - **Label** (Bricolage 500, smaller scale, set in all caps with widened tracking): The chapter numeral above each section heading.
 
 <!-- markdownlint-disable-next-line MD024 -->
+
 ### Named Rules
 
 **The One Voice Rule.** Hero, About, and Contact copy are written as the same person. First-person, plainspoken, no marketing verbs.
@@ -123,6 +127,7 @@ Same token names, redefined under the `.dark` class on `<html>`:
 Flat by default. There is no shadow vocabulary; surfaces separate via `--rule` hairlines and `--paper-soft` fills. The sticky header crosses a 1px `--rule` border-bottom only after the page has scrolled past 50px (`.site-header.scrolled`).
 
 <!-- markdownlint-disable-next-line MD024 -->
+
 ### Named Rules
 
 **The Flat-First Rule.** Use a hairline, a tint, or whitespace before reaching for a shadow. If a card needs a shadow to read as a card, it usually needs better spacing first.
