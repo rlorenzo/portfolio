@@ -10,7 +10,26 @@ async function loadPage(page) {
     (url) => url.hostname !== 'localhost',
     (route) => route.abort(),
   );
+  // webServer.command does not run when Playwright reuses an already-listening
+  // server, so the bundle that command builds cannot be assumed present. Verify
+  // it independently: without this the suite passes 40/40 against a site
+  // serving no JavaScript at all, which is a false green, not a result.
+  let bundleStatus = null;
+  page.on('response', (response) => {
+    if (new URL(response.url()).pathname === '/assets/js/bundle.js') {
+      bundleStatus = response.status();
+    }
+  });
+
   await page.goto('./', { waitUntil: 'load', timeout: 30000 });
+
+  expect(bundleStatus, 'expected /assets/js/bundle.js to be served').toBe(200);
+  // theme.js writes localStorage.theme during init. The inline FOUC script in
+  // head.html only reads it, so a value here proves the bundle also executed
+  // rather than merely being served.
+  const themeInitialized = await page.evaluate(() => localStorage.getItem('theme'));
+  expect(themeInitialized, 'expected the JS bundle to initialize the theme').not.toBeNull();
+
   const stabilized = await page.evaluate(() => {
     // Replace iframes with static placeholders to prevent unstable screenshots
     const iframes = document.querySelectorAll('iframe');
