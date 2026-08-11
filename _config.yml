@@ -17,23 +17,32 @@ collections:
   sections:
     output: false
 
-# Exclude from processing
+# Exclude from processing.
+# Anything not listed here is copied into _site verbatim and published, so this
+# list is the boundary between the site and the repo that builds it. Dotfiles
+# are excluded by Jekyll automatically and need no entry.
 exclude:
+  # Dependencies and lockfiles
   - Gemfile
   - Gemfile.lock
   - node_modules
   - vendor
-  - .git
   - package.json
   - package-lock.json
-  - postcss.config.js
-  - rollup.config.js
-  - biome.json
+  # Tooling config
   - playwright.config.js
-  - src/
+  - rolldown.config.mjs
+  - oxlintrc.json
+  - lint.cks
+  # Source and build helpers
   - scripts/
-  - docs/
-  - "*.mermaid"
+  # Tests: ~16MB of committed baseline screenshots, none of it site content
+  - tests/
+  - playwright-report/
+  # Repo documentation, not pages
   - README.md
   - CLAUDE.md
+  - AGENTS.md
   - DESIGN.md
+  - PRODUCT.md
+  - LICENSE
