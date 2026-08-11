@@ -10,17 +10,30 @@ async function loadPage(page) {
     (url) => url.hostname !== 'localhost',
     (route) => route.abort(),
   );
-  await page.goto('./', { waitUntil: 'load', timeout: 30000 });
-  await page.evaluate(() => {
-    document.querySelectorAll('[data-aos]').forEach((el) => {
-      el.removeAttribute('data-aos');
-      el.removeAttribute('data-aos-delay');
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
+  // webServer.command does not run when Playwright reuses an already-listening
+  // server, so the bundle that command builds cannot be assumed present. Verify
+  // it independently: without this the suite passes 40/40 against a site
+  // serving no JavaScript at all, which is a false green, not a result.
+  let bundleStatus = null;
+  page.on('response', (response) => {
+    if (new URL(response.url()).pathname === '/assets/js/bundle.js') {
+      bundleStatus = response.status();
+    }
+  });
 
+  await page.goto('./', { waitUntil: 'load', timeout: 30000 });
+
+  expect(bundleStatus, 'expected /assets/js/bundle.js to be served').toBe(200);
+  // theme.js writes localStorage.theme during init. The inline FOUC script in
+  // head.html only reads it, so a value here proves the bundle also executed
+  // rather than merely being served.
+  const themeInitialized = await page.evaluate(() => localStorage.getItem('theme'));
+  expect(themeInitialized, 'expected the JS bundle to initialize the theme').not.toBeNull();
+
+  const stabilized = await page.evaluate(() => {
     // Replace iframes with static placeholders to prevent unstable screenshots
-    document.querySelectorAll('iframe').forEach((iframe) => {
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach((iframe) => {
       const placeholder = document.createElement('div');
       placeholder.className = iframe.className;
       placeholder.style.backgroundColor = '#e5e7eb';
@@ -36,13 +49,25 @@ async function loadPage(page) {
     });
 
     // Skip the Rubik's cube assembly so screenshots see the solved portrait.
+    // Not asserted below: the overlay removes itself when the solve finishes,
+    // so a zero count here legitimately means "already resolved", not a bug.
     document.querySelectorAll('.hero-portrait__mosaic').forEach((el) => {
       el.remove();
     });
     document.querySelectorAll('.hero-portrait--assembling').forEach((el) => {
       el.classList.remove('hero-portrait--assembling');
     });
+
+    return { iframes: iframes.length, quotes: quotes.length };
   });
+
+  // These selectors target static markup, so a zero count means the templates
+  // moved and stabilization silently became a no-op. That is not hypothetical:
+  // the quote pin targeted `.quote` for months while the real class was
+  // `.connect__quote`, and random quotes leaked into the baselines.
+  expect(stabilized.iframes, 'expected presentation iframes to replace').toBeGreaterThan(0);
+  expect(stabilized.quotes, 'expected testimonial quotes to pin').toBeGreaterThan(0);
+
   // Custom fonts can repaint after first frame; wait for them before snapshotting.
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(ANIMATION_SETTLE_DELAY_MS);

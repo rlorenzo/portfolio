@@ -7,12 +7,13 @@ plain CSS, designed for easy deployment on GitHub Pages.
 
 ## Features
 
-- 📱 Responsive design with plain CSS and CSS custom properties
-- 🎯 8 customizable sections (Hero, About, Projects, Experience, etc.)
-- 📝 Content management through YAML files
-- 🔄 Interactive components (FAQ accordion, random quotes)
-- 🖼️ Optimized image handling
-- 🚀 GitHub Pages compatible
+- 📱 Responsive design with plain CSS, `oklch()` custom properties, and cascade layers
+- 🎯 Seven sections (hero, about, projects, experience, presentations, FAQ, contact)
+- 📝 Content managed entirely through YAML files in `_data/`
+- 🌗 Light/dark theme toggle with `localStorage` persistence and no FOUC
+- ♿ WCAG 2.1 AA floor, `prefers-reduced-motion` respected, Lighthouse a11y gated in CI
+- 🧪 Playwright visual regression across five browser profiles
+- 🚀 Deployed to GitHub Pages by GitHub Actions
 
 ## Directory Structure
 
@@ -35,13 +36,15 @@ plain CSS, designed for easy deployment on GitHub Pages.
 │   ├── default.html   # Base layout
 │   └── home.html      # Home page layout
 ├── assets/            # Site assets
-│   ├── css/          # CSS files
-│   │   └── styles.css    # CSS source
-│   ├── favicon/      # Favicon files
-│   ├── js/           # JavaScript files
-└── public/           # Public assets
-    └── assets/       # Static files
-        └── images/   # Image files
+│   ├── css/          # styles.css (source), minified to styles.min.css
+│   ├── favicon/      # Favicon and webmanifest set
+│   ├── fonts/        # Tritopani, used for the signature
+│   └── js/           # main.js + modules/, bundled to bundle.js
+├── scripts/           # Build helpers (signature SVG, Ruby version check)
+├── tests/             # Playwright spec and baseline screenshots
+├── PRODUCT.md         # Audience, voice, anti-references
+├── DESIGN.md          # Design-system snapshot of what ships
+└── CLAUDE.md          # Agent guidance (AGENTS.md points here)
 ```
 
 ## Setup Instructions
@@ -49,7 +52,7 @@ plain CSS, designed for easy deployment on GitHub Pages.
 ### Prerequisites
 
 - [Homebrew](https://brew.sh/) (for macOS users)
-- [Node.js](https://nodejs.org/) (14.x or newer)
+- [Node.js](https://nodejs.org/) (24.x or newer, see `.nvmrc`)
 - [Ruby](https://www.ruby-lang.org/en/) (3.3.0 or newer)
 
 ### Installation
@@ -238,9 +241,11 @@ The GitHub Actions workflow automatically:
 
 This project includes several linting tools to maintain code quality:
 
-- ESLint for JavaScript
-- Stylelint for CSS/SCSS
-- HTMLHint for HTML
+- oxlint for JavaScript
+- csskit for CSS (linting via `lint.cks`, plus minification)
+- oxfmt for JavaScript, CSS, and Markdown formatting
+- fallow for dead code, duplication, and complexity
+- HTMLHint for the built HTML in `_site/`
 - markdownlint for Markdown
 
 ### Setup Linting Tools
