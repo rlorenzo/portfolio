@@ -104,14 +104,86 @@
   github_link: https://github.com/rlorenzo/aws-refarch-moodle
   type: project
 
+- name: Impeccable
+  description: Fixed the Node runtime probe in the design-language toolkit so the hooks it generates survive cmd.exe metacharacter parsing and stop failing installs on Windows.
+  tech_stack:
+    - Node.js
+    - CLI
+    - Windows
+  github_link: https://github.com/pbakaus/impeccable/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: Quasar
+  description: Upgraded serialize-javascript to v7 across the Vue framework's build chain to clear a security advisory, and opened the Vite plugin's peer range to Vite 8.
+  tech_stack:
+    - Vue
+    - Vite
+    - Build Tooling
+  github_link: https://github.com/quasarframework/quasar/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: lint-staged
+  description: Added the --continue-on-error flag so one failing task no longer hides the rest of the report, with unit and integration coverage and no change to the default behavior.
+  tech_stack:
+    - Node.js
+    - CLI
+    - Git Hooks
+  github_link: https://github.com/lint-staged/lint-staged/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: Mago
+  description: Brought WordPress security linting to the Rust PHP toolchain with rules for nonce verification, prepared SQL, and input sanitization, validated against production codebases for PHPCS parity.
+  tech_stack:
+    - Rust
+    - PHP
+    - Static Analysis
+    - WordPress
+  github_link: https://github.com/carthage-software/mago/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: csskit
+  description: Fixed a calc() minification bug that emitted WebKit-invalid output, and turned a parser panic in csskit check into a real diagnostic. This site's CSS is minified with it.
+  tech_stack:
+    - Rust
+    - CSS
+    - Minification
+  github_link: https://github.com/csskit/csskit/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: EditorConfig Core (JS)
+  description: Replaced hand-rolled backslash escaping with minimatch.escape(), fixing a brace-expansion bug that stripped escape sequences out of path prefixes.
+  tech_stack:
+    - Node.js
+    - Developer Tools
+  github_link: https://github.com/editorconfig/editorconfig-core-js/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: Facet
+  description: Ported the local AI photo culling tool to Apple Silicon, adding MPS device detection, unified-memory limits, cross-platform OOM handling, and HEIC support for Apple Photos libraries.
+  tech_stack:
+    - Python
+    - PyTorch
+    - Apple Silicon
+  github_link: https://github.com/ncoevoet/facet/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: Framework Benchmarks
+  description: Added Gea to the suite that builds the same app in ten frontend frameworks, as a like-for-like port wired into the existing test, lint, build, and benchmark tooling.
+  tech_stack:
+    - JavaScript
+    - Vite
+    - Benchmarking
+  github_link: https://github.com/lissy93/framework-benchmarks/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
 - name: image-gen-mcp
-  description: Added gpt-image-1.5 and imagen-4-fast support, provider health checks, and Claude Code MCP compatibility.
+  description: Added gpt-image-2 with flexible custom sizes, gpt-image-1.5 and imagen-4-fast support, provider health checks, and Claude Code MCP compatibility.
   tech_stack:
     - Python
     - MCP
     - OpenAI
     - Gemini
-  github_link: https://github.com/rlorenzo/image-gen-mcp
+  github_link: https://github.com/lansespirit/image-gen-mcp/pulls?q=is%3Apr+author%3Arlorenzo
   type: contribution
 
 - name: Internet Archive for Apple TV
