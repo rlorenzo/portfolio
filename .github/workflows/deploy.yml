@@ -3,8 +3,9 @@ name: Build and Deploy
 on:
   push:
     branches: [ main ]
+  # No base-branch filter: `pull_request.branches` matches the PR's base, so
+  # filtering on main silently skips CI for any PR stacked on another branch.
   pull_request:
-    branches: [ main ]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:

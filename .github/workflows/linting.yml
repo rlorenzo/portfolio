@@ -3,8 +3,9 @@ name: Linting
 on:
   push:
     branches: [ main ]
+  # No base-branch filter: `pull_request.branches` matches the PR's base, so
+  # filtering on main silently skips CI for any PR stacked on another branch.
   pull_request:
-    branches: [ main ]
 
 permissions:
   contents: read
