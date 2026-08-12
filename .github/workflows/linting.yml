@@ -68,3 +68,6 @@ jobs:
 
       - name: Run HTML linting
         run: npm run lint:html
+
+      - name: Verify built site
+        run: npm run verify:build
