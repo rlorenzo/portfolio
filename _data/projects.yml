@@ -26,6 +26,15 @@
   github_link: https://github.com/rlorenzo/uc-homepage-a11y-report
   type: project
 
+- name: Show of Hands
+  description: Instant polls for people in the same room. Share a QR or four-letter code, watch results update live, then the poll self-destructs. No accounts, no app install.
+  tech_stack:
+    - SvelteKit
+    - TypeScript
+    - SQLite
+  live_link: https://showhands.rexlorenzo.com
+  type: project
+
 - name: UC Entrepreneurship Hub
   description: Catalog of entrepreneurship programs across all 10 University of California campuses, covering incubators, accelerators, funding, competitions, courses, and maker spaces in one place.
   tech_stack:
