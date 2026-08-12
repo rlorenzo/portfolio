@@ -36,6 +36,10 @@ exclude:
   - lint.cks
   # Source and build helpers
   - scripts/
+  # Tritopani is a build-time input to scripts/generate-signature-svg.mjs, which
+  # bakes the wordmark into _includes/signature.svg as paths. No browser ever
+  # needs the 290KB OTF, so it stays in the repo but not in the deploy.
+  - assets/fonts/Tritopani.otf
   # Tests: ~16MB of committed baseline screenshots, none of it site content
   - tests/
   - playwright-report/

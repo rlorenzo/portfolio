@@ -22,15 +22,10 @@
   <!-- Main CSS -->
   <link rel="stylesheet" href="{{ "/assets/css/styles.min.css" | relative_url }}?v={{ site.time | date: '%s' }}">
 
-  <!-- Preconnect to font origins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Non-critical font CSS loaded asynchronously -->
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,500;12..96,75..100,600;12..96,75..100,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,500;12..96,75..100,600;12..96,75..100,700&display=swap" rel="stylesheet" />
-  </noscript>
+  <!-- Bricolage Grotesque is self-hosted (see @font-face in styles.css), so there
+       is no third-party font origin to preconnect to. Preloading the latin subset
+       lets it start downloading alongside the stylesheet rather than after it. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/assets/fonts/bricolage-grotesque-latin.woff2' | relative_url }}">
 
   <!-- Theme detection script to prevent FOUC -->
   <script>

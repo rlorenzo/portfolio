@@ -13,7 +13,7 @@
     "fix:js": "oxfmt --write assets/js/",
     "fix:md": "oxfmt --write '**/*.md'",
     "lint": "npm run lint:css && npm run lint:js && npm run lint:md && npm run lint:fallow",
-    "lint:all": "npm run build && npm run lint && npm run lint:html",
+    "lint:all": "npm run build && npm run lint && npm run lint:html && npm run verify:build",
     "lint:css": "csskit check lint.cks assets/css/styles.css",
     "lint:fallow": "fallow",
     "lint:html": "htmlhint '_site/**/*.html' --ignore '**/playwright-report/**'",
@@ -24,6 +24,7 @@
     "setup": "npm install && bundle install",
     "test": "playwright test",
     "test:update": "playwright test --update-snapshots",
+    "verify:build": "node scripts/verify-build.mjs",
     "watch:js": "npm run build:js -- --watch"
   },
   "keywords": [

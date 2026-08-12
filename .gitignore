@@ -15,7 +15,6 @@ Thumbs.db
 # Dependencies
 vendor/
 .bundle/
-Gemfile.lock
 
 # Generated CSS
 assets/css/styles.min.css
