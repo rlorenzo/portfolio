@@ -1,39 +1,49 @@
+- title: Viper 2 Agentic Coding Onboarding
+  date: 2026-07-08
+  embed_url: https://docs.google.com/presentation/d/1-VhCB6ISYBV-4Y7vMA4Cn1fg2pIa4kfO-530RT015bI/embed
+  description: An onboarding deck created for work, helping new developers get up to speed with agentic coding.
+
+- title: "Navigating the AI Frontier: A Brighter Future"
+  date: 2026-06-17
+  embed_url: https://docs.google.com/presentation/d/1jYYtIcd_ZCtWogenI3U4nR7QE8fmrCRHa2NMFL8pkTs/embed
+  description: My case for optimism about AI and the brighter future it can help us build.
+
 - title: Agentic Workflows for Accessibility
   date: 2026-04-28
   embed_url: https://docs.google.com/presentation/d/1H8dsERbZ55dma1xOLfZAVC0pG4Sq14kSZ4SGVjjuYKI/embed
-  description: Presented to the UC Tech group covering my usage of AI agents in identifying and resolving web site accessibility issues to become WCAG 2.2 AA/AAA compliant.
+  description: How I use AI agents to find and fix web accessibility issues and bring sites up to WCAG 2.2 AA/AAA compliance, shared with the UC Tech group.
 
 - title: AI Review Loops
   date: 2026-03-25
   embed_url: https://docs.google.com/presentation/d/1-A4pXEqslFqYszdQEvIXXPv4ow97HFaKrjozWo3oBVI/embed
-  description: Presented to the UC Tech group about using AI agents in a loop to accomplish goals such as code reviewing and plan refinement.
+  description: A UC Tech talk on running AI agents in loops to tackle goals like code review and plan refinement.
 
 - title: "Software Development: Past, Present, Future"
   date: 2026-02-04
   embed_url: https://docs.google.com/presentation/d/12EBXT1sdLIGdELgHxbGr43fkmYD0bDkIEmlTte8lhQA/embed
-  description: Presented at Toastmasters and UC Tech, exploring the evolution of software development by examining key milestones that shaped the industry and offering an optimistic perspective on its future.
+  description: A tour of the milestones that shaped software development, ending with an optimistic take on where the industry is headed. Given at Toastmasters and UC Tech.
 
 - title: "Vibecoding: What and How"
   date: 2025-08-27
   embed_url: https://docs.google.com/presentation/d/1Yn-zh5idZr9WRKLPC5sjU_9lmAHqtT2Zv29kf1vVZ5Q/embed
-  description: Presented at Toastmasters to explain the buzzword "Vibecoding."
+  description: What is "vibecoding," exactly? A Toastmasters talk that unpacks the buzzword.
 
 - title: Breaking LTI Out of the Box
   date: 2019-09-17
   embed_url: https://docs.google.com/presentation/d/1cnQEqANBWF95LSrG1ofH0PtMzYx5BHwn5IT__0rIFyA/embed
-  description: Demonstrated our Learning Tools Interoperability (LTI) improvements at the 2019 MoodleMoot US conference in Philadelphia.
+  description: A demonstration of our team's Learning Tools Interoperability (LTI) improvements at the 2019 MoodleMoot US conference in Philadelphia.
 
 - title: "0-60: Increase your Velocity with a non-traditional Agile Team"
   date: 2017-11-07
   embed_url: https://docs.google.com/presentation/d/1CpG46zfv9g58kuLpR8VvXhGfLKMQcWmDjYEP-696tCE/embed
-  description: We showcased our CCLE summer internship program at the 2017 MoodleMoot US conference in Miami.
+  description: The story of our CCLE summer internship program and how a non-traditional Agile team gained velocity, shared at the 2017 MoodleMoot US conference in Miami.
 
 - title: "PHP 7: What to Know"
   date: 2016-06-23
   embed_url: https://docs.google.com/presentation/d/1eTp9BJ94hfMpkFxASRldZ5peB9kDHUTKd5IKp0eNsWI/embed
-  description: Presented an overview of PHP 7 features and performance improvements at the 2016 MoodleMoot US conference in Los Angeles.
+  description: Everything Moodle developers needed to know about PHP 7's features and performance improvements, from the 2016 MoodleMoot US conference in Los Angeles.
 
 - title: Getting Started with Browser Based Testing
   date: 2015-08-06
   embed_url: https://docs.google.com/presentation/d/1xihBq8tIVZfMCFLDPMPeJT3-qV5ihRvvr2Riep7urMA/embed
-  description: Gave a workshop on using Behat, the automated browser based testing framework, at the 2015 MoodleMoot US conference in Minneapolis.
+  description: A workshop introducing Behat, the automated browser based testing framework, at the 2015 MoodleMoot US conference in Minneapolis.
