@@ -27,9 +27,15 @@ typography:
     fontFamily: 'Bricolage Grotesque, system-ui, sans-serif'
     fontWeight: 600
     lineHeight: 1.1
+  signature:
+    fontFamily: "Tritopani, 'Brush Script MT', cursive"
+    fontWeight: 400
 rounded:
+  hairline: '2px'
   control: '4px'
-  card: '0.5rem'
+  media: '6px'
+  circle: '50%'
+  pill: '999px'
 spacing:
   transitionFast: '0.15s'
   transitionNormal: '0.3s'
@@ -96,7 +102,9 @@ Same token names, redefined under the `.dark` class on `<html>`:
 
 ## 3. Typography
 
-**Body and display:** Bricolage Grotesque (variable, 400 to 700) with `system-ui, sans-serif` fallbacks. A single family carries everything; weight and size do the hierarchy.
+**Body and display:** Bricolage Grotesque (variable, 400 to 700) with `system-ui, sans-serif` fallbacks. A single family carries everything; weight and size do the hierarchy. Self-hosted as two `woff2` subsets in `assets/fonts/`, not fetched from Google Fonts.
+
+**Signature:** The footer wordmark is inline SVG path data, generated from the Tritopani OTF by `scripts/generate-signature-svg.mjs` at build time. Tritopani is deliberately **not** a CSS token and not part of the type hierarchy: nothing loads it in the browser, the OTF is excluded from the deploy, and there is no `@font-face` for it. Do not reintroduce one to set running text.
 
 ### Hierarchy
 
@@ -134,7 +142,7 @@ Flat by default. There is no shadow vocabulary; surfaces separate via `--rule` h
 
 - **Background:** `--paper` (light) / `--paper` (dark, redefined).
 - **Border:** 1px `--rule`.
-- **Corners:** 0.5rem.
+- **Corners:** 2px. The site's dominant radius is a 2px hairline, near-square by intent; 4px is reserved for controls and the hero portrait, 6px for media previews. Nothing ships at 0.5rem.
 - **Padding:** Section-driven; cards inherit the section's rhythm rather than defining their own.
 
 ### Navigation
