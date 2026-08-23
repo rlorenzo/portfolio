@@ -1,3 +1,13 @@
+- name: Chino Valley Today
+  description: A daily local news brief for Chino and Chino Hills, California. Automated ingestion of city council, planning commission, and school board records, synthesized behind mandatory citations and tiered review gates, published as a static site every morning.
+  tech_stack:
+    - TypeScript
+    - Astro
+    - SQLite
+    - LLM Pipeline
+  live_link: https://chinovalley.today
+  type: project
+
 - name: Rush Call
   description: Adds the filtering that Central Casting's job board lacks, so background actors can find the roles they actually qualify for. Narrow by region, union status, gender, age, or keyword, then subscribe to an RSS feed that surfaces new matches as they open.
   tech_stack:
@@ -35,6 +45,16 @@
   live_link: https://showhands.rexlorenzo.com
   type: project
 
+- name: Deadwood
+  description: Codebase health analyzer for Rust workspaces that catches what rustc and clippy stay quiet about, including dead module files, unused public items and re-exports, misplaced dependencies, and cfg gates that can never hold.
+  tech_stack:
+    - Rust
+    - Static Analysis
+    - CLI
+    - Developer Tools
+  github_link: https://github.com/rlorenzo/deadwood
+  type: project
+
 - name: UC Entrepreneurship Hub
   description: Catalog of entrepreneurship programs across all 10 University of California campuses, covering incubators, accelerators, funding, competitions, courses, and maker spaces in one place.
   tech_stack:
@@ -42,6 +62,26 @@
     - React
     - Vite
   github_link: https://github.com/rlorenzo/uc-entrepreneurship-hub
+  type: project
+
+- name: Toastmasters Zoom Timer
+  description: Browser-based speech timer that composites the speaker onto the official Toastmasters virtual background, flooding green, yellow, then red as a speech crosses each threshold. Segmentation runs locally on the webcam feed, and a ready-made video covers anyone who would rather skip the setup.
+  tech_stack:
+    - JavaScript
+    - MediaPipe
+    - WebGPU
+    - Zoom
+  github_link: https://github.com/rlorenzo/toastmasters-zoom-timer
+  type: project
+
+- name: Free PST Viewer
+  description: Native macOS app for browsing Microsoft Outlook .pst and .ost files, built on PstReader's pure Swift implementation of the MS-PST specification. Memory-mapped I/O, a convenience API, and faster message loading were contributed back upstream.
+  tech_stack:
+    - Swift
+    - SwiftUI
+    - macOS
+    - MAPI
+  github_link: https://github.com/rlorenzo/Free-PST-Viewer
   type: project
 
 - name: Monarch Forecast
@@ -54,14 +94,14 @@
   github_link: https://github.com/rlorenzo/Monarch-Forecast
   type: project
 
-- name: 2048 Solver
-  description: 2048 with an expectimax solver, move coaching, and a strategy guide. Play, learn, or watch the AI solve it.
+- name: Zoom Table Topics Board
+  description: Runs Toastmasters Table Topics from a single local command. Reads the Zoom participants panel through the macOS accessibility API, rolls a random speaker, and full-screens the prompt for the whole room. No account, nothing stored on a server.
   tech_stack:
-    - JavaScript
-    - Vite
-    - AI
-    - Game
-  github_link: https://github.com/rlorenzo/2048-Solver
+    - Python
+    - macOS Accessibility
+    - Zoom
+    - SSE
+  github_link: https://github.com/rlorenzo/zoom-table-topics-board
   type: project
 
 - name: Zoom Integration for Moodle
@@ -82,26 +122,6 @@
     - Git
     - JIRA
   github_link: https://github.com/moodle/moodle/commits?author=rlorenzo
-  type: project
-
-- name: AI Coding Setup
-  description: Prompts, skills, and scripts for working with AI coding agents in development workflows.
-  tech_stack:
-    - Shell
-    - AI Agents
-    - Developer Tools
-  github_link: https://github.com/rlorenzo/ai-coding-setup
-  type: project
-
-- name: Moodle AWS Disaster Recovery
-  description: Enhanced an AWS Moodle template into a disaster-recovery solution for CCLE, UCLA's Moodle LMS.
-  tech_stack:
-    - AWS
-    - CloudFormation
-    - EC2
-    - RDS
-    - EFS
-  github_link: https://github.com/rlorenzo/aws-refarch-moodle
   type: project
 
 - name: Impeccable
@@ -150,12 +170,29 @@
   github_link: https://github.com/csskit/csskit/pulls?q=is%3Apr+author%3Arlorenzo
   type: contribution
 
+- name: stylelint-a11y
+  description: Replaced a self-referencing plugin path so the accessibility rule set resolves under stylelint 17's ESM loader instead of failing at startup.
+  tech_stack:
+    - JavaScript
+    - Stylelint
+    - Accessibility
+  github_link: https://github.com/double-great/stylelint-a11y/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
 - name: EditorConfig Core (JS)
   description: Replaced hand-rolled backslash escaping with minimatch.escape(), fixing a brace-expansion bug that stripped escape sequences out of path prefixes.
   tech_stack:
     - Node.js
     - Developer Tools
   github_link: https://github.com/editorconfig/editorconfig-core-js/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: inflection
+  description: Corrected nucleus/nuclei pluralization and expanded the uncountable-word list in the JavaScript inflection library.
+  tech_stack:
+    - JavaScript
+    - Node.js
+  github_link: https://github.com/dreamerslab/node.inflection/pulls?q=is%3Apr+author%3Arlorenzo
   type: contribution
 
 - name: Facet
@@ -194,13 +231,3 @@
     - App Store
   github_link: https://github.com/rlorenzo/internet-archive-apple-tv
   type: contribution
-
-- name: PstReader (Swift Library)
-  description: Memory-mapped I/O and a convenience API for the Swift PST file reader, plus improved message loading.
-  tech_stack:
-    - Swift
-    - File I/O
-    - MAPI
-  github_link: https://github.com/hughbe/PstReader
-  type: contribution
-
