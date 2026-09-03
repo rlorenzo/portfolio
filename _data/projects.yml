@@ -1,4 +1,5 @@
 - name: Chino Valley Today
+  category: civic
   description: A daily local news brief for Chino and Chino Hills, California. Automated ingestion of city council, planning commission, and school board records, synthesized behind mandatory citations and tiered review gates, published as a static site every morning.
   tech_stack:
     - TypeScript
@@ -9,6 +10,7 @@
   type: project
 
 - name: Rush Call
+  category: products
   description: Adds the filtering that Central Casting's job board lacks, so background actors can find the roles they actually qualify for. Narrow by region, union status, gender, age, or keyword, then subscribe to an RSS feed that surfaces new matches as they open.
   tech_stack:
     - SvelteKit
@@ -19,6 +21,7 @@
   type: project
 
 - name: Office Accessibility Checker
+  category: civic
   description: Cross-platform PowerShell CLI that checks Word, Excel, and PowerPoint files for accessibility issues, with no Office installation required. Published to the PowerShell Gallery.
   tech_stack:
     - PowerShell
@@ -28,6 +31,7 @@
   type: project
 
 - name: UC Homepage Accessibility Report
+  category: civic
   description: Accessibility audit across all University of California campus homepages, inspired by the WebAIM Million project. Surfaces WCAG issues to drive systemwide a11y improvements.
   tech_stack:
     - JavaScript
@@ -37,6 +41,7 @@
   type: project
 
 - name: Show of Hands
+  category: products
   description: Instant polls for people in the same room. Share a QR or four-letter code, watch results update live, then the poll self-destructs. No accounts, no app install.
   tech_stack:
     - SvelteKit
@@ -45,7 +50,19 @@
   live_link: https://showhands.rexlorenzo.com
   type: project
 
+- name: Spot the Star
+  category: products
+  description: Guess Who played with celebrities, two players over the web. Share an invite code, no accounts, and the board updates in real time from a single self-hosted binary.
+  tech_stack:
+    - SvelteKit
+    - TypeScript
+    - PocketBase
+    - Realtime
+  live_link: https://spotthestar.rexlorenzo.com
+  type: project
+
 - name: Deadwood
+  category: tools
   description: Codebase health analyzer for Rust workspaces that catches what rustc and clippy stay quiet about, including dead module files, unused public items and re-exports, misplaced dependencies, and cfg gates that can never hold.
   tech_stack:
     - Rust
@@ -56,6 +73,7 @@
   type: project
 
 - name: UC Entrepreneurship Hub
+  category: civic
   description: Catalog of entrepreneurship programs across all 10 University of California campuses, covering incubators, accelerators, funding, competitions, courses, and maker spaces in one place.
   tech_stack:
     - TypeScript
@@ -65,6 +83,7 @@
   type: project
 
 - name: Toastmasters Zoom Timer
+  category: speaking
   description: Browser-based speech timer that composites the speaker onto the official Toastmasters virtual background, flooding green, yellow, then red as a speech crosses each threshold. Segmentation runs locally on the webcam feed, and a ready-made video covers anyone who would rather skip the setup.
   tech_stack:
     - JavaScript
@@ -74,7 +93,19 @@
   github_link: https://github.com/rlorenzo/toastmasters-zoom-timer
   type: project
 
+- name: Toastmasters Flow Promos
+  category: speaking
+  description: Short Toastmasters recap videos that survive brand review. Veo makes the motion; anything exact, like text or a face, is composited locally.
+  tech_stack:
+    - Bash
+    - ffmpeg
+    - Veo
+    - Headless Chrome
+  github_link: https://github.com/rlorenzo/toastmasters-flow-promos
+  type: project
+
 - name: Free PST Viewer
+  category: products
   description: Native macOS app for browsing Microsoft Outlook .pst and .ost files, built on PstReader's pure Swift implementation of the MS-PST specification. Memory-mapped I/O, a convenience API, and faster message loading were contributed back upstream.
   tech_stack:
     - Swift
@@ -85,6 +116,7 @@
   type: project
 
 - name: Monarch Forecast
+  category: products
   description: Day-by-day balance projection from Monarch Money data, flagging low-balance dates before they hit.
   tech_stack:
     - Python
@@ -94,34 +126,34 @@
   github_link: https://github.com/rlorenzo/Monarch-Forecast
   type: project
 
-- name: Zoom Table Topics Board
-  description: Runs Toastmasters Table Topics from a single local command. Reads the Zoom participants panel through the macOS accessibility API, rolls a random speaker, and full-screens the prompt for the whole room. No account, nothing stored on a server.
+- name: humanize
+  category: tools
+  description: Strips 44 AI-writing patterns out of prose, with separate profiles for academic, docs, blog, and commit text. Maintained fork of blader/humanizer.
   tech_stack:
     - Python
-    - macOS Accessibility
-    - Zoom
-    - SSE
-  github_link: https://github.com/rlorenzo/zoom-table-topics-board
+    - Claude Code
+    - Agent Skills
+  github_link: https://github.com/rlorenzo/humanize
   type: project
 
-- name: Zoom Integration for Moodle
-  description: Moodle plugin (mod_zoom) for scheduling, managing, and launching Zoom meetings directly from a course page.
+- name: AI Coding Setup
+  category: tools
+  description: One script that installs the same review, commit, and refactor commands across five AI coding CLIs, each in that tool's own skill or plugin format.
   tech_stack:
-    - PHP
-    - REST
-    - Moodle
-    - Zoom API
-  github_link: https://moodle.org/plugins/mod_zoom
+    - Bash
+    - Agent Skills
+    - Developer Tools
+  github_link: https://github.com/rlorenzo/ai-coding-setup
   type: project
 
-- name: Moodle
-  description: Long-term contributor to the Moodle LMS; recognized as a Particularly Helpful Moodler (top 1% of forum contributors).
+- name: printify-mcp
+  category: tools
+  description: MCP server that runs a Printify print-on-demand store from an AI assistant. Maintained fork, hardened against the bugs a real storefront surfaces.
   tech_stack:
-    - PHP
-    - Open Source
-    - Git
-    - JIRA
-  github_link: https://github.com/moodle/moodle/commits?author=rlorenzo
+    - TypeScript
+    - MCP
+    - Printify
+  github_link: https://github.com/rlorenzo/printify-mcp
   type: project
 
 - name: Impeccable
@@ -221,6 +253,16 @@
     - OpenAI
     - Gemini
   github_link: https://github.com/lansespirit/image-gen-mcp/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: Moodle
+  description: Author of mod_zoom, which schedules and launches Zoom meetings from a course page, and a Particularly Helpful Moodler in the Moodle forums.
+  tech_stack:
+    - PHP
+    - Moodle
+    - Zoom API
+    - Open Source
+  github_link: https://moodle.org/plugins/mod_zoom
   type: contribution
 
 - name: Internet Archive for Apple TV

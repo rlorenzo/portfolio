@@ -37,3 +37,7 @@ test-results/
 # Mac system files
 *.DS_Store
 .fallow/
+
+# Agent review reports
+agent-code-review.md
+agent-review-summary.md

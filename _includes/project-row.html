@@ -1,0 +1,12 @@
+<li class="projects__row projects__row--compact">
+  <h3 class="projects__title projects__title--compact">
+    <a class="projects__link" href="{{ include.project.live_link | default: include.project.github_link }}" target="_blank" rel="noopener noreferrer">
+      <span class="projects__name">{{ include.project.name }}</span>
+      <span class="projects__arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </h3>
+  <p class="projects__tech projects__tech--compact">
+    {% for tech in include.project.tech_stack %}{{ tech }}{% unless forloop.last %} <span aria-hidden="true">&middot;</span> {% endunless %}{% endfor %}
+  </p>
+  <p class="projects__description projects__description--compact">{{ include.project.description }}</p>
+</li>
