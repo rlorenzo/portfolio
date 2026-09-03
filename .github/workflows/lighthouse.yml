@@ -45,11 +45,15 @@ jobs:
       - name: Build Jekyll site
         run: JEKYLL_ENV=production bundle exec jekyll build --baseurl ""
 
-      - name: Serve site
-        run: npx serve _site -p 4000 &
-
-      - name: Wait for server
-        run: npx wait-on http://localhost:4000 --timeout 30000
+      # One step, because a background process does not reliably outlive the
+      # step that starts it: `npx serve &` returned immediately and the runner
+      # tore down the download before the server ever bound the port. The
+      # timeout covers the npx install too, which has taken minutes on a cold
+      # cache.
+      - name: Serve site and wait for it
+        run: |
+          npx --yes serve _site -p 4000 &
+          npx --yes wait-on http://localhost:4000 --timeout 120000
 
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2
