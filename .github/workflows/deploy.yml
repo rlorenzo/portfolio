@@ -7,11 +7,10 @@ on:
   # filtering on main silently skips CI for any PR stacked on another branch.
   pull_request:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Sets permissions of the GITHUB_TOKEN. The deploy job below grants itself
+# the pages/id-token write scopes it needs; the build job only needs to read.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -64,6 +63,9 @@ jobs:
 
   # Deployment job - only runs on main/master branch, not on PRs
   deploy:
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
