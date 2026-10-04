@@ -104,6 +104,30 @@
   github_link: https://github.com/rlorenzo/toastmasters-flow-promos
   type: project
 
+- name: Zoom Table Topics Board
+  category: speaking
+  description: Runs Table Topics in a Zoom meeting from one local command. Reads the Participants panel through macOS Accessibility, rolls a random speaker, and full-screens a prompt for the whole room. No account, and nothing saved on a server.
+  tech_stack:
+    - Python
+    - Accessibility API
+    - Server-Sent Events
+    - Zoom
+  live_link: https://rlorenzo.github.io/zoom-table-topics-board/
+  github_link: https://github.com/rlorenzo/zoom-table-topics-board
+  type: project
+
+- name: Zoom Icebreaker
+  category: speaking
+  description: Live tracker for icebreaker rounds that reads the Zoom Participants panel via macOS Accessibility and shows who has introduced themselves, so no one gets skipped.
+  tech_stack:
+    - Python
+    - Accessibility API
+    - Server-Sent Events
+    - Zoom
+  live_link: https://rlorenzo.github.io/zoom-icebreaker/
+  github_link: https://github.com/rlorenzo/zoom-icebreaker
+  type: project
+
 - name: Free PST Viewer
   category: products
   description: Native macOS app for browsing Microsoft Outlook .pst and .ost files, built on PstReader's pure Swift implementation of the MS-PST specification. Memory-mapped I/O, a convenience API, and faster message loading were contributed back upstream.
@@ -113,6 +137,17 @@
     - macOS
     - MAPI
   github_link: https://github.com/rlorenzo/Free-PST-Viewer
+  type: project
+
+- name: 2048 Solver
+  category: products
+  description: Play 2048, learn it, or watch an expectimax AI solve it. Includes move coaching, a strategy guide, and smooth tile animations, all in vanilla JavaScript.
+  tech_stack:
+    - JavaScript
+    - Vite
+    - Expectimax
+  live_link: https://rlorenzo.github.io/2048-Solver
+  github_link: https://github.com/rlorenzo/2048-Solver
   type: project
 
 - name: Monarch Forecast
@@ -144,6 +179,17 @@
     - Agent Skills
     - Developer Tools
   github_link: https://github.com/rlorenzo/ai-coding-setup
+  type: project
+
+- name: mago-wordpress
+  category: tools
+  description: Mago extension for WordPress with WPCS-equivalent linter rules and analyzer plugins, bringing WordPress coding-standards checks to the Rust PHP toolchain.
+  tech_stack:
+    - PHP
+    - Rust
+    - Static Analysis
+    - WordPress
+  github_link: https://github.com/rlorenzo/mago-wordpress
   type: project
 
 - name: printify-mcp
@@ -184,7 +230,7 @@
   type: contribution
 
 - name: Mago
-  description: Brought WordPress security linting to the Rust PHP toolchain with rules for nonce verification, prepared SQL, and input sanitization, validated against production codebases for PHPCS parity.
+  description: Brought WordPress security linting to the Rust PHP toolchain with rules for nonce verification, prepared SQL, and input sanitization, validated against production codebases for PHPCS parity. Later fixes teach the echo-tag and array-style rules about WordPress escaping functions and destructuring.
   tech_stack:
     - Rust
     - PHP
@@ -253,6 +299,16 @@
     - OpenAI
     - Gemini
   github_link: https://github.com/lansespirit/image-gen-mcp/pulls?q=is%3Apr+author%3Arlorenzo
+  type: contribution
+
+- name: Monarch Money MCP
+  description: Added bulk transaction updates, a bulk needs-review clearer, bearer-token auth for the HTTP transport, tool annotations, and a read-only default for the Docker image in the Monarch Money MCP server. Also added savings-goal, goal-option, and merchant-deletion tools to the community Monarch Money client.
+  tech_stack:
+    - Python
+    - MCP
+    - GraphQL
+    - Security
+  github_link: https://github.com/robcerda/monarch-mcp-server/pulls?q=is%3Apr+author%3Arlorenzo
   type: contribution
 
 - name: Moodle
