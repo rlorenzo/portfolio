@@ -146,6 +146,17 @@
   github_link: https://github.com/rlorenzo/ai-coding-setup
   type: project
 
+- name: mago-wordpress
+  category: tools
+  description: Work in progress. A Mago extension for WordPress with WPCS-equivalent linter rules and analyzer plugins, bringing WordPress coding-standards checks to the Rust PHP toolchain.
+  tech_stack:
+    - PHP
+    - Rust
+    - Static Analysis
+    - WordPress
+  github_link: https://github.com/rlorenzo/mago-wordpress
+  type: project
+
 - name: printify-mcp
   category: tools
   description: MCP server that runs a Printify print-on-demand store from an AI assistant. Maintained fork, hardened against the bugs a real storefront surfaces.
