@@ -53,5 +53,12 @@
     "rolldown": "^1.0.1",
     "serve": "^14.2.6",
     "wait-on": "^9.1.0"
+  },
+  "overrides": {
+    "markdown-it": "^15.0.3",
+    "smol-toml": "^1.9.0",
+    "katex": "^0.18.2",
+    "js-yaml": "^4.3.2",
+    "compression": "^1.8.2"
   }
 }
