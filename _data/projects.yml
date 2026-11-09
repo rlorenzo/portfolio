@@ -63,13 +63,14 @@
 
 - name: Deadwood
   category: tools
-  description: Codebase health analyzer for Rust workspaces that catches what rustc and clippy stay quiet about, including dead module files, unused public items and re-exports, misplaced dependencies, and cfg gates that can never hold.
+  description: Finds the dead code rustc and Clippy miss in a Rust workspace, including unreachable source files, unused public items and re-exports, and unused or misplaced dependencies. Reads source without compiling, runs on stable Rust, and is published on crates.io as deadwood-rs.
   tech_stack:
     - Rust
     - Static Analysis
     - CLI
     - Developer Tools
-  github_link: https://github.com/rlorenzo/deadwood
+  live_link: https://rexlorenzo.com/deadwood-rs/
+  github_link: https://github.com/rlorenzo/deadwood-rs
   type: project
 
 - name: UC Entrepreneurship Hub
