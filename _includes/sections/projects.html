@@ -1,5 +1,7 @@
 {% assign projects = site.data.projects | where: "type", "project" %}
 {% assign contributions = site.data.projects | where: "type", "contribution" %}
+{% assign featured_count = 3 %}
+{% assign grouped = projects | slice: featured_count, projects.size %}
 <section id="projects" class="projects">
   <div class="projects__inner">
     <header class="projects__header">
@@ -8,7 +10,7 @@
     </header>
 
     <ol class="projects__list projects__list--featured" aria-label="Selected projects">
-      {% for project in projects limit: 3 %}
+      {% for project in projects limit: featured_count %}
       <li class="projects__row projects__row--featured">
         <div class="projects__left">
           <h3 class="projects__title">
@@ -18,7 +20,7 @@
             </a>
           </h3>
           <p class="projects__tech">
-            {% for tech in project.tech_stack %}{{ tech }}{% unless forloop.last %} <span aria-hidden="true">·</span> {% endunless %}{% endfor %}
+            {% for tech in project.tech_stack %}{{ tech }}{% unless forloop.last %} <span aria-hidden="true">&middot;</span> {% endunless %}{% endfor %}
           </p>
         </div>
         <p class="projects__description">{{ project.description }}</p>
@@ -26,43 +28,20 @@
       {% endfor %}
     </ol>
 
-    {% assign more_projects = projects | size | minus: 3 %}
-    {% if more_projects > 0 %}
-    <ol class="projects__list projects__list--compact" aria-label="Additional projects">
-      {% for project in projects offset: 3 %}
-      <li class="projects__row projects__row--compact">
-        <h3 class="projects__title projects__title--compact">
-          <a class="projects__link" href="{{ project.live_link | default: project.github_link }}" target="_blank" rel="noopener noreferrer">
-            <span class="projects__name">{{ project.name }}</span>
-            <span class="projects__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </h3>
-        <p class="projects__tech projects__tech--compact">
-          {% for tech in project.tech_stack %}{{ tech }}{% unless forloop.last %} <span aria-hidden="true">·</span> {% endunless %}{% endfor %}
-        </p>
-        <p class="projects__description projects__description--compact">{{ project.description }}</p>
-      </li>
-      {% endfor %}
+    {% for group in site.data.project_categories %}
+    {% assign members = grouped | where: "category", group.id %}
+    {% if members.size > 0 %}
+    <p class="projects__eyebrow">{{ group.label | escape }}</p>
+    <ol class="projects__list projects__list--compact" aria-label="{{ group.label | escape }}">
+      {% for project in members %}{% include project-row.html project=project %}{% endfor %}
     </ol>
     {% endif %}
+    {% endfor %}
 
     {% if contributions.size > 0 %}
     <p class="projects__eyebrow">Open source contributions</p>
     <ol class="projects__list projects__list--compact" aria-label="Open source contributions">
-      {% for project in contributions %}
-      <li class="projects__row projects__row--compact">
-        <h3 class="projects__title projects__title--compact">
-          <a class="projects__link" href="{{ project.github_link }}" target="_blank" rel="noopener noreferrer">
-            <span class="projects__name">{{ project.name }}</span>
-            <span class="projects__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </h3>
-        <p class="projects__tech projects__tech--compact">
-          {% for tech in project.tech_stack %}{{ tech }}{% unless forloop.last %} <span aria-hidden="true">·</span> {% endunless %}{% endfor %}
-        </p>
-        <p class="projects__description projects__description--compact">{{ project.description }}</p>
-      </li>
-      {% endfor %}
+      {% for project in contributions %}{% include project-row.html project=project %}{% endfor %}
     </ol>
     {% endif %}
   </div>

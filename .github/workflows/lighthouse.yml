@@ -20,13 +20,13 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
+        uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
         with:
-          ruby-version: '3.3.6'
+          ruby-version: '3.3'
           bundler-cache: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '24'
           cache: 'npm'
@@ -45,11 +45,16 @@ jobs:
       - name: Build Jekyll site
         run: JEKYLL_ENV=production bundle exec jekyll build --baseurl ""
 
-      - name: Serve site
-        run: npx serve _site -p 4000 &
-
-      - name: Wait for server
-        run: npx wait-on http://localhost:4000 --timeout 30000
+      # One step, because a background process does not reliably outlive the
+      # step that starts it: `npx serve &` returned immediately and the runner
+      # tore down the server before it ever bound the port. `--no-install`
+      # forces both npx calls to use the devDependencies from `npm ci`
+      # instead of fetching from the registry; the timeout covers server
+      # startup and port availability.
+      - name: Serve site and wait for it
+        run: |
+          npx --no-install serve _site -p 4000 &
+          npx --no-install wait-on http://localhost:4000 --timeout 120000
 
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2

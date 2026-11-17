@@ -1,0 +1,11 @@
+# Groups the non-featured projects. Order here is the render order, and every
+# `category` in projects.yml must match an `id` below or the project renders
+# nowhere (verify-build.mjs asserts this).
+- id: products
+  label: Products
+- id: tools
+  label: Developer tools
+- id: civic
+  label: Civic & accessibility
+- id: speaking
+  label: Speaking & meetings

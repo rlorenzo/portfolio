@@ -50,3 +50,6 @@ exclude:
   - DESIGN.md
   - PRODUCT.md
   - LICENSE
+  # Agent review output, gitignored but present during local builds
+  - agent-code-review.md
+  - agent-review-summary.md

@@ -51,6 +51,26 @@ for (const id of SECTIONS) {
   check(`section #${id} rendered`, html.includes(`id="${id}"`));
 }
 
+// The projects section renders the non-featured entries by grouping them on
+// `category`, so an entry whose category is missing or misspelled matches no
+// group and disappears from the page without any build error.
+const projectNames = readFileSync('_data/projects.yml', 'utf8')
+  .split(/\r?\n/)
+  .flatMap((line) => line.match(/^- name:\s*(.+?)\s*$/)?.slice(1) ?? [])
+  // A quoted name is valid YAML, and the obvious fix if one ever contains a
+  // colon, so unquote it rather than failing the build on the quotes.
+  .map((name) => name.replace(/^(['"])(.*)\1$/, '$2'));
+// Guards the check below: if the pattern ever stops matching, `unrendered` is
+// empty and 'every project renders' passes without having compared anything.
+check('projects.yml has entries', projectNames.length > 0, 'found no `- name:` entries');
+// Matched against the rendered element, not the whole document: several project
+// names (Moodle, Quasar) also appear in prose elsewhere on the page and would
+// pass a bare substring check while missing from the projects section.
+const unrendered = projectNames.filter(
+  (name) => !html.includes(`<span class="projects__name">${name}</span>`),
+);
+check('every project renders', unrendered.length === 0, unrendered.join(', '));
+
 console.log('\nAssets are real files, not stubs');
 const assets = [
   ['assets/js/bundle.js', 1024],
@@ -125,6 +145,8 @@ const NEVER_PUBLISHED = [
   'AGENTS.md',
   'README.md',
   'LICENSE',
+  'agent-code-review.md',
+  'agent-review-summary.md',
 ];
 for (const path of NEVER_PUBLISHED) {
   check(`${path} not published`, !existsSync(join(SITE, path)));

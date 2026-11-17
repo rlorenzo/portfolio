@@ -3,6 +3,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ site.description }}">
   <meta name="author" content="{{ site.author | default: site.title }}">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- The hash below covers the theme-detection inline script's exact body
+       bytes, further down this file. It has no Liquid in it, so the hash is
+       stable across pages; if it ever needs Liquid, move it to a static
+       file instead of trying to hash a moving target. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-fYO2Mb5nOVO19A3g9QgMqaZgZsaAJPQ3pqHrJ5kZ/o4='; style-src 'self'; img-src 'self'; font-src 'self'; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 
